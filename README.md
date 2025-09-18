@@ -31,6 +31,15 @@ Physics simulation featuring bouncing balls with collision detection and realist
 ### ✨ [particles](sketches/particles/)
 Advanced particle system with different emitter types: fountain, explosion, and spiral effects.
 
+### 🔵 [grid-of-dots](sketches/grid-of-dots/)
+Basic nested loops example showing how to create a grid pattern using x,y iteration with circles.
+
+### ♟️ [chessboard](sketches/chessboard/)
+Demonstrates conditional logic inside loops to create alternating patterns like a chessboard.
+
+### 🌸 [radial-pattern](sketches/radial-pattern/)
+Introduces transformations and circular loops to create mandala-like radial symmetry patterns.
+
 ## How to Run
 
 1. Clone this repository
