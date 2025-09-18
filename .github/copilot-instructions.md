@@ -115,3 +115,10 @@ canvas {
   border-radius: 1em;
 }
 ```
+
+## Validation
+Use the included `validate-sketch.sh` script to check if a sketch follows the expected structure:
+```bash
+./validate-sketch.sh sketches/my-new-sketch
+```
+This script validates that all required files exist and are properly configured.
