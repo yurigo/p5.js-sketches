@@ -54,11 +54,6 @@ function draw() {
   noStroke();
   circle(0, 0, 40);
   
-  // Title (draw before translate to avoid transformation issues)
-  pop(); // Close the main translate
-  
-  fill(255);
-  textAlign(CENTER);
-  textSize(24);
-  text("Radial Pattern - Transformations & Circular Loop", width/2, 50);
+  // Close the main translate
+  pop();
 }
