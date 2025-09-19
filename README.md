@@ -49,6 +49,9 @@ Interactive version of Riley's "Movement in Squares" where mouse position contro
 ### 🎨 [hsl-mouse-animation](sketches/hsl-mouse-animation/)
 Interactive HSL color demonstration with mouse-controlled hue and saturation, featuring animated particles and real-time color feedback.
 
+### 🔷 [quad-patterns](sketches/quad-patterns/)
+Educational demonstration of the `quad()` function showing various quadrilateral shapes, overlapping patterns, and mathematical variations.
+
 ## How to Run
 
 1. Clone this repository
