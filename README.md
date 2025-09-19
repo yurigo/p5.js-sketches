@@ -40,6 +40,12 @@ Demonstrates conditional logic inside loops to create alternating patterns like 
 ### 🌸 [radial-pattern](sketches/radial-pattern/)
 Introduces transformations and circular loops to create mandala-like radial symmetry patterns.
 
+### 🎨 [riley-movement-static](sketches/riley-movement-static/)
+Op Art inspired by Bridget Riley's "Movement in Squares" - static version with systematic grid distortion creating optical illusions.
+
+### 🖱️ [riley-movement-interactive](sketches/riley-movement-interactive/)
+Interactive version of Riley's "Movement in Squares" where mouse position controls the distortion line in real-time.
+
 ## How to Run
 
 1. Clone this repository
