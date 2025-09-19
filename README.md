@@ -46,6 +46,9 @@ Op Art inspired by Bridget Riley's "Movement in Squares" - static version with s
 ### 🖱️ [riley-movement-interactive](sketches/riley-movement-interactive/)
 Interactive version of Riley's "Movement in Squares" where mouse position controls the distortion line in real-time.
 
+### 🎨 [hsl-mouse-animation](sketches/hsl-mouse-animation/)
+Interactive HSL color demonstration with mouse-controlled hue and saturation, featuring animated particles and real-time color feedback.
+
 ## How to Run
 
 1. Clone this repository
