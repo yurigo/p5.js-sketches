@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p5.js Sketches Collection</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        background: #0f0f23;
+        color: #cccccc;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #ffffff;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      }
+
+      .subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+        margin-bottom: 3rem;
+        color: #999999;
+      }
+
+      .sketches-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+      }
+
+      .sketch-card {
+        background: #1a1a2e;
+        border: 2px solid #333;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+
+      .sketch-card:hover {
+        border-color: #666;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .sketch-title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: #ffffff;
+      }
+
+      .sketch-emoji {
+        font-size: 1.5rem;
+        margin-right: 0.5rem;
+      }
+
+      .sketch-description {
+        color: #cccccc;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 2rem 0;
+        border-top: 1px solid #333;
+        margin-top: 2rem;
+        color: #666666;
+      }
+
+      .footer a {
+        color: #999999;
+        text-decoration: none;
+      }
+
+      .footer a:hover {
+        color: #cccccc;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 1rem;
+        }
+        
+        h1 {
+          font-size: 2rem;
+        }
+        
+        .sketches-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>🎨 p5.js Sketches</h1>
+      <p class="subtitle">A collection of creative coding sketches exploring programming concepts and visual effects</p>
+
+      <div class="sketches-grid">
+        <a href="sketches/helloworld/" class="sketch-card">
+          <div class="sketch-title">
+            <span class="sketch-emoji">🦄</span>Hello World
+          </div>
+          <div class="sketch-description">An introductory sketch featuring unicorn emojis and basic p5.js shapes.</div>
+        </a>
+
+        <a href="sketches/bezier/" class="sketch-card">
+          <div class="sketch-title">
+            <span class="sketch-emoji">🌊</span>Bezier Curves
+          </div>
+          <div class="sketch-description">Animated bezier curves with flowing control points and colorful trails.</div>
+        </a>
+
+        <a href="sketches/arc/" class="sketch-card">
+          <div class="sketch-title">
+            <span class="sketch-emoji">🎯</span>Arc Patterns
+          </div>
+          <div class="sketch-description">Dynamic arc patterns with spiral animations and corner decorations.</div>
+        </a>
+
+        <a href="sketches/bauhaus/" class="sketch-card">
+          <div class="sketch-title">
+            <span class="sketch-emoji">🎨</span>Bauhaus Design
+          </div>
+          <div class="sketch-description">Minimalist design inspired by Bauhaus principles with geometric shapes and primary colors.</div>
+        </a>
+
+        <a href="sketches/abstract-face/" class="sketch-card">
+          <div class="sketch-title">
+            <span class="sketch-emoji">👤</span>Abstract Face
+          </div>
+          <div class="sketch-description">An expressive abstract representation of a face with animated features.</div>
+        </a>
+
+        <a href="sketches/minimalistic-landscape/" class="sketch-card">
+          <div class="sketch-title">
+            <span class="sketch-emoji">🌄</span>Minimalistic Landscape
+          </div>
+          <div class="sketch-description">A serene landscape scene with mountains, trees, and simple atmospheric elements.</div>
+        </a>
+
+        <a href="sketches/mouse-interaction/" class="sketch-card">
+          <div class="sketch-title">
+            <span class="sketch-emoji">🖱️</span>Mouse Interaction
+          </div>
+          <div class="sketch-description">Interactive sketch responding to mouse movement with trails, ripples, and attractors.</div>
+        </a>
+
+        <a href="sketches/physics/" class="sketch-card">
+          <div class="sketch-title">
+            <span class="sketch-emoji">⚡</span>Physics Simulation
+          </div>
+          <div class="sketch-description">Physics simulation featuring bouncing balls with collision detection and realistic motion.</div>
+        </a>
+
+        <a href="sketches/particles/" class="sketch-card">
+          <div class="sketch-title">
+            <span class="sketch-emoji">✨</span>Particle System
+          </div>
+          <div class="sketch-description">Advanced particle system with different emitter types: fountain, explosion, and spiral effects.</div>
+        </a>
+
+        <a href="sketches/grid-of-dots/" class="sketch-card">
+          <div class="sketch-title">
+            <span class="sketch-emoji">🔵</span>Grid of Dots
+          </div>
+          <div class="sketch-description">Basic nested loops example showing how to create a grid pattern using x,y iteration with circles.</div>
+        </a>
+
+        <a href="sketches/chessboard/" class="sketch-card">
+          <div class="sketch-title">
+            <span class="sketch-emoji">♟️</span>Chessboard Pattern
+          </div>
+          <div class="sketch-description">Demonstrates conditional logic inside loops to create alternating patterns like a chessboard.</div>
+        </a>
+
+        <a href="sketches/radial-pattern/" class="sketch-card">
+          <div class="sketch-title">
+            <span class="sketch-emoji">🌸</span>Radial Pattern
+          </div>
+          <div class="sketch-description">Introduces transformations and circular loops to create mandala-like radial symmetry patterns.</div>
+        </a>
+
+        <a href="sketches/riley-movement-static/" class="sketch-card">
+          <div class="sketch-title">
+            <span class="sketch-emoji">🎨</span>Riley Movement (Static)
+          </div>
+          <div class="sketch-description">Op Art inspired by Bridget Riley's "Movement in Squares" - static version with systematic grid distortion.</div>
+        </a>
+
+        <a href="sketches/riley-movement-interactive/" class="sketch-card">
+          <div class="sketch-title">
+            <span class="sketch-emoji">🖱️</span>Riley Movement (Interactive)
+          </div>
+          <div class="sketch-description">Interactive version of Riley's "Movement in Squares" where mouse position controls the distortion line.</div>
+        </a>
+
+        <a href="sketches/hsl-mouse-animation/" class="sketch-card">
+          <div class="sketch-title">
+            <span class="sketch-emoji">🎨</span>HSL Mouse Animation
+          </div>
+          <div class="sketch-description">Interactive HSL color demonstration with mouse-controlled hue and saturation, featuring animated particles.</div>
+        </a>
+
+        <a href="sketches/quad-patterns/" class="sketch-card">
+          <div class="sketch-title">
+            <span class="sketch-emoji">🔷</span>Quad Patterns
+          </div>
+          <div class="sketch-description">Educational demonstration of the quad() function showing various quadrilateral shapes and patterns.</div>
+        </a>
+
+        <a href="sketches/analog-clock/" class="sketch-card">
+          <div class="sketch-title">
+            <span class="sketch-emoji">🕐</span>Analog Clock
+          </div>
+          <div class="sketch-description">A functional analog clock with moving hands and time display.</div>
+        </a>
+      </div>
+
+      <div class="footer">
+        <p>Built with ❤️ and <a href="https://p5js.org/" target="_blank">p5.js</a></p>
+        <p><a href="https://github.com/yurigo/p5.js-sketches" target="_blank">View on GitHub</a></p>
+      </div>
+    </div>
+  </body>
+</html>
