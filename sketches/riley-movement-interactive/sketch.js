@@ -1,70 +1,78 @@
+let focus = 0.58; // 0 = extremo izquierdo, 1 = extremo derecho (controlado por el ratón)
+
 function setup() {
   createCanvas(400, 400);
-  // Interactive sketch - continuous drawing
+  noLoop(); // Dibujamos solo cuando cambia el foco
 }
 
 function draw() {
   background(255);
-  
-  // Grid parameters
-  let cols = 16;
-  let rows = 16;
-  let cellSize = 40;
-  let startX = (width - cols * cellSize) / 2;
-  let startY = (height - rows * cellSize) / 2;
-  
-  // Interactive deformation line - follows mouse X position
-  let deformationLine = mouseX;
-  
-  noStroke();
-  
-  // Nested loops to create the grid
-  for (let i = 0; i < cols; i++) {
-    for (let j = 0; j < rows; j++) {
-      let x = startX + i * cellSize;
-      let y = startY + j * cellSize;
-      
-      // Calculate distance from deformation line
-      let distanceFromLine = abs(x - deformationLine);
-      
-      // Create distortion effect based on distance
-      let maxDistortion = cellSize * 0.7;
-      let falloff = 150; // How far the effect extends
-      let distortionAmount = map(distanceFromLine, 0, falloff, maxDistortion, 0);
-      distortionAmount = constrain(distortionAmount, 0, maxDistortion);
-      
-      // Apply horizontal compression and vertical stretching
-      let rectWidth = cellSize - distortionAmount * 0.4;
-      let rectHeight = cellSize + distortionAmount * 0.8;
-      
-      // Alternate black and white squares in checkerboard pattern
-      if ((i + j) % 2 === 0) {
-        fill(0); // Black
-      } else {
-        fill(255); // White
-      }
-      
-      // Center the distorted rectangle in the cell
-      let offsetX = (cellSize - rectWidth) / 2;
-      let offsetY = (cellSize - rectHeight) / 2;
-      
-      rect(x + offsetX, y + offsetY, rectWidth, rectHeight);
-    }
+
+  // Parámetros ajustables
+  const cols = 31;
+  const easingPower = 1.1;
+  const minScale = 0.01;
+
+  // Factores relativos
+  let rel = [];
+  let relSum = 0;
+  for (let c = 0; c < cols; c++) {
+    const colCenter = (c + 0.5) / cols;
+    const dist = Math.abs(colCenter - focus);
+    const norm = dist / 0.5;
+    const scale = minScale + (1 - minScale) * Math.pow(norm, easingPower);
+    rel.push(scale);
+    relSum += scale;
   }
-  
-  // Interactive instructions
-  fill(80);
-  textAlign(CENTER);
-  textSize(16);
-  text("Movement in Squares - Interactive (Inspired by Bridget Riley)", width/2, 40);
-  
-  fill(120);
-  textSize(12);
-  text("Move mouse left and right to control the distortion", width/2, height - 30);
-  
-  // Draw deformation line indicator
-  stroke(255, 0, 0, 100);
-  strokeWeight(2);
-  line(deformationLine, 0, deformationLine, height);
+
+  // Fijamos un número de filas constante para que no cambie al mover el foco
+  const rows = 12; // cambia este valor si quieres más/menos filas
+  const cellSize = height / rows; // altura de cada fila (constante mientras no cambie "rows")
+
+  // --- Control para que NINGUNA columna sea más ancha que su altura (no rectángulos apaisados) ---
+  // Tomamos el valor relativo máximo. Ese será el que se convierta en EXACTAMENTE un cuadrado.
+  const maxRel = Math.max(...rel);
+  // Cada unidad de 'rel' se traduce a este ancho base.
+  const baseScale = cellSize / maxRel; // asegura que la columna más grande = cellSize (cuadrado)
+  let patternWidth = relSum * baseScale;
+  // Si aún así el patrón excede el canvas, comprimimos todo proporcionalmente (seguirán sin superar cellSize).
+  let compress = 1;
+  if (patternWidth > width) {
+    compress = width / patternWidth; // ahora la mayor será más estrecha que alta, pero nunca al revés.
+    patternWidth = width;
+  }
+  const offsetX = (width - patternWidth) / 2; // centrado horizontal
+
   noStroke();
+  let x = offsetX;
+  for (let c = 0; c < cols; c++) {
+    const w = rel[c] * baseScale * compress; // siempre <= cellSize
+    for (let r = 0; r < rows; r++) {
+      const y = r * cellSize;
+      const parity = (r + c) % 2;
+      fill(parity === 0 ? 255 : 0);
+      rect(x, y, w, cellSize);
+    }
+    x += w;
+  }
+}
+
+function windowResized() {
+  const s = min(windowWidth, windowHeight) * 0.8;
+  resizeCanvas(s, s);
+  redraw();
+}
+
+// Control del "hundimiento" (focus) con el ratón.
+// mouseX de 0 a 400 -> focus de 0 a 1. Fuera de ese rango se mantiene en los extremos.
+function mouseMoved() {
+  const maxControlWidth = 400; // rango horizontal útil
+  focus = constrain(mouseX / maxControlWidth, 0, 1);
+  redraw();
+}
+
+// Soporte táctil básico
+function touchMoved() {
+  mouseMoved();
+  return false; // previene scroll en móvil
 }
