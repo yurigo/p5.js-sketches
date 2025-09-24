@@ -80,6 +80,30 @@ Generates infinite variations using `random()` in every frame. Colors and positi
 
 Educational demonstration of the `quad()` function showing various quadrilateral shapes, overlapping patterns, and mathematical variations.
 
+### 📏 [line-comparison](sketches/line-comparison/)
+
+Compares different line drawing techniques and visual styles.
+
+### 📏 [line-comparison-animation](sketches/line-comparison-animation/)
+
+Animated comparison of line drawing methods, showing dynamic changes over time.
+
+### 🌪️ [line-with-noise](sketches/line-with-noise/)
+
+Draws lines with Perlin noise for organic, wavy effects.
+
+### 🎲 [line-with-random](sketches/line-with-random/)
+
+Draws lines with random offsets for jagged, unpredictable shapes.
+
+### 🌀 [noise-chaos](sketches/noise-chaos/)
+
+Combines noise and randomness to create chaotic, animated patterns.
+
+### 🔀 [random-vs-noise](sketches/random-vs-noise/)
+
+Side-by-side comparison of random() and noise() for generative art.
+
 ## How to Run
 
 1. Clone this repository
