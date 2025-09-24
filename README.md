@@ -49,6 +49,15 @@ Interactive version of Riley's "Movement in Squares" where mouse position contro
 ### 🎨 [hsl-mouse-animation](sketches/hsl-mouse-animation/)
 Interactive HSL color demonstration with mouse-controlled hue and saturation, featuring animated particles and real-time color feedback.
 
+### 🎲 [random-chaos](sketches/random-chaos/)
+Demonstrates pure randomness using p5.js's `random()` function. Each run generates a cloud of white dots in chaotic positions.
+
+### 🌫️ [noise-fluency](sketches/noise-fluency/)
+Uses p5.js's `noise()` function to create smooth, flowing lines. Coherent noise generates continuous variations, ideal for simulating natural phenomena.
+
+### ♾️ [infinite-variations](sketches/infinite-variations/)
+Generates infinite variations using `random()` in every frame. Colors and positions change constantly, showing the creative potential of generative animation.
+
 ### 🔷 [quad-patterns](sketches/quad-patterns/)
 Educational demonstration of the `quad()` function showing various quadrilateral shapes, overlapping patterns, and mathematical variations.
 
