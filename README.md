@@ -80,7 +80,11 @@ Generates infinite variations using `random()` in every frame. Colors and positi
 
 Educational demonstration of the `quad()` function showing various quadrilateral shapes, overlapping patterns, and mathematical variations.
 
-### 📏 [line-comparison](sketches/line-comparison/)
+### � [analog-clock](sketches/analog-clock/)
+
+A functional analog clock with moving hands and time display.
+
+### �📏 [line-comparison](sketches/line-comparison/)
 
 Compares different line drawing techniques and visual styles.
 
