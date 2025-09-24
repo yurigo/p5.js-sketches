@@ -6,7 +6,7 @@ const BLACK = [0, 0, 0];
 const WHITE = [255, 255, 255];
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(400, 400);
   background(255);
   noLoop();
 }

@@ -5,7 +5,7 @@ let particles = [];
 let maxParticles = 100;
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(400, 400);
   // Set color mode to HSB (Hue, Saturation, Brightness)
   // In p5.js, HSB is equivalent to HSL (Hue, Saturation, Lightness)
   colorMode(HSB, 360, 100, 100, 100);

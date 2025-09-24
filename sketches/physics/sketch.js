@@ -4,7 +4,7 @@ let friction = 0.98;
 let bounce = 0.7;
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(400, 400);
   
   // Create initial balls
   for (let i = 0; i < 8; i++) {

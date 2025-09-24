@@ -1,5 +1,5 @@
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(400, 400);
   // Animation needed to update the clock in real-time
 }
 

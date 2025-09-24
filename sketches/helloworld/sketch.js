@@ -1,5 +1,5 @@
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(400, 400);
   noLoop();
 
 }
@@ -70,4 +70,5 @@ function rotatedText(){
   text('🦄', 0, 0)
   pop()
 }
+
 

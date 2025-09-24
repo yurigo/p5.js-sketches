@@ -2,7 +2,7 @@ let particleSystem;
 let emitters = [];
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(400, 400);
   
   particleSystem = new ParticleSystem();
   

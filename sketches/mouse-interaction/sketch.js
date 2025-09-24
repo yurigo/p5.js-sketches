@@ -3,7 +3,7 @@ let ripples = [];
 let attractors = [];
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(400, 400);
   background(15, 15, 35);
   
   // Create some attractors
