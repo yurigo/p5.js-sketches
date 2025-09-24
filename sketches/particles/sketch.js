@@ -3,33 +3,37 @@ let emitters = [];
 
 function setup() {
   createCanvas(400, 400);
-  
+
   particleSystem = new ParticleSystem();
-  
+
   // Create multiple emitters
-  emitters.push(new Emitter(width/2, height/2, "fountain"));
-  emitters.push(new Emitter(200, 200, "explosion"));
-  emitters.push(new Emitter(600, 600, "spiral"));
+  emitters.push(new Emitter(width / 2, height / 2, "fountain"));
+  emitters.push(new Emitter(100, 100, "explosion"));
+  emitters.push(new Emitter(300, 300, "spiral"));
 }
 
 function draw() {
   background(10, 10, 10, 50);
-  
+
   // Update and display particle system
   particleSystem.update();
   particleSystem.display();
-  
+
   // Update emitters
   for (let emitter of emitters) {
     emitter.update();
     emitter.emit();
   }
-  
+
   // Instructions
   fill(255, 180);
   textAlign(CENTER);
   textSize(14);
-  text("Click and drag to move emitters • Press SPACE to toggle", width/2, height - 20);
+  text(
+    "Click and drag to move emitters • Press SPACE to toggle",
+    width / 2,
+    height - 20
+  );
 }
 
 class Particle {
@@ -41,9 +45,9 @@ class Particle {
     this.maxLife = 255;
     this.size = random(2, 8);
     this.type = type;
-    
+
     // Different particle types
-    switch(type) {
+    switch (type) {
       case "fire":
         this.color = [random(200, 255), random(100, 200), random(0, 50)];
         this.vel = createVector(random(-1, 1), random(-4, -2));
@@ -65,7 +69,7 @@ class Particle {
         this.color = [random(100, 255), random(100, 255), random(150, 255)];
     }
   }
-  
+
   update() {
     // Apply forces based on type
     if (this.type === "fire") {
@@ -75,37 +79,40 @@ class Particle {
       this.acc.add(0, -0.05);
       this.acc.add(random(-0.02, 0.02), 0);
     }
-    
+
     this.vel.add(this.acc);
     this.pos.add(this.vel);
     this.acc.mult(0);
-    
+
     this.life -= random(1, 3);
-    
+
     // Size change over time
     let lifeRatio = this.life / this.maxLife;
     if (this.type === "smoke") {
       this.size += 0.1; // Smoke expands
     }
   }
-  
+
   display() {
     let alpha = map(this.life, 0, this.maxLife, 0, 255);
     fill(this.color[0], this.color[1], this.color[2], alpha);
     noStroke();
-    
+
     if (this.type === "spark") {
       // Draw sparks as lines
       stroke(this.color[0], this.color[1], this.color[2], alpha);
       strokeWeight(2);
-      line(this.pos.x, this.pos.y, 
-           this.pos.x - this.vel.x * 3, 
-           this.pos.y - this.vel.y * 3);
+      line(
+        this.pos.x,
+        this.pos.y,
+        this.pos.x - this.vel.x * 3,
+        this.pos.y - this.vel.y * 3
+      );
     } else {
       circle(this.pos.x, this.pos.y, this.size);
     }
   }
-  
+
   isDead() {
     return this.life <= 0;
   }
@@ -115,11 +122,11 @@ class ParticleSystem {
   constructor() {
     this.particles = [];
   }
-  
+
   addParticle(x, y, type) {
     this.particles.push(new Particle(x, y, type));
   }
-  
+
   update() {
     for (let i = this.particles.length - 1; i >= 0; i--) {
       this.particles[i].update();
@@ -128,7 +135,7 @@ class ParticleSystem {
       }
     }
   }
-  
+
   display() {
     for (let particle of this.particles) {
       particle.display();
@@ -143,36 +150,37 @@ class Emitter {
     this.active = true;
     this.timer = 0;
   }
-  
+
   update() {
     this.timer++;
-    
+
     // Move emitter in pattern
     if (this.type === "spiral") {
       let angle = this.timer * 0.05;
-      this.pos.x = width/2 + cos(angle) * 100;
-      this.pos.y = height/2 + sin(angle) * 100;
+      this.pos.x = width / 2 + cos(angle) * 100;
+      this.pos.y = height / 2 + sin(angle) * 100;
     }
   }
-  
+
   emit() {
     if (!this.active) return;
-    
-    switch(this.type) {
+
+    switch (this.type) {
       case "fountain":
         if (this.timer % 3 === 0) {
           for (let i = 0; i < 3; i++) {
             particleSystem.addParticle(
-              this.pos.x + random(-10, 10), 
-              this.pos.y, 
+              this.pos.x + random(-10, 10),
+              this.pos.y,
               "fire"
             );
           }
         }
         break;
-        
+
       case "explosion":
-        if (this.timer % 60 === 0) { // Explode every 60 frames
+        if (this.timer % 60 === 0) {
+          // Explode every 60 frames
           for (let i = 0; i < 20; i++) {
             particleSystem.addParticle(this.pos.x, this.pos.y, "spark");
           }
@@ -181,7 +189,7 @@ class Emitter {
           }
         }
         break;
-        
+
       case "spiral":
         if (this.timer % 2 === 0) {
           particleSystem.addParticle(this.pos.x, this.pos.y, "default");
@@ -214,7 +222,7 @@ function mouseDragged() {
 }
 
 function keyPressed() {
-  if (key === ' ') {
+  if (key === " ") {
     // Toggle all emitters
     for (let emitter of emitters) {
       emitter.active = !emitter.active;

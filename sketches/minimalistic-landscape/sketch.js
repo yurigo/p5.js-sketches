@@ -6,19 +6,19 @@ function setup() {
 function draw() {
   // Sky gradient
   drawSky();
-  
+
   // Mountain layers
   drawMountains();
-  
+
   // Sun/Moon
   drawSun();
-  
+
   // Clouds
   drawClouds();
-  
+
   // Trees
   drawTrees();
-  
+
   // Ground
   drawGround();
 }
@@ -37,17 +37,17 @@ function drawSun() {
   // Simple sun circle
   fill(255, 223, 186);
   noStroke();
-  circle(650, 150, 120);
-  
+  circle(325, 75, 60);
+
   // Sun rays (minimal lines)
   stroke(255, 223, 186, 150);
-  strokeWeight(2);
+  strokeWeight(1);
   for (let i = 0; i < 8; i++) {
-    let angle = i * PI/4;
-    let x1 = 650 + cos(angle) * 80;
-    let y1 = 150 + sin(angle) * 80;
-    let x2 = 650 + cos(angle) * 100;
-    let y2 = 150 + sin(angle) * 100;
+    let angle = (i * PI) / 4;
+    let x1 = 325 + cos(angle) * 40;
+    let y1 = 75 + sin(angle) * 40;
+    let x2 = 325 + cos(angle) * 50;
+    let y2 = 75 + sin(angle) * 50;
     line(x1, y1, x2, y2);
   }
 }
@@ -56,79 +56,79 @@ function drawMountains() {
   // Back mountains (light)
   fill(180, 200, 220, 180);
   noStroke();
-  triangle(0, 400, 300, 200, 500, 400);
-  triangle(200, 400, 450, 180, 700, 400);
-  
+  triangle(0, 200, 150, 100, 250, 200);
+  triangle(100, 200, 225, 90, 350, 200);
+
   // Middle mountains (medium)
   fill(140, 170, 200, 200);
-  triangle(0, 500, 200, 300, 400, 500);
-  triangle(300, 500, 550, 250, 800, 500);
-  
+  triangle(0, 250, 100, 150, 200, 250);
+  triangle(150, 250, 275, 125, 400, 250);
+
   // Front mountains (dark)
   fill(100, 130, 160);
-  triangle(0, 600, 150, 450, 300, 600);
-  triangle(500, 600, 700, 400, 800, 600);
+  triangle(0, 300, 75, 225, 150, 300);
+  triangle(250, 300, 350, 200, 400, 300);
 }
 
 function drawClouds() {
   fill(255, 255, 255, 200);
   noStroke();
-  
+
   // Simple cloud shapes
-  ellipse(200, 120, 80, 40);
-  ellipse(230, 110, 60, 35);
-  ellipse(180, 110, 50, 30);
-  
-  ellipse(500, 180, 100, 50);
-  ellipse(540, 170, 70, 40);
-  ellipse(470, 170, 60, 35);
+  ellipse(100, 60, 40, 20);
+  ellipse(115, 55, 30, 18);
+  ellipse(90, 55, 25, 15);
+
+  ellipse(250, 90, 50, 25);
+  ellipse(270, 85, 35, 20);
+  ellipse(235, 85, 30, 18);
 }
 
 function drawTrees() {
   stroke(101, 67, 33);
-  strokeWeight(8);
-  
+  strokeWeight(4);
+
   // Tree trunks
-  line(150, 550, 150, 650);
-  line(680, 580, 680, 680);
-  line(400, 570, 400, 670);
-  
+  line(75, 275, 75, 325);
+  line(340, 290, 340, 340);
+  line(200, 285, 200, 335);
+
   // Tree foliage (simple circles)
   fill(76, 153, 76);
   noStroke();
-  circle(150, 530, 80);
-  circle(680, 560, 100);
-  circle(400, 550, 90);
-  
+  circle(75, 265, 40);
+  circle(340, 280, 50);
+  circle(200, 275, 45);
+
   // Smaller trees
   stroke(101, 67, 33);
-  strokeWeight(4);
-  line(300, 600, 300, 650);
-  line(550, 620, 550, 670);
-  
+  strokeWeight(2);
+  line(150, 300, 150, 325);
+  line(275, 310, 275, 335);
+
   fill(76, 153, 76);
   noStroke();
-  circle(300, 590, 50);
-  circle(550, 610, 60);
+  circle(150, 295, 25);
+  circle(275, 305, 30);
 }
 
 function drawGround() {
   // Simple ground plane
   fill(139, 169, 101);
   noStroke();
-  rect(0, 650, width, 150);
-  
+  rect(0, 325, width, 75);
+
   // Grass details (minimal lines)
   stroke(76, 153, 76);
-  strokeWeight(2);
-  for (let x = 50; x < width; x += 30) {
-    let grassHeight = random(10, 25);
-    line(x, 650, x, 650 - grassHeight);
-    line(x + 10, 650, x + 10, 650 - random(8, 20));
+  strokeWeight(1);
+  for (let x = 25; x < width; x += 15) {
+    let grassHeight = random(5, 12);
+    line(x, 325, x, 325 - grassHeight);
+    line(x + 5, 325, x + 5, 325 - random(4, 10));
   }
-  
+
   // Path
   fill(200, 180, 140);
   noStroke();
-  quad(350, 650, 450, 650, 500, height, 300, height);
+  quad(175, 325, 225, 325, 250, height, 150, height);
 }
