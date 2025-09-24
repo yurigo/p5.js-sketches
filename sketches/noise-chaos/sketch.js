@@ -1,5 +1,6 @@
 function setup() {
-  createCanvas(400, 400);
+  const s = min(windowWidth, windowHeight) * 0.9;
+  createCanvas(s, s);
   noStroke();
   fill(200, 100, 255, 150);
 
@@ -9,4 +10,10 @@ function setup() {
     ellipse(x, n, 15, 15);
     xoff += 0.1; // avanzamos en la “dimensión del ruido”
   }
+}
+
+function windowResized() {
+  const s = min(windowWidth, windowHeight) * 0.9;
+  resizeCanvas(s, s);
+  redraw();
 }

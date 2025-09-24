@@ -1,15 +1,16 @@
 function setup() {
-  createCanvas(400, 400);
+  const s = min(windowWidth, windowHeight) * 0.9;
+  createCanvas(s, s);
   noLoop(); // Static sketch - no animation needed
 }
 
 function draw() {
   background(20, 20, 30);
-  
+
   // Set dot properties
   fill(100, 200, 255);
   noStroke();
-  
+
   // Nested loops to create a grid of dots
   // Outer loop for x-axis (columns)
   for (let x = 50; x < width; x = x + 40) {
@@ -19,10 +20,16 @@ function draw() {
       circle(x, y, 20);
     }
   }
-  
+
   // Title
   fill(255);
   textAlign(CENTER);
   textSize(24);
-  text("Grid of Dots - Nested Loops", width/2, 30);
+  text("Grid of Dots - Nested Loops", width / 2, 30);
+}
+
+function windowResized() {
+  const s = min(windowWidth, windowHeight) * 0.9;
+  resizeCanvas(s, s);
+  redraw();
 }

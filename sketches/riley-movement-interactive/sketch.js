@@ -1,7 +1,8 @@
 let focus = 0.58; // 0 = extremo izquierdo, 1 = extremo derecho (controlado por el ratón)
 
 function setup() {
-  createCanvas(400, 400);
+  const s = min(windowWidth, windowHeight) * 0.9;
+  createCanvas(s, s);
   noLoop(); // Dibujamos solo cuando cambia el foco
 }
 
@@ -58,7 +59,7 @@ function draw() {
 }
 
 function windowResized() {
-  const s = min(windowWidth, windowHeight) * 0.8;
+  const s = min(windowWidth, windowHeight) * 0.9;
   resizeCanvas(s, s);
   redraw();
 }
@@ -66,8 +67,8 @@ function windowResized() {
 // Control del "hundimiento" (focus) con el ratón.
 // mouseX de 0 a 400 -> focus de 0 a 1. Fuera de ese rango se mantiene en los extremos.
 function mouseMoved() {
-  const maxControlWidth = 400; // rango horizontal útil
-  focus = constrain(mouseX / maxControlWidth, 0, 1);
+  // Map mouseX relative to current canvas width
+  focus = constrain(mouseX / width, 0, 1);
   redraw();
 }
 

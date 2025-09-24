@@ -1,6 +1,15 @@
 function setup() {
-  createCanvas(400, 400);
+  // Responsive square canvas (90% of the smaller window dimension)
+  const s = min(windowWidth, windowHeight) * 0.9;
+  createCanvas(s, s);
   noLoop(); // Static sketch demonstrating quad() patterns
+}
+
+function windowResized() {
+  // Recalculate size at 80% for a bit more margin on resize
+  const s = min(windowWidth, windowHeight) * 0.9;
+  resizeCanvas(s, s);
+  redraw(); // In case noLoop() was removed later, keep consistency
 }
 
 function draw() {

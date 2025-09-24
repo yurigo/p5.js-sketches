@@ -1,6 +1,13 @@
 function setup() {
-  createCanvas(400, 400);
+  const s = min(windowWidth, windowHeight) * 0.9;
+  createCanvas(s, s);
   noLoop();
+}
+
+function windowResized() {
+  const s = min(windowWidth, windowHeight) * 0.9;
+  resizeCanvas(s, s);
+  redraw();
 }
 
 function draw() {
@@ -16,6 +23,7 @@ function draw() {
   // line(0,800,800,0);
   // strokeWeight(5)
   // triangle(50,30,100,200,400,400);
+  fill(255);
 
   for (let i = -10; i <= width + 10; i = i + 20) {
     for (let j = -10; j <= height + 10; j = j + 20) {

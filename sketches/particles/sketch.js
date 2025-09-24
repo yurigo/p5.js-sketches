@@ -2,14 +2,22 @@ let particleSystem;
 let emitters = [];
 
 function setup() {
-  createCanvas(400, 400);
+  const s = min(windowWidth, windowHeight) * 0.9;
+  createCanvas(s, s);
 
   particleSystem = new ParticleSystem();
 
   // Create multiple emitters
   emitters.push(new Emitter(width / 2, height / 2, "fountain"));
-  emitters.push(new Emitter(100, 100, "explosion"));
-  emitters.push(new Emitter(300, 300, "spiral"));
+  emitters.push(new Emitter(width * 0.25, height * 0.25, "explosion"));
+  emitters.push(new Emitter(width * 0.75, height * 0.75, "spiral"));
+}
+
+function windowResized() {
+  const s = min(windowWidth, windowHeight) * 0.9;
+  resizeCanvas(s, s);
+  // Recenter emitters proportionally if desired (simple approach keeps current positions)
+  redraw();
 }
 
 function draw() {

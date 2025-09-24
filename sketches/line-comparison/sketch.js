@@ -1,5 +1,18 @@
 function setup() {
-  createCanvas(400, 400);
+  const s = min(windowWidth, windowHeight) * 0.9;
+  createCanvas(s, s);
+  background(0);
+  stroke(255);
+  noFill();
+  noLoop();
+}
+
+function windowResized() {
+  const s = min(windowWidth, windowHeight) * 0.9;
+  resizeCanvas(s, s);
+  redraw();
+}
+function draw() {
   background(0);
   stroke(255);
   noFill();
@@ -28,4 +41,5 @@ function setup() {
   textSize(16);
   text("noise()", 10, 20);
   text("random()", 10, height / 2 + 20);
+  noLoop();
 }

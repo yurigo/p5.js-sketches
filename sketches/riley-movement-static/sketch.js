@@ -1,7 +1,8 @@
 let focus = 0.58; // 0 = extremo izquierdo, 1 = extremo derecho (controlado por el ratón)
 
 function setup() {
-  createCanvas(400, 400);
+  const s = min(windowWidth, windowHeight) * 0.9;
+  createCanvas(s, s);
   noLoop(); // Dibujamos solo cuando cambia el foco
 }
 
@@ -58,7 +59,7 @@ function draw() {
 }
 
 function windowResized() {
-  const s = min(windowWidth, windowHeight) * 0.8;
+  const s = min(windowWidth, windowHeight) * 0.9;
   resizeCanvas(s, s);
   redraw();
 }

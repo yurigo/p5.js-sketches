@@ -1,5 +1,6 @@
 function setup() {
-  createCanvas(400, 400);
+  const s = min(windowWidth, windowHeight) * 0.9;
+  createCanvas(s, s);
   noStroke();
 
   let xoff = 0; // desplazamiento en noise
@@ -15,4 +16,10 @@ function setup() {
     stroke(200, 150);
     line(i, y, i, n);
   }
+}
+
+function windowResized() {
+  const s = min(windowWidth, windowHeight) * 0.9;
+  resizeCanvas(s, s);
+  redraw();
 }

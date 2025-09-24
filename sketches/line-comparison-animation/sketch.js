@@ -2,10 +2,23 @@ let xoff = 0; // para avanzar en noise
 let xpos = 0; // posición horizontal
 
 function setup() {
-  createCanvas(400, 400);
+  const s = min(windowWidth, windowHeight) * 0.9;
+  createCanvas(s, s);
   background(0);
   stroke(255);
 
+  background(0);
+  fill(255);
+  noStroke();
+  textSize(16);
+  stroke(255);
+  text("noise()", 10, 20);
+  text("random()", 10, height / 2 + 20);
+}
+
+function windowResized() {
+  const s = min(windowWidth, windowHeight) * 0.9;
+  resizeCanvas(s, s);
   background(0);
   fill(255);
   noStroke();

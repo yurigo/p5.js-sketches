@@ -1,5 +1,6 @@
 function setup() {
-  createCanvas(400, 400);
+  const s = min(windowWidth, windowHeight) * 0.9;
+  createCanvas(s, s);
   background(0);
   stroke(255);
   noFill();
@@ -12,4 +13,10 @@ function setup() {
     xoff += 0.02;
   }
   endShape();
+}
+
+function windowResized() {
+  const s = min(windowWidth, windowHeight) * 0.9;
+  resizeCanvas(s, s);
+  redraw();
 }
