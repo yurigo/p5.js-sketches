@@ -1,4 +1,22 @@
-html, body {
+/* Minimal back button in top-left corner */
+.back-btn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  text-decoration: none;
+}
+.back-btn svg {
+  display: block;
+  fill: none;
+  stroke: #ffd700;
+  transition: stroke 0.2s;
+}
+.back-btn:hover svg {
+  stroke: #ffa500;
+}
+html,
+body {
   margin: 0;
   padding: 0;
   display: grid;
@@ -9,6 +27,6 @@ html, body {
 
 canvas {
   display: block;
-  border: 3px solid #FFD700;
+  border: 3px solid #ffd700;
   border-radius: 1em;
 }

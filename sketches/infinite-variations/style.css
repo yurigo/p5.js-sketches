@@ -1,3 +1,20 @@
+/* Minimal back button in top-left corner */
+.back-btn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  text-decoration: none;
+}
+.back-btn svg {
+  display: block;
+  fill: none;
+  stroke: #ffd700;
+  transition: stroke 0.2s;
+}
+.back-btn:hover svg {
+  stroke: #ffa500;
+}
 html,
 body {
   margin: 0;
