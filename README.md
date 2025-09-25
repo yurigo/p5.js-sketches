@@ -36,6 +36,10 @@ Interactive sketch responding to mouse movement with trails, ripples, and attrac
 
 Physics simulation featuring bouncing balls with collision detection and realistic motion.
 
+### 🪃 [double-pendulum](sketches/double-pendulum/)
+
+Chaotic motion simulation with 50 double pendulums creating beautiful trails and demonstrating sensitive dependence on initial conditions.
+
 ### ✨ [particles](sketches/particles/)
 
 Advanced particle system with different emitter types: fountain, explosion, and spiral effects.
