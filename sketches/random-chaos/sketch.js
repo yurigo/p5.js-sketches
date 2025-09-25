@@ -3,6 +3,7 @@ function setup() {
   createCanvas(s, s);
   noStroke();
   fill(200, 100, 255, 150);
+  noLoop();
 }
 
 function windowResized() {
