@@ -33,13 +33,20 @@ function draw() {
   }
   clip(mask1);
   noStroke();
-  rect(100, 50, 200, 200);
-  ellipse(200, 250, 200, 200);
+  
+  // Responsive coordinates based on canvas size
+  let centerX = width * 0.5;
+  let centerY = height * 0.5;
+  let rectSize = width * 0.5;
+  let ellipseSize = width * 0.5;
+  
+  rect(centerX - rectSize/2, height * 0.125, rectSize, rectSize);
+  ellipse(centerX, centerY + height * 0.125, ellipseSize, ellipseSize);
   fill("black");
-  rect(200 - 5, 50, 10, 300);
-  rect(100, 175, 200, 10);
-  textSize(75);
-  text("🦄", 100, 150);
+  rect(centerX - width * 0.0125, height * 0.125, width * 0.025, height * 0.75);
+  rect(centerX - rectSize/2, centerY - height * 0.0625, rectSize, height * 0.025);
+  textSize(width * 0.1875);
+  text("🦄", centerX - rectSize/2, centerY - height * 0.0625);
   rotatedText();
   noFill();
   stroke(24, 33, 150);
@@ -47,13 +54,13 @@ function draw() {
 
 function mask1() {
   strokeWeight(4);
-  circle(200, 180, width / 1.3);
+  circle(width * 0.5, height * 0.45, width / 1.3);
 }
 
 function rotatedText() {
   push();
-  textSize(75);
-  translate(300, 100);
+  textSize(width * 0.1875);
+  translate(width * 0.75, height * 0.25);
   rotate(PI);
   text("🦄", 0, 0);
   pop();
