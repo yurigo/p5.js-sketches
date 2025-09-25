@@ -42,72 +42,92 @@ function draw() {
 }
 
 function drawBasicQuad() {
-  // Basic rectangular quad
+  // Basic rectangular quad - responsive positioning and sizing
   fill(255, 121, 198, 150);
   stroke(255, 121, 198);
   strokeWeight(2);
 
+  // Responsive coordinates based on canvas size
+  let quadLeft = width * 0.15;
+  let quadTop = height * 0.225;
+  let quadRight = width * 0.35;
+  let quadBottom = height * 0.35;
+
   // quad(x1, y1, x2, y2, x3, y3, x4, y4)
   // Starting from top-left, going clockwise
-  quad(60, 90, 140, 90, 140, 140, 60, 140);
+  quad(quadLeft, quadTop, quadRight, quadTop, quadRight, quadBottom, quadLeft, quadBottom);
 
-  // Labels
+  // Labels - responsive sizing and positioning
   fill(255);
   noStroke();
   textAlign(CENTER);
-  textSize(10);
-  text("Basic Rectangle", 100, 160);
-  text("quad(60,90, 140,90, 140,140, 60,140)", 100, 172);
+  textSize(width * 0.025);
+  text("Basic Rectangle", width * 0.25, height * 0.4);
+  textSize(width * 0.02);
+  text("quad() function - clockwise points", width * 0.25, height * 0.43);
 
-  // Corner indicators
+  // Corner indicators - responsive sizing
+  let indicatorSize = width * 0.015;
   fill(255, 80, 80);
-  circle(60, 90, 6); // Point 1
+  circle(quadLeft, quadTop, indicatorSize); // Point 1
   fill(80, 255, 80);
-  circle(140, 90, 6); // Point 2
+  circle(quadRight, quadTop, indicatorSize); // Point 2
   fill(80, 80, 255);
-  circle(140, 140, 6); // Point 3
+  circle(quadRight, quadBottom, indicatorSize); // Point 3
   fill(255, 255, 80);
-  circle(60, 140, 6); // Point 4
+  circle(quadLeft, quadBottom, indicatorSize); // Point 4
 }
 
 function drawIrregularQuad() {
-  // Irregular quadrilateral
+  // Irregular quadrilateral - responsive positioning and sizing
   fill(139, 233, 253, 150);
   stroke(139, 233, 253);
   strokeWeight(2);
 
-  // Irregular shape - parallelogram-like
-  quad(260, 100, 340, 85, 340, 140, 260, 155);
+  // Responsive coordinates for irregular shape - parallelogram-like
+  let x1 = width * 0.65;
+  let y1 = height * 0.25;
+  let x2 = width * 0.85;
+  let y2 = height * 0.2125;
+  let x3 = width * 0.85;
+  let y3 = height * 0.35;
+  let x4 = width * 0.65;
+  let y4 = height * 0.3875;
 
-  // Labels
+  quad(x1, y1, x2, y2, x3, y3, x4, y4);
+
+  // Labels - responsive
   fill(255);
   noStroke();
   textAlign(CENTER);
-  textSize(10);
-  text("Irregular Quad", 300, 170);
-  text("quad(260,100, 340,85, 340,140, 260,155)", 300, 182);
+  textSize(width * 0.025);
+  text("Irregular Quad", width * 0.75, height * 0.425);
+  textSize(width * 0.02);
+  text("Non-rectangular quadrilateral", width * 0.75, height * 0.455);
 
-  // Corner indicators with numbers
+  // Corner indicators with responsive sizing
+  let indicatorSize = width * 0.015;
   fill(255, 80, 80);
-  circle(260, 100, 6);
+  circle(x1, y1, indicatorSize);
   fill(80, 255, 80);
-  circle(340, 85, 6);
+  circle(x2, y2, indicatorSize);
   fill(80, 80, 255);
-  circle(340, 140, 6);
+  circle(x3, y3, indicatorSize);
   fill(255, 255, 80);
-  circle(260, 155, 6);
+  circle(x4, y4, indicatorSize);
 
-  // Corner numbers
+  // Corner numbers - responsive
   fill(255);
-  textSize(8);
-  text("1", 252, 105);
-  text("2", 348, 90);
-  text("3", 348, 145);
-  text("4", 252, 160);
+  textAlign(CENTER);
+  textSize(width * 0.02);
+  text("1", x1 - width * 0.025, y1 - width * 0.02);
+  text("2", x2 + width * 0.025, y2 - width * 0.02);
+  text("3", x3 + width * 0.025, y3 + width * 0.03);
+  text("4", x4 - width * 0.025, y4 + width * 0.03);
 }
 
 function drawOverlappingQuads() {
-  // Multiple overlapping quads with transparency
+  // Multiple overlapping quads with transparency - responsive
   let colors = [
     [255, 121, 198, 80], // Pink
     [80, 250, 123, 80], // Green
@@ -117,41 +137,49 @@ function drawOverlappingQuads() {
 
   strokeWeight(1);
 
+  // Base coordinates - responsive
+  let baseX = width * 0.15;
+  let baseY = height * 0.5625;
+  let offsetStep = width * 0.05;
+  let offsetStepY = height * 0.0375;
+
   for (let i = 0; i < 4; i++) {
     fill(colors[i][0], colors[i][1], colors[i][2], colors[i][3]);
     stroke(colors[i][0], colors[i][1], colors[i][2]);
 
-    let offsetX = i * 20;
-    let offsetY = i * 15;
+    let offsetX = i * offsetStep;
+    let offsetY = i * offsetStepY;
 
+    // Responsive quad coordinates
     quad(
-      60 + offsetX,
-      225 + offsetY,
-      120 + offsetX,
-      220 + offsetY,
-      125 + offsetX,
-      285 + offsetY,
-      65 + offsetX,
-      290 + offsetY
+      baseX + offsetX,
+      baseY + offsetY,
+      baseX + width * 0.15 + offsetX,
+      baseY - height * 0.0125 + offsetY,
+      baseX + width * 0.1625 + offsetX,
+      baseY + height * 0.15 + offsetY,
+      baseX + width * 0.0125 + offsetX,
+      baseY + height * 0.1625 + offsetY
     );
   }
 
-  // Labels
+  // Labels - responsive
   fill(255);
   noStroke();
   textAlign(CENTER);
-  textSize(10);
-  text("Overlapping Quads", 100, 330);
-  text("Using transparency for layered effects", 100, 342);
+  textSize(width * 0.025);
+  text("Overlapping Quads", width * 0.25, height * 0.825);
+  textSize(width * 0.02);
+  text("Using transparency for layered effects", width * 0.25, height * 0.855);
 }
 
 function drawPatternQuads() {
-  // Grid of varied quads creating a pattern
+  // Grid of varied quads creating a pattern - responsive
   let cols = 3;
   let rows = 3;
-  let spacing = 30;
-  let startX = 240;
-  let startY = 220;
+  let spacing = width * 0.075; // Responsive spacing
+  let startX = width * 0.6; // Responsive start position
+  let startY = height * 0.55; // Responsive start position
 
   strokeWeight(1);
 
@@ -161,34 +189,36 @@ function drawPatternQuads() {
       let y = startY + j * spacing;
 
       // Vary the quad shape based on position
-      let variation = sin((i + j) * 0.5) * 5;
+      let variation = sin((i + j) * 0.5) * width * 0.0125; // Responsive variation
       let hue = map(i + j, 0, cols + rows - 2, 0, 360);
 
       colorMode(HSB);
       fill(hue, 70, 90, 150);
       stroke(hue, 70, 90);
 
-      // Create varied quad shapes
+      // Create varied quad shapes - responsive sizing
+      let quadSize = width * 0.05;
       quad(
         x + variation,
         y,
-        x + 20 - variation,
+        x + quadSize - variation,
         y + variation,
-        x + 20 + variation,
-        y + 20,
+        x + quadSize + variation,
+        y + quadSize,
         x - variation,
-        y + 20 - variation
+        y + quadSize - variation
       );
     }
   }
 
   colorMode(RGB);
 
-  // Labels
+  // Labels - responsive
   fill(255);
   noStroke();
   textAlign(CENTER);
-  textSize(10);
-  text("Pattern Grid", 290, 340);
-  text("Mathematical variation in quad shapes", 290, 352);
+  textSize(width * 0.025);
+  text("Pattern Grid", width * 0.725, height * 0.85);
+  textSize(width * 0.02);
+  text("Mathematical variation in quad shapes", width * 0.725, height * 0.88);
 }

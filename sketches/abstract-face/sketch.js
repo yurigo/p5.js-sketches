@@ -58,38 +58,38 @@ function drawFaceOutline(time) {
 }
 
 function drawEyes(time) {
-  // Left eye - geometric
+  // Left eye - geometric (responsive positioning)
   push();
-  translate(120, 180);
+  translate(width * 0.3, height * 0.45);
   rotate(sin(time * 0.5) * 0.1);
 
   fill(100, 150, 255);
   stroke(50);
   strokeWeight(3);
-  ellipse(0, 0, 80, 60);
+  ellipse(0, 0, width * 0.2, height * 0.15);
 
   // Pupil
   fill(20);
-  ellipse(sin(time) * 10, cos(time * 0.7) * 5, 25, 25);
+  ellipse(sin(time) * width * 0.025, cos(time * 0.7) * height * 0.0125, width * 0.0625, width * 0.0625);
 
   // Highlight
   fill(255);
-  ellipse(5, -8, 8, 8);
+  ellipse(width * 0.0125, -height * 0.02, width * 0.02, width * 0.02);
   pop();
 
-  // Right eye - triangular
+  // Right eye - triangular (responsive positioning)
   push();
-  translate(280, 180);
+  translate(width * 0.7, height * 0.45);
   rotate(-sin(time * 0.3) * 0.1);
 
   fill(255, 150, 100);
   stroke(50);
   strokeWeight(3);
-  triangle(-40, 30, 40, 30, 0, -30);
+  triangle(-width * 0.1, height * 0.075, width * 0.1, height * 0.075, 0, -height * 0.075);
 
   // Pupil
   fill(20);
-  circle(sin(time * 1.2) * 8, cos(time * 0.9) * 6, 20);
+  circle(sin(time * 1.2) * width * 0.02, cos(time * 0.9) * height * 0.015, width * 0.05);
   pop();
 }
 
@@ -98,30 +98,30 @@ function drawNose(time) {
   strokeWeight(4);
 
   let noseX = width / 2 + sin(time * 0.2) * 5;
-  let noseY = 250;
+  let noseY = height * 0.625; // Responsive Y position
 
-  // Abstract nose as flowing line
+  // Abstract nose as flowing line (responsive sizing)
   noFill();
   beginShape();
-  curveVertex(noseX - 20, noseY - 40);
-  curveVertex(noseX, noseY - 20);
-  curveVertex(noseX + sin(time) * 10, noseY);
-  curveVertex(noseX - 10, noseY + 20);
-  curveVertex(noseX + 15, noseY + 30);
+  curveVertex(noseX - width * 0.05, noseY - height * 0.1);
+  curveVertex(noseX, noseY - height * 0.05);
+  curveVertex(noseX + sin(time) * width * 0.025, noseY);
+  curveVertex(noseX - width * 0.025, noseY + height * 0.05);
+  curveVertex(noseX + width * 0.0375, noseY + height * 0.075);
   endShape();
 }
 
 function drawMouth(time) {
   push();
-  translate(width / 2, 320);
+  translate(width / 2, height * 0.8); // Responsive Y position
 
   stroke(200, 100, 120);
   strokeWeight(8);
   noFill();
 
-  // Dynamic mouth expression
-  let mouthWidth = 100 + sin(time * 0.8) * 20;
-  let mouthCurve = sin(time * 0.5) * 30;
+  // Dynamic mouth expression (responsive sizing)
+  let mouthWidth = width * 0.25 + sin(time * 0.8) * width * 0.05;
+  let mouthCurve = sin(time * 0.5) * height * 0.075;
 
   bezier(
     -mouthWidth / 2,
@@ -140,30 +140,31 @@ function drawHair(time) {
   stroke(80, 60, 40);
   strokeWeight(3);
 
-  // Hair strands around the head
+  // Hair strands around the head (responsive positioning and sizing)
   for (let i = 0; i < 20; i++) {
     let angle = map(i, 0, 20, -PI, 0);
-    let x = width / 2 + cos(angle) * 250;
-    let y = height / 2 + sin(angle) * 200 + 50;
+    let x = width / 2 + cos(angle) * width * 0.625;
+    let y = height / 2 + sin(angle) * height * 0.5 + height * 0.125;
 
+    let hairLength = width * 0.125 + sin(time * 0.3 + i) * width * 0.05;
     let endX =
-      x + cos(angle + PI / 2 + sin(time + i)) * (50 + sin(time * 0.3 + i) * 20);
+      x + cos(angle + PI / 2 + sin(time + i)) * hairLength;
     let endY =
-      y + sin(angle + PI / 2 + sin(time + i)) * (50 + sin(time * 0.3 + i) * 20);
+      y + sin(angle + PI / 2 + sin(time + i)) * hairLength;
 
     line(x, y, endX, endY);
   }
 }
 
 function drawFacialTextures(time) {
-  // Abstract facial texture dots
+  // Abstract facial texture dots (responsive positioning and sizing)
   fill(255, 200, 150, 80);
   noStroke();
 
   for (let i = 0; i < 30; i++) {
-    let x = width / 2 + random(-150, 150) + sin(time + i) * 10;
-    let y = height / 2 + random(-100, 100) + cos(time * 0.7 + i) * 8;
-    let size = random(2, 8) + sin(time * 2 + i) * 2;
+    let x = width / 2 + random(-width * 0.375, width * 0.375) + sin(time + i) * width * 0.025;
+    let y = height / 2 + random(-height * 0.25, height * 0.25) + cos(time * 0.7 + i) * height * 0.02;
+    let size = random(width * 0.005, width * 0.02) + sin(time * 2 + i) * width * 0.005;
 
     circle(x, y, size);
   }
