@@ -2,11 +2,12 @@ function setup() {
   const s = min(windowWidth, windowHeight) * 0.9;
   createCanvas(s, s);
   noLoop(); // Static pattern
-  function windowResized() {
-    const s = min(windowWidth, windowHeight) * 0.9;
-    resizeCanvas(s, s);
-    redraw();
-  }
+}
+
+function windowResized() {
+  const s = min(windowWidth, windowHeight) * 0.9;
+  resizeCanvas(s, s);
+  redraw();
 }
 
 function draw() {
