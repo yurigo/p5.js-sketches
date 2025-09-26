@@ -2,7 +2,7 @@
 // Demonstrates randomSeed() for deterministic generative art
 // Seed value comes from URL query parameter: ?id=1234
 
-let seedValue = 1234; // Default seed
+let seedValue = 3141592654; // Default seed
 let artElements = [];
 
 function setup() {
@@ -196,13 +196,13 @@ function displaySeedInfo() {
   fill(0, 0, 100, 80);
   textAlign(RIGHT, BOTTOM);
   textSize(14);
-  text(`Seed: ${seedValue}`, width - 20, height - 20);
+  text(`${seedValue}`, width - 10, height - 10);
   
   // Instructions
-  textAlign(LEFT, BOTTOM);
-  textSize(12);
-  fill(0, 0, 100, 60);
-  text('Add ?id=NUMBER to URL for different variations', 20, height - 20);
+  // textAlign(LEFT, BOTTOM);
+  // textSize(12);
+  // fill(0, 0, 100, 60);
+  // text('Add ?id=NUMBER to URL for different variations', 20, height - 20);
 }
 
 // Allow clicking to generate new seed and reload
