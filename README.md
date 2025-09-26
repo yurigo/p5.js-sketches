@@ -116,6 +116,10 @@ Combines noise and randomness to create chaotic, animated patterns.
 
 Side-by-side comparison of random() and noise() for generative art.
 
+### ⚡🐀⚡ [pokemon-art](sketches/pokemon-art/)
+
+Art using pokemon images.
+
 ## How to Run
 
 1. Clone this repository
