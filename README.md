@@ -72,6 +72,10 @@ Interactive HSL color demonstration with mouse-controlled hue and saturation, fe
 
 Demonstrates pure randomness using p5.js's `random()` function. Each run generates a cloud of white dots in chaotic positions.
 
+### 🎨 [random-seed-art](sketches/random-seed-art/)
+
+Generative art demonstration using `randomSeed()` for deterministic artwork. Each seed value creates unique but reproducible art using HSL colors. Control the seed via URL parameter (?id=1234).
+
 ### 🌫️ [noise-fluency](sketches/noise-fluency/)
 
 Uses p5.js's `noise()` function to create smooth, flowing lines. Coherent noise generates continuous variations, ideal for simulating natural phenomena.
