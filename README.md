@@ -76,7 +76,11 @@ Demonstrates pure randomness using p5.js's `random()` function. Each run generat
 
 Generative art demonstration using `randomSeed()` for deterministic artwork. Each seed value creates unique but reproducible art using HSL colors. Control the seed via URL parameter (?id=1234).
 
-### 🌫️ [noise-fluency](sketches/noise-fluency/)
+### � [noise-seed-art](sketches/noise-seed-art/)
+
+Deterministic Perlin noise artwork using `noiseSeed()` to produce reproducible flowing organic structures. Change the seed with a URL parameter (e.g. `?id=42`) to explore variant but repeatable patterns.
+
+### �🌫️ [noise-fluency](sketches/noise-fluency/)
 
 Uses p5.js's `noise()` function to create smooth, flowing lines. Coherent noise generates continuous variations, ideal for simulating natural phenomena.
 
