@@ -92,6 +92,14 @@ Generates infinite variations using `random()` in every frame. Colors and positi
 
 Educational demonstration of the `quad()` function showing various quadrilateral shapes, overlapping patterns, and mathematical variations.
 
+### 🧊 [isometric-cube-tessellation](sketches/isometric-cube-tessellation/)
+
+Creates a tessellating pattern of 3D isometric cubes with random colors, demonstrating geometric transformations and grid arrangements.
+
+### 🔷 [isometric-cube-tessellation-2](sketches/isometric-cube-tessellation-2/)
+
+Hexagonal tessellation of isometric cubes in grayscale, showing an alternative approach to 3D cube patterns with precise geometric alignment.
+
 ### � [analog-clock](sketches/analog-clock/)
 
 A functional analog clock with moving hands and time display.
