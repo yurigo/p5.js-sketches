@@ -1,4 +1,5 @@
 let img = [];
+let seedValue = 55;
 
 // Load the image and create a p5.Image object.
 function preload() {
@@ -13,6 +14,15 @@ function setup() {
   createCanvas(s, s);
   background(45, 52, 54);
   noLoop();
+
+  // Parse URL query parameter for seed
+  const urlParams = new URLSearchParams(window.location.search);
+  const idParam = urlParams.get("id");
+  if (idParam && !isNaN(idParam)) {
+    seedValue = parseInt(idParam);
+  }
+
+  randomSeed(seedValue)
 }
 
 function windowResized() {
@@ -26,5 +36,12 @@ function draw() {
     for (let i = 0; i < 151; i++) {
       image(img[i], random(width + 20) - 40, random(height + 20) - 40);
     }
+  }
+}
+
+
+function keyPressed() {
+  if ((key === 's') || (key === 'S')) {
+    saveCanvas(`pokemon-random-${seedValue}.png`)
   }
 }
