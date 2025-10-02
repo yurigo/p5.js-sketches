@@ -44,6 +44,26 @@ Chaotic motion simulation with 50 double pendulums creating beautiful trails and
 
 Advanced particle system with different emitter types: fountain, explosion, and spiral effects.
 
+### ⚽ [bouncing-balls](sketches/bouncing-balls/)
+
+Multiple balls with different positions and velocities bouncing inside the canvas with perfect elastic collisions.
+
+### ⭐ [creative-bounce](sketches/creative-bounce/)
+
+Custom shapes (stars, hearts, triangles) that bounce and change color and size with each collision.
+
+### 🌍 [simulated-gravity](sketches/simulated-gravity/)
+
+Demonstrates gravity simulation with a ball falling and bouncing with acceleration, visualizing physics in action.
+
+### 📉 [energy-loss-bounce](sketches/energy-loss-bounce/)
+
+Ball that loses energy with each bounce, gradually coming to rest - realistic physics with energy dissipation.
+
+### 📀 [dvd-screensaver](sketches/dvd-screensaver/)
+
+Classic DVD logo screensaver that bounces around changing colors, counting the elusive corner hits.
+
 ### 🔵 [grid-of-dots](sketches/grid-of-dots/)
 
 Basic nested loops example showing how to create a grid pattern using x,y iteration with circles.
