@@ -48,6 +48,10 @@ Advanced particle system with different emitter types: fountain, explosion, and 
 
 Multiple balls with different positions and velocities bouncing inside the canvas with perfect elastic collisions.
 
+### 🎱 [colliding-balls](sketches/colliding-balls/)
+
+Three colored balls that bounce off walls and collide with each other, swapping velocities on impact with realistic collision physics.
+
 ### ⭐ [creative-bounce](sketches/creative-bounce/)
 
 Custom shapes (stars, hearts, triangles) that bounce and change color and size with each collision.
