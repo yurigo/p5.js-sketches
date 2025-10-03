@@ -12,9 +12,29 @@ let logo = {
 let logoColor;
 let cornerHits = 0;
 
+// Image mask and graphics buffer
+let imgMask;
+let imageHeight;
+let imageWidth;
+let rectBuffer;
+let rectImage;
+
+// Preload the image assets
+function preload() {
+  imgMask = loadImage('assets/logo.png');
+}
+
 function setup() {
   const s = min(windowWidth, windowHeight) * 0.9;
   createCanvas(s, s);
+  
+  // Set image dimensions based on loaded image
+  imageHeight = imgMask.height / 4;
+  imageWidth = imgMask.width / 4;
+  
+  // Update logo dimensions based on image
+  logo.width = imageWidth;
+  logo.height = imageHeight;
   
   // Start in center
   logo.x = width / 2 - logo.width / 2;
@@ -76,17 +96,22 @@ function draw() {
     logoColor = color(random(360), 80, 90);
   }
   
-  // Draw the DVD logo
-  fill(logoColor);
-  noStroke();
-  rect(logo.x, logo.y, logo.width, logo.height, 5);
+  // Create a buffer to draw the colored rectangle
+  rectBuffer = createGraphics(width, height);
+  rectBuffer.noStroke();
   
-  // Draw "DVD" text
-  fill(0);
-  textAlign(CENTER, CENTER);
-  textSize(32);
-  textStyle(BOLD);
-  text("DVD", logo.x + logo.width / 2, logo.y + logo.height / 2);
+  // Fill the buffer with the current logo color
+  rectBuffer.fill(logoColor);
+  rectBuffer.rect(0, 0, width, height);
+  
+  // Get the buffer as an image
+  rectImage = rectBuffer.get();
+  
+  // Apply the logo image as a mask
+  rectImage.mask(imgMask);
+  
+  // Draw the masked image at the logo position
+  image(rectImage, logo.x, logo.y, imageWidth, imageHeight);
   
   // Draw corner hit counter
   fill(255, 200);
