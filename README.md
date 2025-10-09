@@ -16,6 +16,18 @@ Animated bezier curves with flowing control points and colorful trails.
 
 Dynamic arc patterns with spiral animations and corner decorations.
 
+### ⭕ [drawing-a-circle](sketches/drawing-a-circle/)
+
+Demonstrates how to draw a circle using a loop with multiple ellipses positioned in a circular pattern.
+
+### 🔵 [animating-a-circle](sketches/animating-a-circle/)
+
+Animated circle moving in a circular path, creating a drawing trail using trigonometry and frameCount.
+
+### 🖱️⌨️ [user-events](sketches/user-events/)
+
+Interactive demonstration of mouse and keyboard event handlers with visual effects triggered by user input.
+
 ### 🎨 [bauhaus](sketches/bauhaus/)
 
 Minimalist design inspired by Bauhaus principles with geometric shapes and primary colors.
