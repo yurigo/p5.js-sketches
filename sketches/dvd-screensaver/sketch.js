@@ -106,9 +106,13 @@ function draw() {
   
   // Get the buffer as an image
   rectImage = rectBuffer.get();
+
+  // destroy the rectBuffer you silly
+  rectBuffer.remove();
   
   // Apply the logo image as a mask
   rectImage.mask(imgMask);
+
   
   // Draw the masked image at the logo position
   image(rectImage, logo.x, logo.y, imageWidth, imageHeight);
