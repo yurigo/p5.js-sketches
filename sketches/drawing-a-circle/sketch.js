@@ -1,6 +1,8 @@
+const c = document.getElementById("art");
+
 function setup() {
   const s = min(windowWidth, windowHeight) * 0.9;
-  createCanvas(s, s);
+  createCanvas(s, s, P2D, c);
 
   angleMode(DEGREES);
   noLoop();

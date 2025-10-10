@@ -1,13 +1,16 @@
 /* Minimal back button in top-left corner */
-.back-btn {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  z-index: 10;
-  text-decoration: none;
+body {
+  box-sizing: content-box;
+  margin: 0;
+  padding: 0;
+  font-family: Comic Sans MS, Consolas, 'Courier New', Courier, monospace;
+  font-size: 100%;
+  color:#ffd700;
 }
+
+
 .back-btn svg {
-  display: block;
+  
   fill: none;
   stroke: #ffd700;
   transition: stroke 0.2s;
@@ -20,10 +23,20 @@ html,
 body {
   margin: 0;
   padding: 0;
-  display: grid;
-  place-content: center center;
-  height: 100vh;
   background: #0f0f23;
+}
+
+main{
+  max-width: 900px;
+  padding: 1em;
+}
+
+header{
+  padding: 1em;
+}
+
+main{
+  min-height: 100vh;
 }
 
 canvas {
@@ -32,8 +45,17 @@ canvas {
   border-radius: 1em;
 }
 
-div{
-  color:white;
-  font-family: 'Courier New', Courier, monospace;
-  padding: 1em;
+header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+header a{
+  vertical-align: middle;
+  text-decoration: none;
+}
+header h1{
+  color:#ffd700;
+  vertical-align: middle;
+  font-family: Comic Sans MS;
 }
