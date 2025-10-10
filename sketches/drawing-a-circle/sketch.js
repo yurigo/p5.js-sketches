@@ -1,23 +1,32 @@
-
-
 function setup() {
-    const s = min(windowWidth, windowHeight) * 0.9;
+  const s = min(windowWidth, windowHeight) * 0.9;
   createCanvas(s, s);
 
   angleMode(DEGREES);
+  noLoop();
+}
 
-  const medioX = width/2;
-  const medioY = height/2;
+function windowResized() {
+  const s = min(windowWidth, windowHeight) * 0.9;
+  resizeCanvas(s, s);
+  redraw();
+}
 
-  const diametro = 300;
+function draw() {
+  const medioX = width / 2;
+  const medioY = height / 2;
+
+  const diametro = width / 4;
+  const borde = width / 20;
 
   noStroke();
 
-  for (let i = 0; i < 360 ; i ++){
+  for (let i = 0; i < 360; i++) {
     ellipse(
-      medioX + diametro * sin(i), 
-      medioY + diametro * cos(i) , 50, 50);
+      medioX + diametro * sin(i),
+      medioY + diametro * cos(i),
+      borde,
+      borde
+    );
   }
 }
-
-
