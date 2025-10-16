@@ -64,6 +64,10 @@ Advanced particle system with different emitter types: fountain, explosion, and 
 
 Simple particle system with fading particles spawning from the center.
 
+### 🌀 [particle-spiral](sketches/particle-spiral/)
+
+Colorful particle system creating spiral patterns with mouse wheel control over the spiral constant.
+
 ### 🌬️ [blowing-in-the-wind](sketches/blowing-in-the-wind/)
 
 Particle flow field using Perlin noise with mouse interaction and scroll controls.
