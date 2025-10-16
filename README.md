@@ -62,11 +62,11 @@ Advanced particle system with different emitter types: fountain, explosion, and 
 
 ### 💫 [particles-simple](sketches/particles-simple/)
 
-Simple particle system with fading particles continuously spawning from the center, demonstrating basic particle lifecycle management.
+Simple particle system with fading particles spawning from the center.
 
 ### 🌬️ [blowing-in-the-wind](sketches/blowing-in-the-wind/)
 
-Particle flow field using Perlin noise with interactive mouse attraction/repulsion. Scroll to adjust force strength.
+Particle flow field using Perlin noise with mouse interaction and scroll controls.
 
 ### ⚽ [bouncing-balls](sketches/bouncing-balls/)
 
