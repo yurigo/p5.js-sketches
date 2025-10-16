@@ -5,14 +5,14 @@ A mesmerizing particle system that creates colorful spiral patterns emanating fr
 ## What it demonstrates
 
 - **Particle Systems**: Dynamic creation and management of particle objects
-- **Spiral Mathematics**: Using trigonometric functions to create spiral motion patterns
+- **Angular Motion**: Using trigonometric functions to create radiating motion patterns
 - **Mouse Wheel Interaction**: Adjusting the spiral constant in real-time
 - **Alpha Transparency**: Particles that fade out over their lifetime
 - **Vector Mathematics**: Using p5.Vector for position and velocity
 
 ## How it works
 
-Particles are continuously spawned from the center of the canvas. Each particle's velocity is calculated using the current frame count as an angle, combined with a configurable spiral constant. This creates the spiral effect where particles radiate outward in a rotating pattern.
+Particles are continuously spawned from the center of the canvas. Each particle's velocity direction is calculated using the current frame count as an angle, combined with a configurable spiral constant that affects the cos/sin calculation. Once created, each particle moves in a straight line at constant velocity. The spiral pattern emerges from the fact that particles are created at incrementing angles over time, with the spiral constant controlling how tightly wound the pattern appears by affecting the velocity direction calculation.
 
 ## Interaction
 
