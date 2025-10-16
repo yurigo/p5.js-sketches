@@ -32,8 +32,6 @@ class Particles{
   }
 
   draw(){
-    console.log(this.life)
-    console.log(this.color)
     fill(this.color, this.life);
 
     ellipse(
@@ -53,13 +51,10 @@ function draw() {
   for (let p of particles){
     p.update();
     p.draw();
-    console.log(p);
   }
 
   particles = particles.filter(p => p.life > 0);
 
   particles.push(new Particles(width/2, height/2))
-
-  console.log(particles);
 }
 
