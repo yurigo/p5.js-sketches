@@ -44,6 +44,10 @@ A serene landscape scene with mountains, trees, and simple atmospheric elements.
 
 Interactive sketch responding to mouse movement with trails, ripples, and attractors.
 
+### 🪐 [mouse-orbit](sketches/mouse-orbit/)
+
+Colorful planets orbiting around the mouse cursor with different speeds and sizes, creating dynamic celestial trails.
+
 ### ⚡ [physics](sketches/physics/)
 
 Physics simulation featuring bouncing balls with collision detection and realistic motion.
@@ -55,6 +59,14 @@ Chaotic motion simulation with 50 double pendulums creating beautiful trails and
 ### ✨ [particles](sketches/particles/)
 
 Advanced particle system with different emitter types: fountain, explosion, and spiral effects.
+
+### 💫 [particles-simple](sketches/particles-simple/)
+
+Simple particle system with fading particles continuously spawning from the center, demonstrating basic particle lifecycle management.
+
+### 🌬️ [blowing-in-the-wind](sketches/blowing-in-the-wind/)
+
+Particle flow field using Perlin noise with interactive mouse attraction/repulsion. Scroll to adjust force strength.
 
 ### ⚽ [bouncing-balls](sketches/bouncing-balls/)
 
