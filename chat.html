@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="result">
+        
+    </div>
+    <form id="formulario">
+        <textarea id="texto" name="texto"></textarea>
+        <button type="submit">envia!</button>
+    </form>
+
+
+    <script>
+        const bc = new BroadcastChannel("test_channel");
+        // bc.postMessage("This is a test message.");
+        const resultado = document.getElementById("result");
+
+        bc.onmessage = (event) => {
+            //console.log(event);
+            resultado.innerText = event.data;
+        };
+
+        const formulario = document.getElementById("formulario");
+
+        formulario.addEventListener("submit", submitForm);
+
+        function submitForm(e){
+            e.preventDefault();
+            const formData = new FormData(formulario);
+            bc.postMessage(formData.get("texto"));
+
+        }
+    </script>
+</body>
+</html>
