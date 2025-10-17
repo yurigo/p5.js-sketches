@@ -1,7 +1,15 @@
 let particles = [];
 
+function windowResized() {
+  const s = min(windowWidth, windowHeight) * 0.9;
+  resizeCanvas(s, s);
+  redraw();
+}
+
+
 function setup() {
-  createCanvas(600, 600);
+  const s = min(windowWidth, windowHeight) * 0.9;
+  createCanvas(s, s);
   background(30);
   angleMode(RADIANS);
 }
