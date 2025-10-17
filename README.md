@@ -188,6 +188,10 @@ Art using pokemon images.
 
 A simple rock paper scissors brainrot game.
 
+### 🎉</span>Emitting particles to center [rock-paper-scissors](sketches/emitting-particles-to-center/)
+
+A system emitting particles from three different points to the center.
+
 ## How to Run
 
 1. Clone this repository
