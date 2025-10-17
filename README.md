@@ -184,6 +184,10 @@ Side-by-side comparison of random() and noise() for generative art.
 
 Art using pokemon images.
 
+### 💎🧻✂️ [rock-paper-scissors](sketches/rock-paper-scissors/)
+
+A simple rock paper scissors brainrot game.
+
 ## How to Run
 
 1. Clone this repository
