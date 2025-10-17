@@ -15,7 +15,7 @@ function setup() {
 }
 
 function draw() {
-  background(30, 30);
+  background(30);
 
   // Emitir partículas de cada tipo
   for (let i = 0; i < 2; i++) {
