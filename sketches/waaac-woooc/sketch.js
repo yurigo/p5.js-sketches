@@ -1,8 +1,16 @@
-//You can disable this by turning on orientation lock on your iPhone https://support.apple.com/en-us/HT204547
-//or Android https://www.howtogeek.com/201130/how-to-lock-screen-orientation-in-android/
+// Motion-controlled ball with proper device motion permission + physics integration
+// iOS 13+ requires an explicit user gesture to grant motion sensor access.
+// This sketch shows a small button to enable motion on supported devices.
 
-let x, y, z;
-let xpos, ypos;
+let ax = 0,
+  ay = 0,
+  az = 0; // raw acceleration (including gravity)
+let vx = 0,
+  vy = 0; // velocity we integrate from acceleration
+let xpos, ypos; // position
+let friction = 0.98; // simple damping to avoid runaway speeds
+let accelScale = 1.2; // scale factor to tune sensitivity
+let permissionBtn; // UI button for iOS permission
 
 // function setup()
 // {
@@ -54,59 +62,111 @@ let xpos, ypos;
 
 function setup() {
   rectMode(CENTER);
-  // set canvas size
   createCanvas(windowWidth, windowHeight);
 
-  // default values
-  xpos = windowWidth / 2;
-  ypos = windowHeight / 2;
-  x = 0;
-  y = 0;
+  xpos = width / 2;
+  ypos = height / 2;
+
+  // iOS 13+ requires a user gesture to grant access
+  if (
+    typeof DeviceMotionEvent !== "undefined" &&
+    typeof DeviceMotionEvent.requestPermission === "function"
+  ) {
+    // Show a small enable button
+    permissionBtn = createButton("Enable Motion");
+    permissionBtn.position(16, 16);
+    permissionBtn.style("padding", "10px 14px");
+    permissionBtn.style("border-radius", "8px");
+    permissionBtn.style("border", "1px solid #444");
+    permissionBtn.style("background", "#1a1a2e");
+    permissionBtn.style("color", "#ffd700");
+    permissionBtn.style("font-family", "monospace");
+    permissionBtn.mousePressed(async () => {
+      try {
+        const resp = await DeviceMotionEvent.requestPermission();
+        if (resp === "granted") {
+          startMotion();
+          permissionBtn.remove();
+        }
+      } catch (err) {
+        console.error("DeviceMotion permission error:", err);
+      }
+    });
+  } else {
+    // Other platforms: start listening right away
+    startMotion();
+  }
 }
 
 function draw() {
-  // set background color to white
   background(0);
 
-  // add/subract xpos and ypos
-  xpos = xpos + x;
-  ypos = ypos - y;
+  // Integrate acceleration into velocity; flip Y so tilting up moves ball up
+  vx += (ax || 0) * accelScale;
+  vy += (ay ? -ay : 0) * accelScale;
 
-  // wrap ellipse if over bounds
-  if (xpos > windowWidth) {
-    xpos = windowWidth;
-    x = -x;
+  // Apply simple friction
+  vx *= friction;
+  vy *= friction;
+
+  // Update position
+  xpos += vx;
+  ypos += vy;
+
+  // Collide with edges and bounce
+  const r = 12.5; // radius of the ball
+  if (xpos > width - r) {
+    xpos = width - r;
+    vx *= -0.8;
   }
-  if (xpos < 0) {
-    xpos = 0;
-    x = -x;
+  if (xpos < r) {
+    xpos = r;
+    vx *= -0.8;
   }
-  if (ypos > windowHeight) {
-    ypos = windowHeight;
-    y = -y;
+  if (ypos > height - r) {
+    ypos = height - r;
+    vy *= -0.8;
   }
-  if (ypos < 0) {
-    ypos = 0;
-    y = -y;
+  if (ypos < r) {
+    ypos = r;
+    vy *= -0.8;
   }
 
-  // draw ellipse
+  // Draw ball
+  noStroke();
   fill(255, 0, 0);
-  ellipse(xpos, ypos, 25, 25);
-  // music
+  ellipse(xpos, ypos, r * 2, r * 2);
 
-  // display variables
+  // Debug text
   fill(255);
   noStroke();
-  text("x: " + x, 25, 25);
-  text("y: " + y, 25, 50);
-  text("z: " + z, 25, 75);
+  textSize(14);
+  text("ax: " + nf(ax, 1, 2), 25, 25);
+  text("ay: " + nf(ay, 1, 2), 25, 45);
+  text("az: " + nf(az, 1, 2), 25, 65);
+  text("vx: " + nf(vx, 1, 2), 25, 90);
+  text("vy: " + nf(vy, 1, 2), 25, 110);
 }
 
-// accelerometer Data
-window.addEventListener("devicemotion", function (e) {
-  // get accelerometer values
-  x = parseInt(e.accelerationIncludingGravity.x);
-  y = parseInt(e.accelerationIncludingGravity.y);
-  z = parseInt(e.accelerationIncludingGravity.z);
-});
+function startMotion() {
+  // Listen for motion events; prefer includingGravity for broader support
+  window.addEventListener(
+    "devicemotion",
+    (e) => {
+      const a = e.accelerationIncludingGravity || e.acceleration;
+      if (!a) return;
+      // Use floats (parseInt would zero-out small values!)
+      ax = typeof a.x === "number" ? a.x : 0;
+      ay = typeof a.y === "number" ? a.y : 0;
+      az = typeof a.z === "number" ? a.z : 0;
+    },
+    true
+  );
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  // keep the ball on-screen after resize
+  xpos = constrain(xpos, 0, width);
+  ypos = constrain(ypos, 0, height);
+}
