@@ -9,6 +9,28 @@ function setup(){
 	x = 0;
   y = 0;
   z = 0;
+
+
+  // Request permission for iOS 13+
+  if (typeof DeviceOrientationEvent !== "undefined" && typeof DeviceOrientationEvent.requestPermission === "function") {
+    DeviceOrientationEvent.requestPermission()
+      .then(permissionState => {
+        if (permissionState === "granted") {
+          window.addEventListener("devicemotion", handleMotion);
+        } else {
+          // Display a message asking the user to grant permission in settings
+          createButton("Allow access to sensors").mousePressed(() => {
+            window.open("https://support.apple.com/guide/iphone/settings-34a528f7a3f2/ios", "_blank");
+          });
+        }
+      })
+      .catch(console.error);
+  } else {
+    // Handle cases for devices older than iOS 13 or browsers that don't support the API
+    window.addEventListener("devicemotion", handleMotion);
+  }
+
+
 }
 
 function draw(){
