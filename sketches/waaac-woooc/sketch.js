@@ -1,14 +1,13 @@
-// Jiashan Wu
-// https://github.com/OhJia/p5MobileWebExamples
-// revised Daniel Shiffman
+// **Important**: This code will likely not work until user permission is granted.
+// You will need to add a button or a user interaction to prompt the user.
 
-var x, y, z;
+let x, y, z;
+let xpos, ypos;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight, WEBGL);
-  x = 0;
-  y = 0;
-  z = 0;
+  createCanvas(400, 400);
+  xpos = width / 2;
+  ypos = height / 2;
 
   // Request permission for iOS 13+
   if (
@@ -37,20 +36,22 @@ function setup() {
 }
 
 function draw() {
-  background(255, 255, 255, 255);
-  translate(-width / 2, 0, -600);
+  background(255);
+  fill(0);
+  noStroke();
+  text("x: " + x, 25, 25);
+  text("y: " + y, 25, 50);
+  text("z: " + z, 25, 75);
 
-  // rotate the box based on accelerometer data
-  // we could use rotationX,Y here but demonstrating
-  // acceleration
-  x += accelerationX * 0.05;
-  y += accelerationY * 0.05;
-  z += accelerationZ * 0.05;
-  normalMaterial();
-  rotateX(x);
-  rotateY(y);
-  rotateZ(z);
-  box(200, 200, 200);
+  xpos = xpos + x * 0.05; // Adjust sensitivity
+  ypos = ypos - y * 0.05; // Adjust sensitivity
+
+  // Keep the ellipse on the screen
+  xpos = constrain(xpos, 0, width);
+  ypos = constrain(ypos, 0, height);
+
+  fill(255, 0, 0);
+  ellipse(xpos, ypos, 50, 50);
 }
 
 function handleMotion(e) {
