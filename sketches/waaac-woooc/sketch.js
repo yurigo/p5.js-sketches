@@ -1,62 +1,112 @@
-// **Important**: This code will likely not work until user permission is granted.
-// You will need to add a button or a user interaction to prompt the user.
+//You can disable this by turning on orientation lock on your iPhone https://support.apple.com/en-us/HT204547
+//or Android https://www.howtogeek.com/201130/how-to-lock-screen-orientation-in-android/
 
 let x, y, z;
 let xpos, ypos;
 
-function setup() {
-  createCanvas(400, 400);
-  xpos = width / 2;
-  ypos = height / 2;
+// function setup()
+// {
+//   // set canvas size
+//   createCanvas(400, 400);
 
-  // Request permission for iOS 13+
-  if (
-    typeof DeviceOrientationEvent !== "undefined" &&
-    typeof DeviceOrientationEvent.requestPermission === "function"
-  ) {
-    DeviceOrientationEvent.requestPermission()
-      .then((permissionState) => {
-        if (permissionState === "granted") {
-          window.addEventListener("devicemotion", handleMotion);
-        } else {
-          // Display a message asking the user to grant permission in settings
-          createButton("Allow access to sensors").mousePressed(() => {
-            window.open(
-              "https://support.apple.com/guide/iphone/settings-34a528f7a3f2/ios",
-              "_blank"
-            );
-          });
-        }
-      })
-      .catch(console.error);
-  } else {
-    // Handle cases for devices older than iOS 13 or browsers that don't support the API
-    window.addEventListener("devicemotion", handleMotion);
-  }
+//   // default values
+//   xpos = 200;
+//   ypos = 200;
+//   x = 0;
+//   y = 0;
+// }
+
+// function draw()
+// {
+//   // set background color to white
+//   background(255);
+
+//   // add/subract xpos and ypos
+//   xpos = xpos + x;
+//   ypos = ypos - y;
+
+//   // wrap ellipse if over bounds
+//   if(xpos > 400) { xpos = 0; }
+//   if(xpos < 0) { xpos = 400; }
+//   if(ypos > 400) { ypos = 0; }
+//   if(ypos < 0) { ypos = 400; }
+
+//   // draw ellipse
+//   fill(255, 0, 0);
+//   ellipse(xpos, ypos, 25, 25);
+
+//   // display variables
+//   fill(0);
+//   noStroke();
+//   text("x: " + x, 25, 25);
+//   text("y: " + y, 25, 50);
+//   text("z: " + z, 25, 75);
+// }
+
+// // accelerometer Data
+// window.addEventListener('devicemotion', function(e)
+// {
+//   // get accelerometer values
+//   x = parseInt(e.accelerationIncludingGravity.x);
+//   y = parseInt(e.accelerationIncludingGravity.y);
+//   z = parseInt(e.accelerationIncludingGravity.z);
+// });
+
+function setup() {
+  rectMode(CENTER);
+  // set canvas size
+  createCanvas(windowWidth, windowHeight);
+
+  // default values
+  xpos = windowWidth / 2;
+  ypos = windowHeight / 2;
+  x = 0;
+  y = 0;
 }
 
 function draw() {
-  background(255);
-  fill(0);
+  // set background color to white
+  background(0);
+
+  // add/subract xpos and ypos
+  xpos = xpos + x;
+  ypos = ypos - y;
+
+  // wrap ellipse if over bounds
+  if (xpos > windowWidth) {
+    xpos = windowWidth;
+    x = -x;
+  }
+  if (xpos < 0) {
+    xpos = 0;
+    x = -x;
+  }
+  if (ypos > windowHeight) {
+    ypos = windowHeight;
+    y = -y;
+  }
+  if (ypos < 0) {
+    ypos = 0;
+    y = -y;
+  }
+
+  // draw ellipse
+  fill(255, 0, 0);
+  ellipse(xpos, ypos, 25, 25);
+  // music
+
+  // display variables
+  fill(255);
   noStroke();
   text("x: " + x, 25, 25);
   text("y: " + y, 25, 50);
   text("z: " + z, 25, 75);
-
-  xpos = xpos + x * 0.05; // Adjust sensitivity
-  ypos = ypos - y * 0.05; // Adjust sensitivity
-
-  // Keep the ellipse on the screen
-  xpos = constrain(xpos, 0, width);
-  ypos = constrain(ypos, 0, height);
-
-  fill(255, 0, 0);
-  ellipse(xpos, ypos, 50, 50);
 }
 
-function handleMotion(e) {
-  // Use accelerationIncludingGravity for more consistent results on iOS
+// accelerometer Data
+window.addEventListener("devicemotion", function (e) {
+  // get accelerometer values
   x = parseInt(e.accelerationIncludingGravity.x);
   y = parseInt(e.accelerationIncludingGravity.y);
   z = parseInt(e.accelerationIncludingGravity.z);
-}
+});
