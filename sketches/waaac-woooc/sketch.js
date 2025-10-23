@@ -11,6 +11,9 @@ let xpos, ypos; // position
 let friction = 0.98; // simple damping to avoid runaway speeds
 let accelScale = 1.2; // scale factor to tune sensitivity
 let permissionBtn; // UI button for iOS permission
+const isAndroid = /Android/i.test(navigator.userAgent);
+let invertX = isAndroid; // many Android devices report opposite sign; start inverted
+let invertY = isAndroid; // adjust interactively if needed
 
 // function setup()
 // {
@@ -101,9 +104,12 @@ function setup() {
 function draw() {
   background(0);
 
-  // Integrate acceleration into velocity; flip Y so tilting up moves ball up
-  vx += (ax || 0) * accelScale;
-  vy += (ay ? -ay : 0) * accelScale;
+  // Map device acceleration to screen coordinates considering screen rotation
+  const { sx, sy } = mapMotionToScreen(ax || 0, ay || 0);
+
+  // Integrate acceleration into velocity; flip screen Y so tilting up moves ball up
+  vx += sx * accelScale;
+  vy += -sy * accelScale;
 
   // Apply simple friction
   vx *= friction;
@@ -146,6 +152,7 @@ function draw() {
   text("az: " + nf(az, 1, 2), 25, 65);
   text("vx: " + nf(vx, 1, 2), 25, 90);
   text("vy: " + nf(vy, 1, 2), 25, 110);
+  text("invertX: " + invertX + "  invertY: " + invertY, 25, 135);
 }
 
 function startMotion() {
@@ -169,4 +176,41 @@ function windowResized() {
   // keep the ball on-screen after resize
   xpos = constrain(xpos, 0, width);
   ypos = constrain(ypos, 0, height);
+}
+
+// --- Helpers to normalize device axes to screen axes ---
+function getScreenAngle() {
+  // 0, 90, 180, 270 degrees depending on orientation
+  if (screen.orientation && typeof screen.orientation.angle === "number") {
+    return screen.orientation.angle;
+  }
+  if (typeof window.orientation === "number") {
+    return window.orientation; // legacy iOS/Android
+  }
+  return 0;
+}
+
+function rotate2D(x, y, deg) {
+  const rad = (deg * Math.PI) / 180;
+  const cosA = Math.cos(rad);
+  const sinA = Math.sin(rad);
+  return { x: x * cosA - y * sinA, y: x * sinA + y * cosA };
+}
+
+function mapMotionToScreen(axDev, ayDev) {
+  // Rotate device vector into current screen orientation
+  const ang = getScreenAngle();
+  const r = rotate2D(axDev, ayDev, ang);
+  let sx = r.x * (invertX ? -1 : 1);
+  let sy = r.y * (invertY ? -1 : 1);
+  return { sx, sy };
+}
+
+function keyPressed() {
+  if (key === "x" || key === "X") invertX = !invertX;
+  if (key === "y" || key === "Y") invertY = !invertY;
+  if (key === "f" || key === "F") {
+    invertX = !invertX;
+    invertY = !invertY;
+  }
 }
