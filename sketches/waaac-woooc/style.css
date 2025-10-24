@@ -1,3 +1,16 @@
+:root {
+  --text-color: #ffd700;
+}
+
+body {
+  font-family: monospace;
+}
+
+input,
+button {
+  font-family: monospace;
+}
+
 /* Minimal back button in top-left corner */
 .back-btn {
   position: absolute;
@@ -32,3 +45,11 @@ canvas {
   border-radius: 1em;
 }
 
+form {
+  color: var(--text-color);
+  display: flex;
+  padding: 1em;
+  gap: 1em;
+  justify-content: space-around;
+  align-items: center;
+}

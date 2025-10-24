@@ -2,6 +2,8 @@
 // iOS 13+ requires an explicit user gesture to grant motion sensor access.
 // This sketch shows a small button to enable motion on supported devices.
 
+const CANVAS_SIZE_PERCENT = 0.8; // canvas size as percent of smaller screen dimension
+
 let ax = 0,
   ay = 0,
   az = 0; // raw acceleration (including gravity)
@@ -11,9 +13,44 @@ let xpos, ypos; // position
 let friction = 0.98; // simple damping to avoid runaway speeds
 let accelScale = 1.2; // scale factor to tune sensitivity
 let permissionBtn; // UI button for iOS permission
-const isAndroid = /Android/i.test(navigator.userAgent);
-let invertX = isAndroid; // many Android devices report opposite sign; start inverted
-let invertY = isAndroid; // adjust interactively if needed
+
+let invertX = false;
+let invertY = false;
+
+const invertXCheckbox = document.getElementById("invertX");
+const invertYCheckbox = document.getElementById("invertY");
+invertXCheckbox.checked = invertX;
+invertYCheckbox.checked = invertY;
+invertXCheckbox.addEventListener("change", () => {
+  invertX = invertXCheckbox.checked;
+});
+invertYCheckbox.addEventListener("change", () => {
+  invertY = invertYCheckbox.checked;
+});
+
+const permissionButton = document.getElementById("permissionButton");
+
+permissionButton.addEventListener("click", async (e) => {
+  e.preventDefault();
+
+  // iOS 13+ requires a user gesture to grant access
+  if (
+    typeof DeviceMotionEvent !== "undefined" &&
+    typeof DeviceMotionEvent.requestPermission === "function"
+  ) {
+    try {
+      const response = await DeviceMotionEvent.requestPermission();
+      if (response === "granted") {
+        startMotion();
+      }
+    } catch (error) {
+      console.error("Error requesting motion permission:", error);
+    }
+  } else {
+    // Other platforms: start listening right away
+    startMotion();
+  }
+});
 
 // function setup()
 // {
@@ -62,43 +99,55 @@ let invertY = isAndroid; // adjust interactively if needed
 //   y = parseInt(e.accelerationIncludingGravity.y);
 //   z = parseInt(e.accelerationIncludingGravity.z);
 // });
+const canvas = document.getElementById("canvas");
+
+function windowResized() {
+  const s = min(windowWidth, windowHeight) * CANVAS_SIZE_PERCENT;
+  resizeCanvas(s, s);
+
+  xpos = constrain(xpos, 0, width);
+  ypos = constrain(ypos, 0, height);
+
+  redraw();
+}
 
 function setup() {
   rectMode(CENTER);
-  createCanvas(windowWidth, windowHeight);
+  const s = min(windowWidth, windowHeight) * CANVAS_SIZE_PERCENT;
+  createCanvas(s, s, null, canvas);
 
   xpos = width / 2;
   ypos = height / 2;
 
-  // iOS 13+ requires a user gesture to grant access
-  if (
-    typeof DeviceMotionEvent !== "undefined" &&
-    typeof DeviceMotionEvent.requestPermission === "function"
-  ) {
-    // Show a small enable button
-    permissionBtn = createButton("Enable Motion");
-    permissionBtn.position(16, 16);
-    permissionBtn.style("padding", "10px 14px");
-    permissionBtn.style("border-radius", "8px");
-    permissionBtn.style("border", "1px solid #444");
-    permissionBtn.style("background", "#1a1a2e");
-    permissionBtn.style("color", "#ffd700");
-    permissionBtn.style("font-family", "monospace");
-    permissionBtn.mousePressed(async () => {
-      try {
-        const resp = await DeviceMotionEvent.requestPermission();
-        if (resp === "granted") {
-          startMotion();
-          permissionBtn.remove();
-        }
-      } catch (err) {
-        console.error("DeviceMotion permission error:", err);
-      }
-    });
-  } else {
-    // Other platforms: start listening right away
-    startMotion();
-  }
+  //   // iOS 13+ requires a user gesture to grant access
+  //   if (
+  //     typeof DeviceMotionEvent !== "undefined" &&
+  //     typeof DeviceMotionEvent.requestPermission === "function"
+  //   ) {
+  //     // Show a small enable button
+  //     permissionBtn = createButton("Enable Motion");
+  //     permissionBtn.position(16, 16);
+  //     permissionBtn.style("padding", "10px 14px");
+  //     permissionBtn.style("border-radius", "8px");
+  //     permissionBtn.style("border", "1px solid #444");
+  //     permissionBtn.style("background", "#1a1a2e");
+  //     permissionBtn.style("color", "#ffd700");
+  //     permissionBtn.style("font-family", "monospace");
+  //     permissionBtn.mousePressed(async () => {
+  //       try {
+  //         const resp = await DeviceMotionEvent.requestPermission();
+  //         if (resp === "granted") {
+  //           startMotion();
+  //           permissionBtn.remove();
+  //         }
+  //       } catch (err) {
+  //         console.error("DeviceMotion permission error:", err);
+  //       }
+  //     });
+  //   } else {
+  //     // Other platforms: start listening right away
+  //     startMotion();
+  //   }
 }
 
 function draw() {
@@ -152,7 +201,8 @@ function draw() {
   text("az: " + nf(az, 1, 2), 25, 65);
   text("vx: " + nf(vx, 1, 2), 25, 90);
   text("vy: " + nf(vy, 1, 2), 25, 110);
-  text("invertX: " + invertX + "  invertY: " + invertY, 25, 135);
+  text("invertX: " + invertX, 25, 135);
+  text("invertY: " + invertY, 25, 150);
 }
 
 function startMotion() {
@@ -169,13 +219,6 @@ function startMotion() {
     },
     true
   );
-}
-
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-  // keep the ball on-screen after resize
-  xpos = constrain(xpos, 0, width);
-  ypos = constrain(ypos, 0, height);
 }
 
 // --- Helpers to normalize device axes to screen axes ---

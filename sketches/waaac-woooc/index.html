@@ -29,6 +29,24 @@
         />
       </svg>
     </a>
+    <div id="sketch-holder">
+      <canvas id="canvas" class="p5Canvas"></canvas>
+    </div>
+
+    <form>
+      <div>
+        <label for="invertX">Invert x</label>
+        <input type="checkbox" id="invertX" name="invertX" />
+      </div>
+
+      <div>
+        <label for="invertY">Invert y</label>
+        <input type="checkbox" id="invertY" name="invertY" />
+      </div>
+
+      <button id="permissionButton">Enable Motion</button>
+    </form>
+
     <script src="sketch.js"></script>
   </body>
 </html>
