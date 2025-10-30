@@ -188,9 +188,21 @@ Art using pokemon images.
 
 A simple rock paper scissors brainrot game.
 
-### 🎉</span>Emitting particles to center [rock-paper-scissors](sketches/emitting-particles-to-center/)
+### 🎉 [emitting-particles-to-center](sketches/emitting-particles-to-center/)
 
 A system emitting particles from three different points to the center.
+
+### 🔔 [hold-your-horses](sketches/hold-your-horses/)
+
+Interactive sound sketch that plays a doorbell sound on mouse click while randomly changing the background color.
+
+### 🎹 [sound-of-silence](sketches/sound-of-silence/)
+
+Sound synthesis demonstration using p5.PolySynth to play musical chord progressions on mouse click.
+
+### 📱 [waaac-woooc](sketches/waaac-woooc/)
+
+Device motion-controlled ball that responds to accelerometer/gyroscope input, bouncing around the canvas with realistic physics. Includes controls to invert axes and permission handling for iOS devices.
 
 ## How to Run
 
