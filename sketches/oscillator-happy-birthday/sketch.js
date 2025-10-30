@@ -1,5 +1,6 @@
 let osc;
 let isPlaying = false;
+let pitchOffset = 0; // Semitone offset (12 semitones = 1 octave)
 
 // Happy Birthday melody
 // Format: [note, duration in ms]
@@ -86,11 +87,30 @@ function draw() {
   textSize(16);
   text("Using p5.Oscillator (Sine Wave)", width / 2, 90);
 
+  // Show pitch offset
+  if (pitchOffset !== 0) {
+    fill(100, 255, 100);
+    textSize(14);
+    text(
+      `Pitch: ${pitchOffset > 0 ? "+" : ""}${pitchOffset} semitones`,
+      width / 2,
+      115
+    );
+  }
+
   // Draw instruction
   if (!isPlaying) {
     fill(255);
     textSize(20);
     text("Click to play!", width / 2, height / 2);
+
+    fill(200);
+    textSize(14);
+    text(
+      "Press 'O' to increase pitch / 'L' to decrease pitch",
+      width / 2,
+      height / 2 + 40
+    );
   } else {
     // Show current note
     fill(255, 215, 0);
@@ -161,12 +181,33 @@ function stopSong() {
 
 function playNote(note) {
   let freq = noteFreqs[note];
+  // Apply pitch offset: each semitone is a factor of 2^(1/12)
+  freq = freq * pow(2, pitchOffset / 12);
   osc.freq(freq, 0.05);
   osc.amp(0.3, 0.05);
 
   // Create particles at note position
   for (let i = 0; i < 5; i++) {
     particles.push(new Particle(width / 2, height / 2));
+  }
+}
+
+function keyPressed() {
+  // Press 'O' to increase pitch by a semitone
+  if (key === "o" || key === "O") {
+    pitchOffset++;
+    // If playing, update the current note frequency
+    if (isPlaying && currentNote < melody.length) {
+      playNote(melody[currentNote][0]);
+    }
+  }
+  // Press 'L' to decrease pitch by a semitone
+  else if (key === "l" || key === "L") {
+    pitchOffset--;
+    // If playing, update the current note frequency
+    if (isPlaying && currentNote < melody.length) {
+      playNote(melody[currentNote][0]);
+    }
   }
 }
 
