@@ -232,6 +232,34 @@ Interactive sound sketch that plays a doorbell sound on mouse click while random
 
 Sound synthesis demonstration using p5.PolySynth to play musical chord progressions on mouse click.
 
+### 🎵 [oscillator-happy-birthday](sketches/oscillator-happy-birthday/)
+
+Happy Birthday melody using p5.Oscillator with sine wave synthesis and animated particle effects.
+
+### 🎼 [monosynth-happy-birthday](sketches/monosynth-happy-birthday/)
+
+Happy Birthday melody using p5.MonoSynth with ADSR envelope for more natural sound shaping.
+
+### 🎶 [polysynth-happy-birthday](sketches/polysynth-happy-birthday/)
+
+Happy Birthday melody using p5.PolySynth with harmonized chords for a richer, fuller sound.
+
+### 🎚️ [envelope-reverb-demo](sketches/envelope-reverb-demo/)
+
+Interactive demonstration of p5.Envelope (ADSR), p5.Reverb, and p5.Filter effects with real-time controls.
+
+### 🎤 [microphone-visualizer](sketches/microphone-visualizer/)
+
+Real-time microphone input visualization with particles, ripples, and waveform bars responding to sound levels.
+
+### 📊 [fft-spectrum-analyzer](sketches/fft-spectrum-analyzer/)
+
+FFT-based frequency spectrum analyzer showing bass, mid, and treble ranges with waveform display.
+
+### 🎮 [sound-game](sketches/sound-game/)
+
+Sound-controlled jumping game where you use your voice or sounds to make the character jump over obstacles.
+
 ### 📱 [waaac-woooc](sketches/waaac-woooc/)
 
 Device motion-controlled ball that responds to accelerometer/gyroscope input, bouncing around the canvas with realistic physics. Includes controls to invert axes and permission handling for iOS devices.
