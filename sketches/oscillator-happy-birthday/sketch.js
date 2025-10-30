@@ -1,6 +1,7 @@
 let osc;
 let isPlaying = false;
 let pitchOffset = 0; // Semitone offset (12 semitones = 1 octave)
+let waveType = "sine"; // Current waveform type
 
 // Happy Birthday melody
 // Format: [note, duration in ms]
@@ -85,7 +86,7 @@ function draw() {
 
   fill(255, 165, 0);
   textSize(16);
-  text("Using p5.Oscillator (Sine Wave)", width / 2, 90);
+  text(`Using p5.Oscillator (${waveType} wave)`, width / 2, 90);
 
   // Show pitch offset
   if (pitchOffset !== 0) {
@@ -110,6 +111,11 @@ function draw() {
       "Press 'O' to increase pitch / 'L' to decrease pitch",
       width / 2,
       height / 2 + 40
+    );
+    text(
+      "Press 'Q' for sine / 'W' for sawtooth / 'E' for triangle / 'R' for square",
+      width / 2,
+      height / 2 + 60
     );
   } else {
     // Show current note
@@ -208,6 +214,26 @@ function keyPressed() {
     if (isPlaying && currentNote < melody.length) {
       playNote(melody[currentNote][0]);
     }
+  }
+  // Press 'Q' to switch to sine wave
+  else if (key === "q" || key === "Q") {
+    waveType = "sine";
+    osc.setType(waveType);
+  }
+  // Press 'W' to switch to sawtooth wave
+  else if (key === "w" || key === "W") {
+    waveType = "sawtooth";
+    osc.setType(waveType);
+  }
+  // Press 'E' to switch to triangle wave
+  else if (key === "e" || key === "E") {
+    waveType = "triangle";
+    osc.setType(waveType);
+  }
+  // Press 'R' to switch to square wave
+  else if (key === "r" || key === "R") {
+    waveType = "square";
+    osc.setType(waveType);
   }
 }
 
