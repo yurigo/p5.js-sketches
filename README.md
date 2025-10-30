@@ -104,6 +104,30 @@ Recursive fractal visualization creating colorful line segments that subdivide i
 
 Classic recursive binary tree fractal with branching patterns, demonstrating the beauty of mathematical recursion in nature-like structures.
 
+### 🌀 [mandelbrot](sketches/mandelbrot/)
+
+Classic Mandelbrot set fractal with colorful iteration bands revealing infinite complexity at the boundary of mathematical chaos.
+
+### ⬡ [n-gon-fractal](sketches/n-gon-fractal/)
+
+Recursive polygon fractal pattern creating intricate hexagonal designs with nested geometric shapes.
+
+### 🌪️ [double-pendulum-fractal](sketches/double-pendulum-fractal/)
+
+Chaotic motion visualization showing beautiful fractal patterns from multiple double pendulums with slightly different initial conditions.
+
+### ❄️ [koch-snowflake](sketches/koch-snowflake/)
+
+Classic Koch snowflake fractal demonstrating recursive geometric construction and infinite perimeter.
+
+### 🌿 [l-system-tree](sketches/l-system-tree/)
+
+Fractal tree generated using Lindenmayer systems (L-systems) with rule-based recursive growth patterns.
+
+### ⭕ [animated-fractal-circle](sketches/animated-fractal-circle/)
+
+Mesmerizing animated fractal with circles recursively spawning smaller circles in a constantly evolving pattern.
+
 ### 🔵 [grid-of-dots](sketches/grid-of-dots/)
 
 Basic nested loops example showing how to create a grid pattern using x,y iteration with circles.
