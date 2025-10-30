@@ -96,6 +96,14 @@ Ball that loses energy with each bounce, gradually coming to rest - realistic ph
 
 Classic DVD logo screensaver that bounces around changing colors, counting the elusive corner hits.
 
+### 🌈 [fractal-line](sketches/fractal-line/)
+
+Recursive fractal visualization creating colorful line segments that subdivide into smaller patterns, demonstrating the power of recursion.
+
+### 🌳 [fractal-tree](sketches/fractal-tree/)
+
+Classic recursive binary tree fractal with branching patterns, demonstrating the beauty of mathematical recursion in nature-like structures.
+
 ### 🔵 [grid-of-dots](sketches/grid-of-dots/)
 
 Basic nested loops example showing how to create a grid pattern using x,y iteration with circles.
