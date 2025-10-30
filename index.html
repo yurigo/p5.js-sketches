@@ -76,6 +76,132 @@
         color: #cccccc;
         font-size: 0.95rem;
         line-height: 1.5;
+        margin-bottom: 0.75rem;
+      }
+
+      .sketch-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.75rem;
+      }
+
+      .tag {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+        background: #2a2a3e;
+        border: 1px solid #444;
+        border-radius: 0.3rem;
+        color: #aaa;
+        white-space: nowrap;
+      }
+
+      .filters-section {
+        margin-bottom: 2rem;
+      }
+
+      .search-box {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto 1.5rem;
+        display: block;
+        padding: 0.75rem 1rem;
+        font-family: inherit;
+        font-size: 1rem;
+        background: #1a1a2e;
+        border: 2px solid #333;
+        border-radius: 0.5rem;
+        color: #ffffff;
+        outline: none;
+      }
+
+      .search-box:focus {
+        border-color: #666;
+      }
+
+      .category-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .category-pill {
+        padding: 0.5rem 1rem;
+        background: #1a1a2e;
+        border: 2px solid #333;
+        border-radius: 1.5rem;
+        color: #cccccc;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        user-select: none;
+      }
+
+      .category-pill:hover {
+        border-color: #666;
+        background: #252540;
+      }
+
+      .category-pill.active {
+        border-color: #ffd700;
+        background: #2a2a3e;
+        color: #ffd700;
+      }
+
+      .tag-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+      }
+
+      .tag-filter {
+        padding: 0.3rem 0.75rem;
+        background: #1a1a2e;
+        border: 1px solid #444;
+        border-radius: 1rem;
+        color: #aaa;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.8rem;
+        user-select: none;
+      }
+
+      .tag-filter:hover {
+        border-color: #666;
+        color: #ccc;
+      }
+
+      .tag-filter.active {
+        border-color: #ffd700;
+        background: #2a2a3e;
+        color: #ffd700;
+      }
+
+      .sketch-card.hidden {
+        display: none;
+      }
+
+      .category-section {
+        margin-bottom: 3rem;
+      }
+
+      .category-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #ffffff;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #333;
+      }
+
+      .results-count {
+        text-align: center;
+        color: #999;
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
       }
 
       .footer {
@@ -119,500 +245,24 @@
         and visual effects
       </p>
 
-      <div class="sketches-grid">
-        <a href="sketches/helloworld/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🦄</span>Hello World
-          </div>
-          <div class="sketch-description">
-            An introductory sketch featuring unicorn emojis and basic p5.js
-            shapes.
-          </div>
-        </a>
+      <div class="filters-section">
+        <input
+          type="text"
+          class="search-box"
+          id="searchBox"
+          placeholder="🔍 Search sketches..."
+        />
 
-        <a href="sketches/bezier/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🌊</span>Bezier Curves
-          </div>
-          <div class="sketch-description">
-            Animated bezier curves with flowing control points and colorful
-            trails.
-          </div>
-        </a>
+        <div class="category-filters" id="categoryFilters">
+          <div class="category-pill active" data-category="all">All</div>
+        </div>
 
-        <a href="sketches/arc/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🎯</span>Arc Patterns
-          </div>
-          <div class="sketch-description">
-            Dynamic arc patterns with spiral animations and corner decorations.
-          </div>
-        </a>
-
-        <a href="sketches/drawing-a-circle/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">⭕</span>Drawing a Circle
-          </div>
-          <div class="sketch-description">
-            Demonstrates how to draw a circle using a loop with multiple
-            ellipses positioned in a circular pattern.
-          </div>
-        </a>
-
-        <a href="sketches/animating-a-circle/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🔵</span>Animating a Circle
-          </div>
-          <div class="sketch-description">
-            Animated circle moving in a circular path, creating a drawing trail
-            using trigonometry and frameCount.
-          </div>
-        </a>
-
-        <a href="sketches/user-events/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🖱️⌨️</span>User Events
-          </div>
-          <div class="sketch-description">
-            Interactive demonstration of mouse and keyboard event handlers with
-            visual effects triggered by user input.
-          </div>
-        </a>
-
-        <a href="sketches/bauhaus/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🎨</span>Bauhaus Design
-          </div>
-          <div class="sketch-description">
-            Minimalist design inspired by Bauhaus principles with geometric
-            shapes and primary colors.
-          </div>
-        </a>
-
-        <a href="sketches/abstract-face/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">👤</span>Abstract Face
-          </div>
-          <div class="sketch-description">
-            An expressive abstract representation of a face with animated
-            features.
-          </div>
-        </a>
-
-        <a href="sketches/minimalistic-landscape/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🌄</span>Minimalistic Landscape
-          </div>
-          <div class="sketch-description">
-            A serene landscape scene with mountains, trees, and simple
-            atmospheric elements.
-          </div>
-        </a>
-
-        <a href="sketches/mouse-interaction/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🖱️</span>Mouse Interaction
-          </div>
-          <div class="sketch-description">
-            Interactive sketch responding to mouse movement with trails,
-            ripples, and attractors.
-          </div>
-        </a>
-
-        <a href="sketches/mouse-orbit/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🪐</span>Mouse Orbit
-          </div>
-          <div class="sketch-description">
-            Colorful planets orbiting around the mouse cursor with different
-            speeds and sizes, creating dynamic celestial trails.
-          </div>
-        </a>
-
-        <a href="sketches/physics/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">⚡</span>Physics Simulation
-          </div>
-          <div class="sketch-description">
-            Physics simulation featuring bouncing balls with collision detection
-            and realistic motion.
-          </div>
-        </a>
-
-        <a href="sketches/double-pendulum/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🪃</span>Double Pendulum
-          </div>
-          <div class="sketch-description">
-            Chaotic motion simulation with 50 double pendulums creating
-            beautiful trails and demonstrating sensitive dependence on initial
-            conditions.
-          </div>
-        </a>
-
-        <a href="sketches/particles/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">✨</span>Particle System
-          </div>
-          <div class="sketch-description">
-            Advanced particle system with different emitter types: fountain,
-            explosion, and spiral effects.
-          </div>
-        </a>
-
-        <a href="sketches/particles-simple/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">💫</span>Particles Simple
-          </div>
-          <div class="sketch-description">
-            Simple particle system with fading particles spawning from the
-            center.
-          </div>
-        </a>
-
-        <a href="sketches/particle-spiral/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🌀</span>Particle Spiral
-          </div>
-          <div class="sketch-description">
-            Colorful particle system creating spiral patterns with mouse wheel
-            control over the spiral constant.
-          </div>
-        </a>
-
-        <a href="sketches/blowing-in-the-wind/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🌬️</span>Blowing in the Wind
-          </div>
-          <div class="sketch-description">
-            Particle flow field using Perlin noise with mouse interaction and
-            scroll controls.
-          </div>
-        </a>
-
-        <a href="sketches/bouncing-balls/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">⚽</span>Bouncing Balls
-          </div>
-          <div class="sketch-description">
-            Multiple balls with different positions and velocities bouncing
-            inside the canvas with perfect elastic collisions.
-          </div>
-        </a>
-
-        <a href="sketches/creative-bounce/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">⭐</span>Creative Bounce
-          </div>
-          <div class="sketch-description">
-            Custom shapes (stars, hearts, triangles) that bounce and change
-            color and size with each collision.
-          </div>
-        </a>
-
-        <a href="sketches/simulated-gravity/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🌍</span>Simulated Gravity
-          </div>
-          <div class="sketch-description">
-            Demonstrates gravity simulation with a ball falling and bouncing
-            with acceleration, visualizing physics in action.
-          </div>
-        </a>
-
-        <a href="sketches/energy-loss-bounce/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">📉</span>Energy Loss Bounce
-          </div>
-          <div class="sketch-description">
-            Ball that loses energy with each bounce, gradually coming to rest -
-            realistic physics with energy dissipation.
-          </div>
-        </a>
-
-        <a href="sketches/dvd-screensaver/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">📀</span>DVD Screensaver
-          </div>
-          <div class="sketch-description">
-            Classic DVD logo screensaver that bounces around changing colors,
-            counting the elusive corner hits.
-          </div>
-        </a>
-
-        <a href="sketches/fractal-line/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🌈</span>Fractal Line
-          </div>
-          <div class="sketch-description">
-            Recursive fractal visualization creating colorful line segments that
-            subdivide into smaller patterns.
-          </div>
-        </a>
-
-        <a href="sketches/fractal-tree/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🌳</span>Fractal Tree
-          </div>
-          <div class="sketch-description">
-            Classic recursive binary tree fractal with branching patterns,
-            demonstrating the beauty of mathematical recursion.
-          </div>
-        </a>
-
-        <a href="sketches/grid-of-dots/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🔵</span>Grid of Dots
-          </div>
-          <div class="sketch-description">
-            Basic nested loops example showing how to create a grid pattern
-            using x,y iteration with circles.
-          </div>
-        </a>
-
-        <a href="sketches/chessboard/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">♟️</span>Chessboard Pattern
-          </div>
-          <div class="sketch-description">
-            Demonstrates conditional logic inside loops to create alternating
-            patterns like a chessboard.
-          </div>
-        </a>
-
-        <a href="sketches/radial-pattern/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🌸</span>Radial Pattern
-          </div>
-          <div class="sketch-description">
-            Introduces transformations and circular loops to create mandala-like
-            radial symmetry patterns.
-          </div>
-        </a>
-
-        <a href="sketches/riley-movement-static/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🎨</span>Riley Movement (Static)
-          </div>
-          <div class="sketch-description">
-            Op Art inspired by Bridget Riley's "Movement in Squares" - static
-            version with systematic grid distortion.
-          </div>
-        </a>
-
-        <a href="sketches/riley-movement-interactive/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🖱️</span>Riley Movement (Interactive)
-          </div>
-          <div class="sketch-description">
-            Interactive version of Riley's "Movement in Squares" where mouse
-            position controls the distortion line.
-          </div>
-        </a>
-
-        <a href="sketches/hsl-mouse-animation/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🎨</span>HSL Mouse Animation
-          </div>
-          <div class="sketch-description">
-            Interactive HSL color demonstration with mouse-controlled hue and
-            saturation, featuring animated particles.
-          </div>
-        </a>
-
-        <a href="sketches/quad-patterns/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🔷</span>Quad Patterns
-          </div>
-          <div class="sketch-description">
-            Educational demonstration of the quad() function showing various
-            quadrilateral shapes and patterns.
-          </div>
-        </a>
-
-        <a href="sketches/isometric-cube-tessellation/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🧊</span>Isometric Cube Tessellation
-          </div>
-          <div class="sketch-description">
-            Tessellating pattern of 3D isometric cubes with random colors,
-            demonstrating geometric transformations and grid arrangements.
-          </div>
-        </a>
-
-        <a href="sketches/isometric-cube-tessellation-2/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🔷</span>Isometric Cube Tessellation 2
-          </div>
-          <div class="sketch-description">
-            Hexagonal tessellation of isometric cubes in grayscale, showing an
-            alternative approach to 3D cube patterns.
-          </div>
-        </a>
-
-        <a href="sketches/analog-clock/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🕐</span>Analog Clock
-          </div>
-          <div class="sketch-description">
-            A functional analog clock with moving hands and time display.
-          </div>
-        </a>
-
-        <a href="sketches/random-chaos/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🎲</span>Random Chaos
-          </div>
-          <div class="sketch-description">Pure randomness, chaotic dots.</div>
-        </a>
-
-        <a href="sketches/noise-fluency/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🌫️</span>Noise Fluency
-          </div>
-          <div class="sketch-description">
-            Smooth lines with coherent noise.
-          </div>
-        </a>
-
-        <a href="sketches/infinite-variations/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">♾️</span>Infinite Variations
-          </div>
-          <div class="sketch-description">Animated generative randomness.</div>
-        </a>
-
-        <a href="sketches/line-comparison/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">📏</span>Line Comparison
-          </div>
-          <div class="sketch-description">
-            Compares different line drawing techniques and visual styles.
-          </div>
-        </a>
-
-        <a href="sketches/line-comparison-animation/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">📏</span>Line Comparison Animation
-          </div>
-          <div class="sketch-description">
-            Animated comparison of line drawing methods, showing dynamic changes
-            over time.
-          </div>
-        </a>
-
-        <a href="sketches/line-with-noise/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🌪️</span>Line with Noise
-          </div>
-          <div class="sketch-description">
-            Draws lines with Perlin noise for organic, wavy effects.
-          </div>
-        </a>
-
-        <a href="sketches/line-with-random/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🎲</span>Line with Random
-          </div>
-          <div class="sketch-description">
-            Draws lines with random offsets for jagged, unpredictable shapes.
-          </div>
-        </a>
-
-        <a href="sketches/noise-chaos/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🌀</span>Noise Chaos
-          </div>
-          <div class="sketch-description">
-            Combines noise and randomness to create chaotic, animated patterns.
-          </div>
-        </a>
-
-        <a href="sketches/random-vs-noise/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🔀</span>Random vs Noise
-          </div>
-          <div class="sketch-description">
-            Side-by-side comparison of random() and noise() for generative art.
-          </div>
-        </a>
-
-        <a href="sketches/random-seed-art/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🎯</span>Random Seed Art
-          </div>
-          <div class="sketch-description">
-            Random deterministic art driven by a seed
-          </div>
-        </a>
-
-        <a href="sketches/noise-seed-art/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🌱</span>Noise Seed Art
-          </div>
-          <div class="sketch-description">
-            Reproducible Perlin noise art controlled by a seed value.
-          </div>
-        </a>
-
-        <a href="sketches/pokemon-art/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">⚡🐀⚡</span>Pokemon Art
-          </div>
-          <div class="sketch-description">
-            Use the 151 pokemon images to create a random art
-          </div>
-        </a>
-
-        <a href="sketches/colliding-balls/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🔴🔵</span>Colliding Balls Art
-          </div>
-          <div class="sketch-description">
-            Use to moving balls to create a moving random art. Three colored
-            balls that bounce off walls and collide with each other, swapping
-            velocities on impact with realistic collision physics.
-          </div>
-        </a>
-
-        <a href="sketches/rock-paper-scissors/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">💎🧻✂️</span>Rock paper scissors
-          </div>
-          <div class="sketch-description">
-            A simple rock paper scissors brainrot game.
-          </div>
-        </a>
-
-        <a href="sketches/emitting-particles-to-center/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji">🎉</span>Emitting particles to center
-          </div>
-          <div class="sketch-description">
-            A system emitting particles from three different points to the
-            center.
-          </div>
-        </a>
-        <a href="sketches/hold-your-horses/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji"></span>Ring a bell?
-          </div>
-          <div class="sketch-description">-</div>
-        </a>
-        <a href="sketches/sound-of-silence/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji"></span>Synthetic Sound
-          </div>
-          <div class="sketch-description">-</div>
-        </a>
-
-        <a href="sketches/waaac-woooc/" class="sketch-card">
-          <div class="sketch-title">
-            <span class="sketch-emoji"></span>waaaac woooc
-          </div>
-          <div class="sketch-description">-</div>
-        </a>
+        <div class="tag-filters" id="tagFilters"></div>
       </div>
+
+      <div class="results-count" id="resultsCount"></div>
+
+      <div id="sketchesContainer"></div>
 
       <div class="footer">
         <p>
@@ -626,5 +276,581 @@
         </p>
       </div>
     </div>
+
+    <script>
+      // Sketch data with categories and tags
+      const sketches = [
+        {
+          url: 'sketches/helloworld/',
+          emoji: '🦄',
+          title: 'Hello World',
+          description: 'An introductory sketch featuring unicorn emojis and basic p5.js shapes.',
+          category: 'Basics',
+          tags: ['primitives', 'shapes']
+        },
+        {
+          url: 'sketches/bezier/',
+          emoji: '🌊',
+          title: 'Bezier Curves',
+          description: 'Animated bezier curves with flowing control points and colorful trails.',
+          category: 'Animation',
+          tags: ['curves', 'animation', 'movement']
+        },
+        {
+          url: 'sketches/arc/',
+          emoji: '🎯',
+          title: 'Arc Patterns',
+          description: 'Dynamic arc patterns with spiral animations and corner decorations.',
+          category: 'Animation',
+          tags: ['primitives', 'shapes', 'animation']
+        },
+        {
+          url: 'sketches/drawing-a-circle/',
+          emoji: '⭕',
+          title: 'Drawing a Circle',
+          description: 'Demonstrates how to draw a circle using a loop with multiple ellipses positioned in a circular pattern.',
+          category: 'Basics',
+          tags: ['primitives', 'loops', 'shapes']
+        },
+        {
+          url: 'sketches/animating-a-circle/',
+          emoji: '🔵',
+          title: 'Animating a Circle',
+          description: 'Animated circle moving in a circular path, creating a drawing trail using trigonometry and frameCount.',
+          category: 'Animation',
+          tags: ['animation', 'movement', 'trigonometry']
+        },
+        {
+          url: 'sketches/user-events/',
+          emoji: '🖱️⌨️',
+          title: 'User Events',
+          description: 'Interactive demonstration of mouse and keyboard event handlers with visual effects triggered by user input.',
+          category: 'Interaction',
+          tags: ['interactive', 'mouse', 'keyboard']
+        },
+        {
+          url: 'sketches/bauhaus/',
+          emoji: '🎨',
+          title: 'Bauhaus Design',
+          description: 'Minimalist design inspired by Bauhaus principles with geometric shapes and primary colors.',
+          category: 'Art & Design',
+          tags: ['design', 'shapes', 'primitives']
+        },
+        {
+          url: 'sketches/abstract-face/',
+          emoji: '👤',
+          title: 'Abstract Face',
+          description: 'An expressive abstract representation of a face with animated features.',
+          category: 'Art & Design',
+          tags: ['animation', 'shapes']
+        },
+        {
+          url: 'sketches/minimalistic-landscape/',
+          emoji: '🌄',
+          title: 'Minimalistic Landscape',
+          description: 'A serene landscape scene with mountains, trees, and simple atmospheric elements.',
+          category: 'Art & Design',
+          tags: ['shapes', 'design']
+        },
+        {
+          url: 'sketches/mouse-interaction/',
+          emoji: '🖱️',
+          title: 'Mouse Interaction',
+          description: 'Interactive sketch responding to mouse movement with trails, ripples, and attractors.',
+          category: 'Interaction',
+          tags: ['interactive', 'mouse', 'movement']
+        },
+        {
+          url: 'sketches/mouse-orbit/',
+          emoji: '🪐',
+          title: 'Mouse Orbit',
+          description: 'Colorful planets orbiting around the mouse cursor with different speeds and sizes, creating dynamic celestial trails.',
+          category: 'Interaction',
+          tags: ['interactive', 'mouse', 'movement', 'animation']
+        },
+        {
+          url: 'sketches/physics/',
+          emoji: '⚡',
+          title: 'Physics Simulation',
+          description: 'Physics simulation featuring bouncing balls with collision detection and realistic motion.',
+          category: 'Physics',
+          tags: ['physics', 'collision', 'movement']
+        },
+        {
+          url: 'sketches/double-pendulum/',
+          emoji: '🪃',
+          title: 'Double Pendulum',
+          description: 'Chaotic motion simulation with 50 double pendulums creating beautiful trails and demonstrating sensitive dependence on initial conditions.',
+          category: 'Physics',
+          tags: ['physics', 'movement', 'animation']
+        },
+        {
+          url: 'sketches/particles/',
+          emoji: '✨',
+          title: 'Particle System',
+          description: 'Advanced particle system with different emitter types: fountain, explosion, and spiral effects.',
+          category: 'Particles',
+          tags: ['particles', 'animation', 'movement']
+        },
+        {
+          url: 'sketches/particles-simple/',
+          emoji: '💫',
+          title: 'Particles Simple',
+          description: 'Simple particle system with fading particles spawning from the center.',
+          category: 'Particles',
+          tags: ['particles', 'animation']
+        },
+        {
+          url: 'sketches/particle-spiral/',
+          emoji: '🌀',
+          title: 'Particle Spiral',
+          description: 'Colorful particle system creating spiral patterns with mouse wheel control over the spiral constant.',
+          category: 'Particles',
+          tags: ['particles', 'interactive', 'movement']
+        },
+        {
+          url: 'sketches/blowing-in-the-wind/',
+          emoji: '🌬️',
+          title: 'Blowing in the Wind',
+          description: 'Particle flow field using Perlin noise with mouse interaction and scroll controls.',
+          category: 'Particles',
+          tags: ['particles', 'noise', 'interactive', 'movement']
+        },
+        {
+          url: 'sketches/bouncing-balls/',
+          emoji: '⚽',
+          title: 'Bouncing Balls',
+          description: 'Multiple balls with different positions and velocities bouncing inside the canvas with perfect elastic collisions.',
+          category: 'Physics',
+          tags: ['physics', 'collision', 'movement']
+        },
+        {
+          url: 'sketches/creative-bounce/',
+          emoji: '⭐',
+          title: 'Creative Bounce',
+          description: 'Custom shapes (stars, hearts, triangles) that bounce and change color and size with each collision.',
+          category: 'Physics',
+          tags: ['physics', 'shapes', 'movement', 'collision']
+        },
+        {
+          url: 'sketches/simulated-gravity/',
+          emoji: '🌍',
+          title: 'Simulated Gravity',
+          description: 'Demonstrates gravity simulation with a ball falling and bouncing with acceleration, visualizing physics in action.',
+          category: 'Physics',
+          tags: ['physics', 'movement']
+        },
+        {
+          url: 'sketches/energy-loss-bounce/',
+          emoji: '📉',
+          title: 'Energy Loss Bounce',
+          description: 'Ball that loses energy with each bounce, gradually coming to rest - realistic physics with energy dissipation.',
+          category: 'Physics',
+          tags: ['physics', 'movement']
+        },
+        {
+          url: 'sketches/dvd-screensaver/',
+          emoji: '📀',
+          title: 'DVD Screensaver',
+          description: 'Classic DVD logo screensaver that bounces around changing colors, counting the elusive corner hits.',
+          category: 'Animation',
+          tags: ['animation', 'movement', 'collision']
+        },
+        {
+          url: 'sketches/fractal-line/',
+          emoji: '🌈',
+          title: 'Fractal Line',
+          description: 'Recursive fractal visualization creating colorful line segments that subdivide into smaller patterns.',
+          category: 'Fractals',
+          tags: ['fractals', 'recursion']
+        },
+        {
+          url: 'sketches/fractal-tree/',
+          emoji: '🌳',
+          title: 'Fractal Tree',
+          description: 'Classic recursive binary tree fractal with branching patterns, demonstrating the beauty of mathematical recursion.',
+          category: 'Fractals',
+          tags: ['fractals', 'recursion']
+        },
+        {
+          url: 'sketches/grid-of-dots/',
+          emoji: '🔵',
+          title: 'Grid of Dots',
+          description: 'Basic nested loops example showing how to create a grid pattern using x,y iteration with circles.',
+          category: 'Basics',
+          tags: ['primitives', 'loops', 'shapes']
+        },
+        {
+          url: 'sketches/chessboard/',
+          emoji: '♟️',
+          title: 'Chessboard Pattern',
+          description: 'Demonstrates conditional logic inside loops to create alternating patterns like a chessboard.',
+          category: 'Basics',
+          tags: ['primitives', 'loops', 'shapes']
+        },
+        {
+          url: 'sketches/radial-pattern/',
+          emoji: '🌸',
+          title: 'Radial Pattern',
+          description: 'Introduces transformations and circular loops to create mandala-like radial symmetry patterns.',
+          category: 'Patterns',
+          tags: ['shapes', 'loops', 'transformations']
+        },
+        {
+          url: 'sketches/riley-movement-static/',
+          emoji: '🎨',
+          title: 'Riley Movement (Static)',
+          description: 'Op Art inspired by Bridget Riley\'s "Movement in Squares" - static version with systematic grid distortion.',
+          category: 'Art & Design',
+          tags: ['design', 'shapes']
+        },
+        {
+          url: 'sketches/riley-movement-interactive/',
+          emoji: '🖱️',
+          title: 'Riley Movement (Interactive)',
+          description: 'Interactive version of Riley\'s "Movement in Squares" where mouse position controls the distortion line.',
+          category: 'Interaction',
+          tags: ['interactive', 'mouse', 'design']
+        },
+        {
+          url: 'sketches/hsl-mouse-animation/',
+          emoji: '🎨',
+          title: 'HSL Mouse Animation',
+          description: 'Interactive HSL color demonstration with mouse-controlled hue and saturation, featuring animated particles.',
+          category: 'Interaction',
+          tags: ['interactive', 'mouse', 'color', 'animation']
+        },
+        {
+          url: 'sketches/quad-patterns/',
+          emoji: '🔷',
+          title: 'Quad Patterns',
+          description: 'Educational demonstration of the quad() function showing various quadrilateral shapes and patterns.',
+          category: 'Basics',
+          tags: ['primitives', 'shapes']
+        },
+        {
+          url: 'sketches/isometric-cube-tessellation/',
+          emoji: '🧊',
+          title: 'Isometric Cube Tessellation',
+          description: 'Tessellating pattern of 3D isometric cubes with random colors, demonstrating geometric transformations and grid arrangements.',
+          category: 'Patterns',
+          tags: ['shapes', 'transformations', 'random']
+        },
+        {
+          url: 'sketches/isometric-cube-tessellation-2/',
+          emoji: '🔷',
+          title: 'Isometric Cube Tessellation 2',
+          description: 'Hexagonal tessellation of isometric cubes in grayscale, showing an alternative approach to 3D cube patterns.',
+          category: 'Patterns',
+          tags: ['shapes', 'transformations']
+        },
+        {
+          url: 'sketches/analog-clock/',
+          emoji: '🕐',
+          title: 'Analog Clock',
+          description: 'A functional analog clock with moving hands and time display.',
+          category: 'Animation',
+          tags: ['animation', 'movement']
+        },
+        {
+          url: 'sketches/random-chaos/',
+          emoji: '🎲',
+          title: 'Random Chaos',
+          description: 'Pure randomness, chaotic dots.',
+          category: 'Random & Noise',
+          tags: ['random']
+        },
+        {
+          url: 'sketches/noise-fluency/',
+          emoji: '🌫️',
+          title: 'Noise Fluency',
+          description: 'Smooth lines with coherent noise.',
+          category: 'Random & Noise',
+          tags: ['noise']
+        },
+        {
+          url: 'sketches/infinite-variations/',
+          emoji: '♾️',
+          title: 'Infinite Variations',
+          description: 'Animated generative randomness.',
+          category: 'Random & Noise',
+          tags: ['random', 'animation']
+        },
+        {
+          url: 'sketches/line-comparison/',
+          emoji: '📏',
+          title: 'Line Comparison',
+          description: 'Compares different line drawing techniques and visual styles.',
+          category: 'Basics',
+          tags: ['primitives', 'shapes']
+        },
+        {
+          url: 'sketches/line-comparison-animation/',
+          emoji: '📏',
+          title: 'Line Comparison Animation',
+          description: 'Animated comparison of line drawing methods, showing dynamic changes over time.',
+          category: 'Animation',
+          tags: ['primitives', 'animation']
+        },
+        {
+          url: 'sketches/line-with-noise/',
+          emoji: '🌪️',
+          title: 'Line with Noise',
+          description: 'Draws lines with Perlin noise for organic, wavy effects.',
+          category: 'Random & Noise',
+          tags: ['noise', 'shapes']
+        },
+        {
+          url: 'sketches/line-with-random/',
+          emoji: '🎲',
+          title: 'Line with Random',
+          description: 'Draws lines with random offsets for jagged, unpredictable shapes.',
+          category: 'Random & Noise',
+          tags: ['random', 'shapes']
+        },
+        {
+          url: 'sketches/noise-chaos/',
+          emoji: '🌀',
+          title: 'Noise Chaos',
+          description: 'Combines noise and randomness to create chaotic, animated patterns.',
+          category: 'Random & Noise',
+          tags: ['noise', 'random', 'animation']
+        },
+        {
+          url: 'sketches/random-vs-noise/',
+          emoji: '🔀',
+          title: 'Random vs Noise',
+          description: 'Side-by-side comparison of random() and noise() for generative art.',
+          category: 'Random & Noise',
+          tags: ['random', 'noise']
+        },
+        {
+          url: 'sketches/random-seed-art/',
+          emoji: '🎯',
+          title: 'Random Seed Art',
+          description: 'Random deterministic art driven by a seed',
+          category: 'Random & Noise',
+          tags: ['random']
+        },
+        {
+          url: 'sketches/noise-seed-art/',
+          emoji: '🌱',
+          title: 'Noise Seed Art',
+          description: 'Reproducible Perlin noise art controlled by a seed value.',
+          category: 'Random & Noise',
+          tags: ['noise']
+        },
+        {
+          url: 'sketches/pokemon-art/',
+          emoji: '⚡🐀⚡',
+          title: 'Pokemon Art',
+          description: 'Use the 151 pokemon images to create a random art',
+          category: 'Art & Design',
+          tags: ['random', 'images']
+        },
+        {
+          url: 'sketches/colliding-balls/',
+          emoji: '🔴🔵',
+          title: 'Colliding Balls Art',
+          description: 'Use to moving balls to create a moving random art. Three colored balls that bounce off walls and collide with each other, swapping velocities on impact with realistic collision physics.',
+          category: 'Physics',
+          tags: ['physics', 'collision', 'movement']
+        },
+        {
+          url: 'sketches/rock-paper-scissors/',
+          emoji: '💎🧻✂️',
+          title: 'Rock paper scissors',
+          description: 'A simple rock paper scissors brainrot game.',
+          category: 'Games',
+          tags: ['interactive', 'game']
+        },
+        {
+          url: 'sketches/emitting-particles-to-center/',
+          emoji: '🎉',
+          title: 'Emitting particles to center',
+          description: 'A system emitting particles from three different points to the center.',
+          category: 'Particles',
+          tags: ['particles', 'movement']
+        },
+        {
+          url: 'sketches/hold-your-horses/',
+          emoji: '🔔',
+          title: 'Ring a bell?',
+          description: 'Interactive sound sketch that plays a doorbell sound on mouse click while randomly changing the background color.',
+          category: 'Sound',
+          tags: ['sound', 'interactive']
+        },
+        {
+          url: 'sketches/sound-of-silence/',
+          emoji: '🎹',
+          title: 'Synthetic Sound',
+          description: 'Sound synthesis demonstration using p5.PolySynth to play musical chord progressions on mouse click.',
+          category: 'Sound',
+          tags: ['sound', 'interactive']
+        },
+        {
+          url: 'sketches/waaac-woooc/',
+          emoji: '📱',
+          title: 'waaaac woooc',
+          description: 'Device motion-controlled ball that responds to accelerometer/gyroscope input, bouncing around the canvas with realistic physics. Includes controls to invert axes and permission handling for iOS devices.',
+          category: 'Interaction',
+          tags: ['interactive', 'physics', 'movement']
+        }
+      ];
+
+      // Extract all unique categories and tags
+      const categories = ['all', ...new Set(sketches.map(s => s.category))].sort((a, b) => {
+        if (a === 'all') return -1;
+        if (b === 'all') return 1;
+        return a.localeCompare(b);
+      });
+      
+      const allTags = [...new Set(sketches.flatMap(s => s.tags))].sort();
+
+      // State
+      let selectedCategory = 'all';
+      let selectedTags = new Set();
+      let searchQuery = '';
+
+      // Render functions
+      function renderCategoryFilters() {
+        const container = document.getElementById('categoryFilters');
+        container.innerHTML = categories.map(cat => 
+          `<div class="category-pill ${cat === selectedCategory ? 'active' : ''}" data-category="${cat}">
+            ${cat === 'all' ? 'All' : cat}
+          </div>`
+        ).join('');
+      }
+
+      function renderTagFilters() {
+        const container = document.getElementById('tagFilters');
+        container.innerHTML = allTags.map(tag => 
+          `<div class="tag-filter ${selectedTags.has(tag) ? 'active' : ''}" data-tag="${tag}">
+            ${tag}
+          </div>`
+        ).join('');
+      }
+
+      function matchesFilters(sketch) {
+        // Category filter
+        if (selectedCategory !== 'all' && sketch.category !== selectedCategory) {
+          return false;
+        }
+
+        // Tag filter (AND logic - sketch must have all selected tags)
+        if (selectedTags.size > 0) {
+          for (let tag of selectedTags) {
+            if (!sketch.tags.includes(tag)) {
+              return false;
+            }
+          }
+        }
+
+        // Search filter
+        if (searchQuery) {
+          const query = searchQuery.toLowerCase();
+          const matchesTitle = sketch.title.toLowerCase().includes(query);
+          const matchesDescription = sketch.description.toLowerCase().includes(query);
+          const matchesTags = sketch.tags.some(tag => tag.toLowerCase().includes(query));
+          const matchesCategory = sketch.category.toLowerCase().includes(query);
+          
+          if (!matchesTitle && !matchesDescription && !matchesTags && !matchesCategory) {
+            return false;
+          }
+        }
+
+        return true;
+      }
+
+      function renderSketches() {
+        const container = document.getElementById('sketchesContainer');
+        const filteredSketches = sketches.filter(matchesFilters);
+
+        // Update results count
+        const count = filteredSketches.length;
+        const total = sketches.length;
+        const countEl = document.getElementById('resultsCount');
+        if (selectedCategory !== 'all' || selectedTags.size > 0 || searchQuery) {
+          countEl.textContent = `Showing ${count} of ${total} sketches`;
+        } else {
+          countEl.textContent = '';
+        }
+
+        if (selectedCategory === 'all' && selectedTags.size === 0 && !searchQuery) {
+          // Group by category
+          const grouped = {};
+          filteredSketches.forEach(sketch => {
+            if (!grouped[sketch.category]) {
+              grouped[sketch.category] = [];
+            }
+            grouped[sketch.category].push(sketch);
+          });
+
+          container.innerHTML = Object.entries(grouped)
+            .sort(([a], [b]) => a.localeCompare(b))
+            .map(([category, categorySketchs]) => `
+              <div class="category-section">
+                <h2 class="category-title">${category}</h2>
+                <div class="sketches-grid">
+                  ${categorySketchs.map(renderSketchCard).join('')}
+                </div>
+              </div>
+            `).join('');
+        } else {
+          // Show as flat grid when filtering
+          container.innerHTML = `
+            <div class="sketches-grid">
+              ${filteredSketches.map(renderSketchCard).join('')}
+            </div>
+          `;
+        }
+      }
+
+      function renderSketchCard(sketch) {
+        return `
+          <a href="${sketch.url}" class="sketch-card">
+            <div class="sketch-title">
+              <span class="sketch-emoji">${sketch.emoji}</span>${sketch.title}
+            </div>
+            <div class="sketch-description">${sketch.description}</div>
+            <div class="sketch-tags">
+              ${sketch.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+          </a>
+        `;
+      }
+
+      // Event listeners
+      document.getElementById('categoryFilters').addEventListener('click', (e) => {
+        if (e.target.classList.contains('category-pill')) {
+          selectedCategory = e.target.dataset.category;
+          renderCategoryFilters();
+          renderSketches();
+        }
+      });
+
+      document.getElementById('tagFilters').addEventListener('click', (e) => {
+        if (e.target.classList.contains('tag-filter')) {
+          const tag = e.target.dataset.tag;
+          if (selectedTags.has(tag)) {
+            selectedTags.delete(tag);
+          } else {
+            selectedTags.add(tag);
+          }
+          renderTagFilters();
+          renderSketches();
+        }
+      });
+
+      document.getElementById('searchBox').addEventListener('input', (e) => {
+        searchQuery = e.target.value.trim();
+        renderSketches();
+      });
+
+      // Initial render
+      renderCategoryFilters();
+      renderTagFilters();
+      renderSketches();
+    </script>
   </body>
 </html>
