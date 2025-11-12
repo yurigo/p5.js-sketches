@@ -1,9 +1,15 @@
 let particleSystem;
 let emitters = [];
+let cnv;
 
 function setup() {
   const s = min(windowWidth, windowHeight) * 0.9;
-  createCanvas(s, s);
+
+  cnv = createCanvas(s, s);
+
+  cnv.mousePressed(handleCanvasClick);
+
+  cnv.touchStarted(handleCanvasClick);
 
   particleSystem = new ParticleSystem();
 
@@ -207,11 +213,7 @@ class Emitter {
   }
 }
 
-function mousePressed() {
-  // Only respond to clicks on the canvas
-  if (mouseX < 0 || mouseX > width || mouseY < 0 || mouseY > height) {
-    return;
-  }
+function handleCanvasClick() {
   // Find closest emitter and start dragging
   for (let emitter of emitters) {
     let distance = dist(mouseX, mouseY, emitter.pos.x, emitter.pos.y);
@@ -220,18 +222,7 @@ function mousePressed() {
       emitter.pos.y = mouseY;
     }
   }
-}
-
-function touchStarted() {
-  // Only respond to touches on the canvas
-  if (touches.length > 0) {
-    const touch = touches[0];
-    if (touch.x < 0 || touch.x > width || touch.y < 0 || touch.y > height) {
-      return;
-    }
-  }
-  mousePressed();
-  return false; // prevent default touch behavior
+  return false;
 }
 
 function mouseDragged() {

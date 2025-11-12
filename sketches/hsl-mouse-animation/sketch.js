@@ -3,10 +3,13 @@
 
 let particles = [];
 let maxParticles = 100;
+let cnv;
 
 function setup() {
   const s = min(windowWidth, windowHeight) * 0.9;
-  createCanvas(s, s);
+  cnv = createCanvas(s, s);
+  cnv.mousePressed(handleCanvasClick);
+  cnv.touchStarted(handleCanvasClick);
   colorMode(HSB, 360, 100, 100, 100);
   background(220, 20, 15);
 }
@@ -166,11 +169,7 @@ class Particle {
   }
 }
 
-function mousePressed() {
-  // Only respond to clicks on the canvas
-  if (mouseX < 0 || mouseX > width || mouseY < 0 || mouseY > height) {
-    return;
-  }
+function handleCanvasClick() {
   // Create burst of particles on click
   let mouseHue = map(mouseX, 0, width, 0, 360);
   let mouseSaturation = map(mouseY, 0, height, 30, 100);
@@ -184,18 +183,7 @@ function mousePressed() {
       particles.push(p);
     }
   }
-}
-
-function touchStarted() {
-  // Only respond to touches on the canvas
-  if (touches.length > 0) {
-    const touch = touches[0];
-    if (touch.x < 0 || touch.x > width || touch.y < 0 || touch.y > height) {
-      return;
-    }
-  }
-  mousePressed();
-  return false; // prevent default touch behavior
+  return false;
 }
 
 function keyPressed() {

@@ -1,10 +1,16 @@
 let trails = [];
+let cnv;
 let ripples = [];
 let attractors = [];
 
 function setup() {
   const s = min(windowWidth, windowHeight) * 0.9;
-  createCanvas(s, s);
+
+  cnv = createCanvas(s, s);
+
+  cnv.mousePressed(handleCanvasClick);
+
+  cnv.touchStarted(handleCanvasClick);
   background(15, 15, 35);
 
   // Create some attractors
@@ -130,11 +136,7 @@ function draw() {
   );
 }
 
-function mousePressed() {
-  // Only respond to clicks on the canvas
-  if (mouseX < 0 || mouseX > width || mouseY < 0 || mouseY > height) {
-    return;
-  }
+function handleCanvasClick() {
   // Create ripple at mouse position
   ripples.push({
     x: mouseX,
@@ -154,18 +156,7 @@ function mousePressed() {
       size: random(8, 20),
     });
   }
-}
-
-function touchStarted() {
-  // Only respond to touches on the canvas
-  if (touches.length > 0) {
-    const touch = touches[0];
-    if (touch.x < 0 || touch.x > width || touch.y < 0 || touch.y > height) {
-      return;
-    }
-  }
-  mousePressed();
-  return false; // prevent default touch behavior
+  return false;
 }
 
 function keyPressed() {
