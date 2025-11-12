@@ -137,6 +137,10 @@ function drawEnvelope() {
 }
 
 function mousePressed() {
+  // Only respond to clicks on the canvas
+  if (mouseX < 0 || mouseX > width || mouseY < 0 || mouseY > height) {
+    return;
+  }
   userStartAudio();
   
   // Calculate frequency based on mouse X position
@@ -165,6 +169,13 @@ function mousePressed() {
 }
 
 function touchStarted() {
+  // Only respond to touches on the canvas
+  if (touches.length > 0) {
+    const touch = touches[0];
+    if (touch.x < 0 || touch.x > width || touch.y < 0 || touch.y > height) {
+      return;
+    }
+  }
   mousePressed();
   return false; // prevent default touch behavior
 }

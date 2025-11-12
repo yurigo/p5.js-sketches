@@ -63,12 +63,23 @@ function drawElement(element) {}
 
 // Allow clicking to generate new seed and reload
 function mousePressed() {
+  // Only respond to clicks on the canvas
+  if (mouseX < 0 || mouseX > width || mouseY < 0 || mouseY > height) {
+    return;
+  }
   let newSeed = int(random(1, 10000));
   let newUrl = window.location.pathname + "?id=" + newSeed;
   window.location.href = newUrl;
 }
 
 function touchStarted() {
+  // Only respond to touches on the canvas
+  if (touches.length > 0) {
+    const touch = touches[0];
+    if (touch.x < 0 || touch.x > width || touch.y < 0 || touch.y > height) {
+      return;
+    }
+  }
   mousePressed();
   return false; // prevent default touch behavior
 }
