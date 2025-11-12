@@ -204,4 +204,11 @@ const _0x30c834=_0x4b20;(function(_0x2ba4cb,_0x1b00f2){const _0x559144=_0x4b20,_
   // Only respond to clicks on the canvas
   if (mouseX < 0 || mouseX > width || mouseY < 0 || mouseY > height) {
     return;
-  }return reset();}function touchStarted(){mousePressed();return false;}function reset(){const _0xc1b1eb=_0x30c834;agents=[];for(let _0x245f6a=0x0;_0x245f6a<NUM_PER_TYPE;_0x245f6a++)agents[_0xc1b1eb(0xf7)](new Agent(random(width),random(height),ROCK));for(let _0x554a9e=0x0;_0x554a9e<NUM_PER_TYPE;_0x554a9e++)agents[_0xc1b1eb(0xf7)](new Agent(random(width),random(height),PAPER));for(let _0x19f1e2=0x0;_0x19f1e2<NUM_PER_TYPE;_0x19f1e2++)agents[_0xc1b1eb(0xf7)](new Agent(random(width),random(height),SCISSORS));sparks=[];for(let _0x2fd064=0x0;_0x2fd064<MAX_SPARKS;_0x2fd064++)sparks[_0xc1b1eb(0xf7)](new Spark(-0x64,-0x64,0x0));}function _0x1f62(){const _0x15d259=['26gBmdzY','3204692XTbykC','random2D','isDead','70LVNXoP','push','draw','300grprTl','fromAngle','191384KrDffU','setMag','filter','45645864TXxRIO','hueSeed','repel','none','47338ZZvrwu','phase','2047464lWmUuM','Vector','life','length','add','sub','limit','update','455aAhWiM','transformTo','4468605iowSsK','112175vaveHs','type','mult'];_0x1f62=function(){return _0x15d259;};return _0x1f62();}
+  }return reset();}function touchStarted(){
+  // Only respond to touches on the canvas
+  if (touches.length > 0) {
+    const touch = touches[0];
+    if (touch.x < 0 || touch.x > width || touch.y < 0 || touch.y > height) {
+      return;
+    }
+  }mousePressed();return false;}function reset(){const _0xc1b1eb=_0x30c834;agents=[];for(let _0x245f6a=0x0;_0x245f6a<NUM_PER_TYPE;_0x245f6a++)agents[_0xc1b1eb(0xf7)](new Agent(random(width),random(height),ROCK));for(let _0x554a9e=0x0;_0x554a9e<NUM_PER_TYPE;_0x554a9e++)agents[_0xc1b1eb(0xf7)](new Agent(random(width),random(height),PAPER));for(let _0x19f1e2=0x0;_0x19f1e2<NUM_PER_TYPE;_0x19f1e2++)agents[_0xc1b1eb(0xf7)](new Agent(random(width),random(height),SCISSORS));sparks=[];for(let _0x2fd064=0x0;_0x2fd064<MAX_SPARKS;_0x2fd064++)sparks[_0xc1b1eb(0xf7)](new Spark(-0x64,-0x64,0x0));}function _0x1f62(){const _0x15d259=['26gBmdzY','3204692XTbykC','random2D','isDead','70LVNXoP','push','draw','300grprTl','fromAngle','191384KrDffU','setMag','filter','45645864TXxRIO','hueSeed','repel','none','47338ZZvrwu','phase','2047464lWmUuM','Vector','life','length','add','sub','limit','update','455aAhWiM','transformTo','4468605iowSsK','112175vaveHs','type','mult'];_0x1f62=function(){return _0x15d259;};return _0x1f62();}
