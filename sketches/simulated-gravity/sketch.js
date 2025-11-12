@@ -70,3 +70,8 @@ function mousePressed() {
   ball.y = ball.radius;
   ball.vy = 0;
 }
+
+function touchStarted() {
+  mousePressed();
+  return false; // prevent default touch behavior
+}

@@ -174,6 +174,11 @@ function mousePressed() {
   balls.push(new Ball(mouseX, mouseY));
 }
 
+function touchStarted() {
+  mousePressed();
+  return false; // prevent default touch behavior
+}
+
 function keyPressed() {
   if (key === "r" || key === "R") {
     // Reset simulation

@@ -50,6 +50,11 @@ function mousePressed(){
   isEpileptic = true;
 }
 
+function touchStarted() {
+  mousePressed();
+  return false; // prevent default touch behavior
+}
+
 function mouseReleased(){
   isEpileptic = false;
 }

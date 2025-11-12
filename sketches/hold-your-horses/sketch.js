@@ -27,3 +27,8 @@ function mousePressed(){
   c = color(random(255), random(255), random(255));
   s.play();
 }
+
+function touchStarted() {
+  mousePressed();
+  return false; // prevent default touch behavior
+}

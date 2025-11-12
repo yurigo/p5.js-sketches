@@ -20,6 +20,11 @@ function mousePressed() {
   playSynth();
 }
 
+function touchStarted() {
+  mousePressed();
+  return false; // prevent default touch behavior
+}
+
 function playSynth() {
   userStartAudio();
 

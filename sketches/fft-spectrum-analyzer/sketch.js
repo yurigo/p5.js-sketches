@@ -168,3 +168,8 @@ function mousePressed() {
     mic.start();
   }
 }
+
+function touchStarted() {
+  mousePressed();
+  return false; // prevent default touch behavior
+}

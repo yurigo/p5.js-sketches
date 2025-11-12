@@ -182,6 +182,11 @@ function mousePressed() {
   }
 }
 
+function touchStarted() {
+  mousePressed();
+  return false; // prevent default touch behavior
+}
+
 function keyPressed() {
   if (key === " ") {
     // Clear all particles

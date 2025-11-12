@@ -218,6 +218,11 @@ function mousePressed() {
   }
 }
 
+function touchStarted() {
+  mousePressed();
+  return false; // prevent default touch behavior
+}
+
 function mouseDragged() {
   // Continue dragging
   for (let emitter of emitters) {

@@ -120,3 +120,8 @@ function mousePressed() {
   ball.vx = random(-8, 8);
   ball.vy = random(-8, 8);
 }
+
+function touchStarted() {
+  mousePressed();
+  return false; // prevent default touch behavior
+}
