@@ -34,116 +34,85 @@ let pitchRange = 200; // Hz range above/below base frequency
 let sensitivity = 1.0;
 let filterBrightness = 0.5; // 0-1
 
-// Canvas element reference
-const canvas = document.getElementById("canvas");
+// Wait for DOM to be fully loaded before accessing elements
+window.addEventListener('DOMContentLoaded', () => {
+  // UI Elements
+  const invertXCheckbox = document.getElementById("invertX");
+  const invertYCheckbox = document.getElementById("invertY");
+  const pitchRangeSlider = document.getElementById("pitchRange");
+  const sensitivitySlider = document.getElementById("sensitivity");
+  const brightnessSlider = document.getElementById("brightness");
+  const permissionButton = document.getElementById("permissionButton");
 
-// UI Elements
-const invertXCheckbox = document.getElementById("invertX");
-const invertYCheckbox = document.getElementById("invertY");
-const pitchRangeSlider = document.getElementById("pitchRange");
-const sensitivitySlider = document.getElementById("sensitivity");
-const brightnessSlider = document.getElementById("brightness");
-const permissionButton = document.getElementById("permissionButton");
+  // Initialize checkboxes
+  if (invertXCheckbox) invertXCheckbox.checked = invertX;
+  if (invertYCheckbox) invertYCheckbox.checked = invertY;
 
-// Initialize checkboxes
-invertXCheckbox.checked = invertX;
-invertYCheckbox.checked = invertY;
+  // Event listeners
+  if (invertXCheckbox) {
+    invertXCheckbox.addEventListener("change", () => {
+      invertX = invertXCheckbox.checked;
+    });
+  }
+  
+  if (invertYCheckbox) {
+    invertYCheckbox.addEventListener("change", () => {
+      invertY = invertYCheckbox.checked;
+    });
+  }
 
-// Event listeners
-invertXCheckbox.addEventListener("change", () => {
-  invertX = invertXCheckbox.checked;
-});
-invertYCheckbox.addEventListener("change", () => {
-  invertY = invertYCheckbox.checked;
-});
+  if (pitchRangeSlider) {
+    pitchRangeSlider.addEventListener("input", (e) => {
+      pitchRange = parseFloat(e.target.value);
+      const valueSpan = document.getElementById("pitchRangeValue");
+      if (valueSpan) valueSpan.textContent = pitchRange.toFixed(0);
+    });
+  }
 
-pitchRangeSlider.addEventListener("input", (e) => {
-  pitchRange = parseFloat(e.target.value);
-  document.getElementById("pitchRangeValue").textContent = pitchRange.toFixed(0);
-});
+  if (sensitivitySlider) {
+    sensitivitySlider.addEventListener("input", (e) => {
+      sensitivity = parseFloat(e.target.value);
+      const valueSpan = document.getElementById("sensitivityValue");
+      if (valueSpan) valueSpan.textContent = sensitivity.toFixed(1);
+    });
+  }
 
-sensitivitySlider.addEventListener("input", (e) => {
-  sensitivity = parseFloat(e.target.value);
-  document.getElementById("sensitivityValue").textContent = sensitivity.toFixed(1);
-});
+  if (brightnessSlider) {
+    brightnessSlider.addEventListener("input", (e) => {
+      filterBrightness = parseFloat(e.target.value);
+      const valueSpan = document.getElementById("brightnessValue");
+      if (valueSpan) valueSpan.textContent = filterBrightness.toFixed(2);
+      updateFilterFrequency();
+    });
+  }
 
-brightnessSlider.addEventListener("input", (e) => {
-  filterBrightness = parseFloat(e.target.value);
-  document.getElementById("brightnessValue").textContent = filterBrightness.toFixed(2);
-  updateFilterFrequency();
-});
+  if (permissionButton) {
+    permissionButton.addEventListener("click", async (e) => {
+      e.preventDefault();
 
-permissionButton.addEventListener("click", async (e) => {
-  e.preventDefault();
-
-  // iOS 13+ requires a user gesture to grant access
-  if (
-    typeof DeviceMotionEvent !== "undefined" &&
-    typeof DeviceMotionEvent.requestPermission === "function"
-  ) {
-    try {
-      const response = await DeviceMotionEvent.requestPermission();
-      if (response === "granted") {
+      // iOS 13+ requires a user gesture to grant access
+      if (
+        typeof DeviceMotionEvent !== "undefined" &&
+        typeof DeviceMotionEvent.requestPermission === "function"
+      ) {
+        try {
+          const response = await DeviceMotionEvent.requestPermission();
+          if (response === "granted") {
+            startMotion();
+            initializeSound();
+          }
+        } catch (error) {
+          console.error("Error requesting motion permission:", error);
+        }
+      } else {
+        // Other platforms: start listening right away
         startMotion();
         initializeSound();
       }
-    } catch (error) {
-      console.error("Error requesting motion permission:", error);
-    }
-  } else {
-    // Other platforms: start listening right away
-    startMotion();
-    initializeSound();
+    });
   }
 });
 
-// function setup()
-// {
-//   // set canvas size
-//   createCanvas(400, 400);
-
-//   // default values
-//   xpos = 200;
-//   ypos = 200;
-//   x = 0;
-//   y = 0;
-// }
-
-// function draw()
-// {
-//   // set background color to white
-//   background(255);
-
-//   // add/subract xpos and ypos
-//   xpos = xpos + x;
-//   ypos = ypos - y;
-
-//   // wrap ellipse if over bounds
-//   if(xpos > 400) { xpos = 0; }
-//   if(xpos < 0) { xpos = 400; }
-//   if(ypos > 400) { ypos = 0; }
-//   if(ypos < 0) { ypos = 400; }
-
-//   // draw ellipse
-//   fill(255, 0, 0);
-//   ellipse(xpos, ypos, 25, 25);
-
-//   // display variables
-//   fill(0);
-//   noStroke();
-//   text("x: " + x, 25, 25);
-//   text("y: " + y, 25, 50);
-//   text("z: " + z, 25, 75);
-// }
-
-// // accelerometer Data
-// window.addEventListener('devicemotion', function(e)
-// {
-//   // get accelerometer values
-//   x = parseInt(e.accelerationIncludingGravity.x);
-//   y = parseInt(e.accelerationIncludingGravity.y);
-//   z = parseInt(e.accelerationIncludingGravity.z);
-// });
 function windowResized() {
   const s = min(windowWidth, windowHeight) * CANVAS_SIZE_PERCENT;
   resizeCanvas(s, s);
@@ -157,12 +126,12 @@ function windowResized() {
 function setup() {
   rectMode(CENTER);
   const s = min(windowWidth, windowHeight) * CANVAS_SIZE_PERCENT;
-  createCanvas(s, s, null, canvas);
+  createCanvas(s, s);
 
   xpos = width / 2;
   ypos = height / 2;
   
-  // Note: Sound will be initialized when user clicks "Enable Motion" button
+  // Note: Sound will be initialized when user clicks "Enable Motion & Sound" button
   // to comply with browser autoplay policies
 }
 
