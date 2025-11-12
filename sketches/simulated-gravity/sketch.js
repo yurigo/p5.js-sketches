@@ -9,10 +9,13 @@ let ball = {
 // Physics constants
 let gravity = 0.6;
 let bounce = 0.8;
+let cnv;
 
 function setup() {
   const s = min(windowWidth, windowHeight) * 0.9;
-  createCanvas(s, s);
+  cnv = createCanvas(s, s);
+  cnv.mousePressed(handleCanvasClick);
+  cnv.touchStarted(handleCanvasClick);
   
   // Initialize ball at top center
   ball.x = width / 2;
@@ -64,14 +67,10 @@ function draw() {
   text("Click to reset", width / 2, 30);
 }
 
-function mousePressed() {
+function handleCanvasClick() {
   // Reset ball to top
   ball.x = mouseX;
   ball.y = ball.radius;
   ball.vy = 0;
-}
-
-function touchStarted() {
-  mousePressed();
-  return false; // prevent default touch behavior
+  return false;
 }

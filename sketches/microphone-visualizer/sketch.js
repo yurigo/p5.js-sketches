@@ -1,11 +1,14 @@
 let mic;
+let cnv;
 let micLevel = 0;
 let particles = [];
 let ripples = [];
 
 function setup() {
   const s = min(windowWidth, windowHeight) * 0.9;
-  createCanvas(s, s);
+  cnv = createCanvas(s, s);
+  cnv.mousePressed(handleCanvasClick);
+  cnv.touchStarted(handleCanvasClick);
   
   // Create audio input (microphone)
   mic = new p5.AudioIn();
@@ -119,17 +122,13 @@ function drawWaveformBars() {
   colorMode(RGB, 255);
 }
 
-function mousePressed() {
+function handleCanvasClick() {
   userStartAudio();
   
   if (!mic.enabled) {
     mic.start();
   }
-}
-
-function touchStarted() {
-  mousePressed();
-  return false; // prevent default touch behavior
+  return false; // prevent default behavior
 }
 
 // Particle class

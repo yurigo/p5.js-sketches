@@ -1,6 +1,10 @@
+let cnv;
+
 function setup() {
   const s = min(windowWidth, windowHeight) * 0.9;
-  createCanvas(s, s);
+  cnv = createCanvas(s, s);
+  cnv.mousePressed(playSynth);
+  cnv.touchStarted(playSynth);
   background(45, 52, 54);
 
   polySynth = new p5.PolySynth();
@@ -14,15 +18,6 @@ function windowResized() {
 
 function draw() {
   background(45, 52, 54);
-}
-
-function mousePressed() {
-  playSynth();
-}
-
-function touchStarted() {
-  mousePressed();
-  return false; // prevent default touch behavior
 }
 
 function playSynth() {

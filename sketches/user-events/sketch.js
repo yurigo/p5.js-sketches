@@ -1,13 +1,16 @@
 
 let isEpileptic = false;
 let isCirculitos = false;
-
 let listOfBalls = [];
+let cnv;
 
 function setup() {
   randomSeed(new Date());
   const s = min(windowWidth, windowHeight) * 0.9;
-  createCanvas(s, s);
+  cnv = createCanvas(s, s);
+  cnv.mousePressed(handleCanvasPress);
+  cnv.touchStarted(handleCanvasPress);
+  cnv.mouseReleased(handleCanvasRelease);
   background(45, 52, 54);
 }
 
@@ -46,17 +49,14 @@ function draw(){
   drawAllBalls(listOfBalls);
 }
 
-function mousePressed(){
+function handleCanvasPress(){
   isEpileptic = true;
+  return false;
 }
 
-function touchStarted() {
-  mousePressed();
-  return false; // prevent default touch behavior
-}
-
-function mouseReleased(){
+function handleCanvasRelease(){
   isEpileptic = false;
+  return false;
 }
 
 function mouseDragged(){

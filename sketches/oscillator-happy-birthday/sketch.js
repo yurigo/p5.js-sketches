@@ -1,4 +1,5 @@
 let osc;
+let cnv;
 let isPlaying = false;
 let pitchOffset = 0; // Semitone offset (12 semitones = 1 octave)
 let waveType = "sine"; // Current waveform type
@@ -51,7 +52,9 @@ let particles = [];
 
 function setup() {
   const s = min(windowWidth, windowHeight) * 0.9;
-  createCanvas(s, s);
+  cnv = createCanvas(s, s);
+  cnv.mousePressed(handleCanvasClick);
+  cnv.touchStarted(handleCanvasClick);
 
   // Create oscillator
   osc = new p5.Oscillator("sine");
@@ -163,18 +166,14 @@ function draw() {
   }
 }
 
-function mousePressed() {
+function handleCanvasClick() {
   if (!isPlaying) {
     userStartAudio();
     startSong();
   } else {
     stopSong();
   }
-}
-
-function touchStarted() {
-  mousePressed();
-  return false; // prevent default touch behavior
+  return false; // prevent default behavior
 }
 
 function startSong() {

@@ -4,10 +4,13 @@
 
 let seedValue = 3141592654; // Default seed
 let artElements = [];
+let cnv;
 
 function setup() {
   const s = min(windowWidth, windowHeight) * 0.9;
-  createCanvas(s, s);
+  cnv = createCanvas(s, s);
+  cnv.mousePressed(handleCanvasClick);
+  cnv.touchStarted(handleCanvasClick);
 
   // Use HSL color mode as instructed
   colorMode(HSB, 360, 100, 100, 100);
@@ -62,13 +65,9 @@ function drawAllElements() {}
 function drawElement(element) {}
 
 // Allow clicking to generate new seed and reload
-function mousePressed() {
+function handleCanvasClick() {
   let newSeed = int(random(1, 10000));
   let newUrl = window.location.pathname + "?id=" + newSeed;
   window.location.href = newUrl;
-}
-
-function touchStarted() {
-  mousePressed();
-  return false; // prevent default touch behavior
+  return false; // prevent default behavior
 }

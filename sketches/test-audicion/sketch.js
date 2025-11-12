@@ -7,6 +7,7 @@
 let osc; // Oscilador
 let started = false; // ¿AudioContext desbloqueado y oscilador iniciado?
 let isIncreasing = true; // ¿Estamos aumentando la frecuencia?
+let cnv;
 
 // Rango de frecuencias (puedes ajustarlo a tus necesidades)
 const MIN_FREQ = 220; // La3
@@ -18,7 +19,9 @@ const RISE_RATE = 1000; // sube ~120 Hz por segundo
 
 function setup() {
   const s = min(windowWidth, windowHeight) * 0.9;
-  createCanvas(s, s);
+  cnv = createCanvas(s, s);
+  cnv.mousePressed(handleCanvasClick);
+  cnv.touchStarted(handleCanvasClick);
   colorMode(HSB, 360, 100, 100);
   textAlign(CENTER, CENTER);
   textFont("monospace");
@@ -88,13 +91,9 @@ function startAudioOnce() {
   }
 }
 
-function mousePressed() {
+function handleCanvasClick() {
   startAudioOnce();
-}
-
-function touchStarted() {
-  mousePressed();
-  return false; // prevent default touch behavior
+  return false; // prevent default behavior
 }
 
 function keyPressed() {

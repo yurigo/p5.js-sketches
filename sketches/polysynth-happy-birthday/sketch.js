@@ -1,4 +1,5 @@
 let polySynth;
+let cnv;
 let isPlaying = false;
 
 // Happy Birthday melody with chord harmonization
@@ -22,7 +23,9 @@ let particles = [];
 
 function setup() {
   const s = min(windowWidth, windowHeight) * 0.9;
-  createCanvas(s, s);
+  cnv = createCanvas(s, s);
+  cnv.mousePressed(handleCanvasClick);
+  cnv.touchStarted(handleCanvasClick);
   
   // Create PolySynth (can play multiple notes at once)
   polySynth = new p5.PolySynth();
@@ -94,18 +97,14 @@ function draw() {
   }
 }
 
-function mousePressed() {
+function handleCanvasClick() {
   if (!isPlaying) {
     userStartAudio();
     startSong();
   } else {
     stopSong();
   }
-}
-
-function touchStarted() {
-  mousePressed();
-  return false; // prevent default touch behavior
+  return false; // prevent default behavior
 }
 
 function startSong() {

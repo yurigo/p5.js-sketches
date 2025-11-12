@@ -5,6 +5,7 @@
 // R: reset vista
 
 let maxIterations = 200;
+let cnv;
 let palette = 1;
 
 // Vista (center x/y en plano complejo y zoom relativo)
@@ -137,14 +138,10 @@ function mouseWheel(e) {
   return false; // Evita scroll de la página
 }
 
-function mousePressed() {
+function handleCanvasClick() {
   isPanning = true;
   lastMouse = createVector(mouseX, mouseY);
-}
-
-function touchStarted() {
-  mousePressed();
-  return false; // prevent default touch behavior
+  return false;
 }
 
 function mouseDragged() {
