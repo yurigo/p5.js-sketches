@@ -48,8 +48,49 @@ canvas {
 form {
   color: var(--text-color);
   display: flex;
+  flex-direction: column;
   padding: 1em;
-  gap: 1em;
-  justify-content: space-around;
+  gap: 0.75em;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+.control-group label {
+  font-size: 0.9em;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--text-color);
+}
+
+input[type="checkbox"] {
+  accent-color: var(--text-color);
+  width: 20px;
+  height: 20px;
+}
+
+button {
+  padding: 0.75em 1em;
+  background: var(--text-color);
+  color: #0f0f23;
+  border: none;
+  border-radius: 0.5em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 0.5em;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #ffa500;
 }
