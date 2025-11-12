@@ -127,6 +127,11 @@ function mousePressed() {
   }
 }
 
+function touchStarted() {
+  mousePressed();
+  return false; // prevent default touch behavior
+}
+
 // Particle class
 class Particle {
   constructor(x, y, level) {

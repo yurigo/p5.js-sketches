@@ -211,3 +211,8 @@ function mousePressed() {
   let newUrl = window.location.pathname + '?id=' + newSeed;
   window.location.href = newUrl;
 }
+
+function touchStarted() {
+  mousePressed();
+  return false; // prevent default touch behavior
+}

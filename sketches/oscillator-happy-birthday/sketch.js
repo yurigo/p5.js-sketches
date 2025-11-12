@@ -172,6 +172,11 @@ function mousePressed() {
   }
 }
 
+function touchStarted() {
+  mousePressed();
+  return false; // prevent default touch behavior
+}
+
 function startSong() {
   isPlaying = true;
   currentNote = 0;

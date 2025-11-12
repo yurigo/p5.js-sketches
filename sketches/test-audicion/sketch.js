@@ -92,6 +92,11 @@ function mousePressed() {
   startAudioOnce();
 }
 
+function touchStarted() {
+  mousePressed();
+  return false; // prevent default touch behavior
+}
+
 function keyPressed() {
   startAudioOnce();
   if (key === "r" || key === "R") {

@@ -164,6 +164,11 @@ function mousePressed() {
   env.play();
 }
 
+function touchStarted() {
+  mousePressed();
+  return false; // prevent default touch behavior
+}
+
 function keyPressed() {
   if (key === 'r' || key === 'R') {
     isReverbEnabled = !isReverbEnabled;

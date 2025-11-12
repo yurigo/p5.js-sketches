@@ -142,6 +142,11 @@ function mousePressed() {
   lastMouse = createVector(mouseX, mouseY);
 }
 
+function touchStarted() {
+  mousePressed();
+  return false; // prevent default touch behavior
+}
+
 function mouseDragged() {
   if (!isPanning) return;
 
