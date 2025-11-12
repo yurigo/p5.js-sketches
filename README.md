@@ -260,6 +260,10 @@ FFT-based frequency spectrum analyzer showing bass, mid, and treble ranges with 
 
 Sound-controlled jumping game where you use your voice or sounds to make the character jump over obstacles.
 
+### 🎤🌳 [micnfrac](sketches/micnfrac/)
+
+Microphone-reactive fractal tree that transforms in real-time based on sound. Bass controls branch angles, amplitude affects length, frequencies determine color, and energy controls recursion depth.
+
 ### 📱 [waaac-woooc](sketches/waaac-woooc/)
 
 Device motion-controlled ball that responds to accelerometer/gyroscope input, bouncing around the canvas with realistic physics. Includes controls to invert axes and permission handling for iOS devices.
