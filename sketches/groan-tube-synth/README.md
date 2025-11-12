@@ -1,4 +1,4 @@
-# Waaac-Woooc: Groan Tube Simulator
+# Groan Tube Synth
 
 A mobile-interactive sound sketch that simulates a groan tube (vara de lamento) using device accelerometer input and p5.sound synthesis.
 
