@@ -264,6 +264,10 @@ Sound-controlled jumping game where you use your voice or sounds to make the cha
 
 Device motion-controlled ball that responds to accelerometer/gyroscope input, bouncing around the canvas with realistic physics. Includes controls to invert axes and permission handling for iOS devices.
 
+### 🎵 [groan-tube-synth](sketches/groan-tube-synth/)
+
+Mobile groan tube simulator using device accelerometer and p5.sound synthesis. Move or shake your device to create dynamic "waaac-woooc" sounds! Features real-time motion-to-sound mapping, adjustable pitch range, sensitivity controls, and visual feedback with glowing effects.
+
 ## How to Run
 
 1. Clone this repository
