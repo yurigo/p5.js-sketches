@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>p5.js Autotune (FFT pitch → Synth)</title>
+    <!-- p5.js + p5.sound -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.sound.min.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #0b0c10;
+        color: #eaf0f6;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+          Helvetica, Arial;
+      }
+      #ui {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        padding: 12px;
+      }
+      .card {
+        background: #11141a;
+        border: 1px solid #1e2533;
+        border-radius: 14px;
+        padding: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin: 6px 0;
+      }
+      label {
+        opacity: 0.9;
+        font-size: 0.95rem;
+      }
+      select,
+      input[type="range"],
+      button {
+        width: 140px;
+        background: #0e131a;
+        color: #dfe7ef;
+        border: 1px solid #273245;
+        border-radius: 10px;
+        padding: 6px 10px;
+      }
+      button.primary {
+        background: #1d74ff;
+        color: white;
+        border: none;
+      }
+      canvas {
+        display: block;
+        margin: auto;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+      }
+      #noteLabel {
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+      }
+      small {
+        opacity: 0.7;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div id="ui">
+        <div class="card">
+          <div class="row">
+            <button id="btnStart" class="primary">Enable Audio</button
+            ><small id="ctxState">(context: suspended)</small>
+          </div>
+          <div class="row">
+            <label>Mic:</label>
+            <button id="btnMic">Start</button>
+          </div>
+          <div class="row">
+            <label>Engine:</label>
+            <select id="engine">
+              <option>PolySynth</option>
+              <option>Oscillator</option>
+              <option>Off</option>
+            </select>
+          </div>
+          <div class="row">
+            <label>Dry (mic) gain</label>
+            <input
+              id="dry"
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value="0.0"
+            />
+          </div>
+          <div class="row">
+            <label>Wet (synth) gain</label>
+            <input
+              id="wet"
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value="0.6"
+            />
+          </div>
+          <div class="row">
+            <label>Gate (dB)</label>
+            <input
+              id="gate"
+              type="range"
+              min="-80"
+              max="-20"
+              step="1"
+              value="-50"
+            />
+          </div>
+          <div class="row">
+            <label>Hold (ms)</label>
+            <input
+              id="hold"
+              type="range"
+              min="0"
+              max="400"
+              step="10"
+              value="120"
+            />
+          </div>
+          <div class="row">
+            <label>Smooth (ms)</label>
+            <input
+              id="smooth"
+              type="range"
+              min="0"
+              max="500"
+              step="10"
+              value="120"
+            />
+          </div>
+          <div class="row">
+            <label>Attack (ms)</label>
+            <input
+              id="attack"
+              type="range"
+              min="5"
+              max="400"
+              step="5"
+              value="40"
+            />
+          </div>
+          <div class="row">
+            <label>Release (ms)</label>
+            <input
+              id="release"
+              type="range"
+              min="20"
+              max="1200"
+              step="10"
+              value="220"
+            />
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="row">
+            <label>Key</label>
+            <select id="key"></select>
+          </div>
+          <div class="row">
+            <label>Scale</label>
+            <select id="scale">
+              <option value="chromatic">Chromatic (12-TET)</option>
+              <option value="major">Major</option>
+              <option value="minor">Natural Minor</option>
+              <option value="pentatonicMajor">Pentatonic Major</option>
+              <option value="pentatonicMinor">Pentatonic Minor</option>
+            </select>
+          </div>
+          <div class="row">
+            <label>Transpose (semitones)</label>
+            <input
+              id="transpose"
+              type="range"
+              min="-12"
+              max="12"
+              step="1"
+              value="0"
+            />
+          </div>
+          <div class="row">
+            <label>Ref A4</label>
+            <input
+              id="refA"
+              type="range"
+              min="415"
+              max="466"
+              step="1"
+              value="440"
+            />
+          </div>
+          <div class="row">
+            <label>Min Hz</label>
+            <input
+              id="minHz"
+              type="range"
+              min="50"
+              max="200"
+              step="1"
+              value="80"
+            />
+          </div>
+          <div class="row">
+            <label>Max Hz</label>
+            <input
+              id="maxHz"
+              type="range"
+              min="400"
+              max="1600"
+              step="1"
+              value="1000"
+            />
+          </div>
+          <div class="row">
+            <label>FFT Size</label>
+            <select id="fftSize">
+              <option value="1024">1024</option>
+              <option value="2048" selected>2048</option>
+              <option value="4096">4096</option>
+              <option value="8192">8192</option>
+            </select>
+          </div>
+          <div class="row">
+            <span id="noteLabel">--</span><span id="freqLabel">0.00 Hz</span>
+          </div>
+          <small
+            >Tip: set Wet higher than Dry for a more obvious "autotune" effect.
+            This sketch does <em>not</em> pitch-shift the mic; it generates a
+            tuned synth voice following your pitch.</small
+          >
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // ===== Utilities =====
+      const KEYS = [
+        "C",
+        "C#",
+        "D",
+        "D#",
+        "E",
+        "F",
+        "F#",
+        "G",
+        "G#",
+        "A",
+        "A#",
+        "B",
+      ]; // MIDI names
+      const SCALES = {
+        chromatic: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+        major: [0, 2, 4, 5, 7, 9, 11],
+        minor: [0, 2, 3, 5, 7, 8, 10], // natural minor
+        pentatonicMajor: [0, 2, 4, 7, 9],
+        pentatonicMinor: [0, 3, 5, 7, 10],
+      };
+      function freqToMidi(freq, refA = 440) {
+        return 69 + 12 * Math.log2(freq / refA);
+      }
+      function midiToFreq(midi, refA = 440) {
+        return refA * Math.pow(2, (midi - 69) / 12);
+      }
+      function midiName(midi) {
+        const m = Math.round(midi);
+        const name = KEYS[((m % 12) + 12) % 12];
+        const octave = Math.floor(m / 12) - 1;
+        return name + octave;
+      }
+      function wrap(a, b) {
+        return ((a % b) + b) % b;
+      }
+
+      // Snap a MIDI note to a given scale+key; returns nearest integer MIDI in that collection
+      function snapMidiToScale(midiFloat, keyRoot, scaleName) {
+        const scale = SCALES[scaleName] || SCALES.chromatic;
+        const target = Math.round(midiFloat);
+        // If chromatic, it's just rounding to integer MIDI
+        if (scaleName === "chromatic") return target;
+        // Build candidate set around target within +/- 12 semitones to find nearest
+        let best = target,
+          bestDist = 1e9;
+        for (let offs = -24; offs <= 24; offs++) {
+          const n = target + offs;
+          const deg = wrap(n - keyRoot, 12);
+          if (scale.includes(deg)) {
+            const d = Math.abs(n - midiFloat);
+            if (d < bestDist) {
+              bestDist = d;
+              best = n;
+            }
+          }
+        }
+        return best;
+      }
+
+      // ===== p5 setup =====
+      let mic,
+        fft,
+        fftSize = 2048,
+        spectrum;
+      let dryGain, wetGain; // master gains
+      let polysynth, osc, env;
+      let running = false,
+        micOn = false;
+      let lastMidi = null,
+        lastChangeMs = 0,
+        holdMs = 120;
+      let smoothMs = 120,
+        smoothedFreq = null;
+      let minHz = 80,
+        maxHz = 1000,
+        refA = 440;
+      let attackMs = 40,
+        releaseMs = 220;
+
+      function setup() {
+        const cnv = createCanvas(Math.min(window.innerWidth, 1100), 260);
+        cnv.parent(document.body);
+
+        // Audio objects
+        mic = new p5.AudioIn();
+        dryGain = new p5.Gain();
+        wetGain = new p5.Gain();
+        dryGain.amp(0.0);
+        wetGain.amp(0.6);
+        mic.connect(dryGain);
+        dryGain.connect(); // to destination
+
+        polysynth = new p5.PolySynth();
+        wetGain.setInput(polysynth.output); // route synth output through wetGain
+        wetGain.amp(0.6);
+        osc = new p5.Oscillator("sawtooth");
+        env = new p5.Envelope();
+        env.setADSR(attackMs / 1000, 0.05, 0.8, releaseMs / 1000);
+        osc.disconnect(); // route through wetGain instead
+        osc.start();
+        osc.amp(env);
+        osc.freq(220);
+        wetGain.connect();
+        // ALSO route osc to wetGain
+        osc.connect(wetGain);
+
+        fft = new p5.FFT(0.8, fftSize);
+
+        // UI wiring
+        const btnStart = document.getElementById("btnStart");
+        const ctxState = document.getElementById("ctxState");
+        btnStart.onclick = async () => {
+          if (getAudioContext().state !== "running") {
+            await userStartAudio();
+          }
+          running = true;
+          ctxState.textContent = "(context: " + getAudioContext().state + ")";
+        };
+        setInterval(() => {
+          ctxState.textContent = "(context: " + getAudioContext().state + ")";
+        }, 500);
+
+        document.getElementById("btnMic").onclick = async () => {
+          if (!micOn) {
+            await mic.start();
+            fft.setInput(mic);
+            document.getElementById("btnMic").textContent = "Stop";
+            micOn = true;
+          } else {
+            mic.stop();
+            micOn = false;
+            document.getElementById("btnMic").textContent = "Start";
+          }
+        };
+
+        document.getElementById("dry").oninput = (e) =>
+          dryGain.amp(parseFloat(e.target.value));
+        document.getElementById("wet").oninput = (e) =>
+          wetGain.amp(parseFloat(e.target.value));
+        document.getElementById("gate").oninput = (e) =>
+          (gateDb = parseFloat(e.target.value));
+        document.getElementById("hold").oninput = (e) =>
+          (holdMs = parseInt(e.target.value));
+        document.getElementById("smooth").oninput = (e) =>
+          (smoothMs = parseInt(e.target.value));
+        document.getElementById("attack").oninput = (e) => {
+          attackMs = parseInt(e.target.value);
+          env.setADSR(attackMs / 1000, 0.05, 0.8, releaseMs / 1000);
+        };
+        document.getElementById("release").oninput = (e) => {
+          releaseMs = parseInt(e.target.value);
+          env.setADSR(attackMs / 1000, 0.05, 0.8, releaseMs / 1000);
+        };
+        document.getElementById("fftSize").oninput = (e) => {
+          fftSize = parseInt(e.target.value);
+          fft.bins = fftSize;
+        };
+
+        // musical options
+        const keySel = document.getElementById("key");
+        KEYS.forEach((k, i) => {
+          const opt = document.createElement("option");
+          opt.textContent = k;
+          opt.value = i;
+          keySel.appendChild(opt);
+        });
+        keySel.value = 9; // A
+        document.getElementById("refA").oninput = (e) =>
+          (refA = parseFloat(e.target.value));
+        document.getElementById("transpose").oninput = () => {}; // read on demand
+        document.getElementById("minHz").oninput = (e) =>
+          (minHz = parseFloat(e.target.value));
+        document.getElementById("maxHz").oninput = (e) =>
+          (maxHz = parseFloat(e.target.value));
+
+        noStroke();
+      }
+
+      let gateDb = -50; // noise gate
+
+      function draw() {
+        background(12, 14, 20);
+        if (!running || !micOn) {
+          drawEmpty();
+          return;
+        }
+
+        // FFT spectrum & peak detection
+        spectrum = fft.analyze();
+        const sr = sampleRate();
+        const binHz = sr / 2 / spectrum.length;
+
+        let minBin = Math.max(1, Math.floor(minHz / binHz));
+        let maxBin = Math.min(spectrum.length - 1, Math.ceil(maxHz / binHz));
+
+        let peakBin = -1,
+          peakAmp = -1;
+        for (let i = minBin; i <= maxBin; i++) {
+          const v = spectrum[i];
+          if (v > peakAmp) {
+            peakAmp = v;
+            peakBin = i;
+          }
+        }
+
+        // Draw spectrum
+        fill(25, 30, 44);
+        rect(0, 0, width, height);
+        // bars
+        const w = width / spectrum.length;
+        for (let i = 0; i < spectrum.length; i++) {
+          const h = map(spectrum[i], 0, 255, 0, height - 30);
+          rect(i * w, height - h, Math.max(1, w * 0.9), h);
+        }
+
+        // Convert peak bin to frequency
+        let freq = peakBin * binHz;
+
+        // Noise gate using overall energy in the band
+        const energyDb = 20 * Math.log10((peakAmp + 1) / 255);
+        const gated = energyDb < gateDb;
+
+        if (gated) {
+          showHUD(null, 0, energyDb);
+          // release synth
+          releaseCurrent();
+          return;
+        }
+
+        // Smooth frequency (single-pole low-pass over time)
+        const dt = deltaTime; // ms since last frame
+        const alpha = smoothMs <= 0 ? 1 : 1 - Math.exp(-dt / smoothMs);
+        smoothedFreq =
+          smoothedFreq == null
+            ? freq
+            : smoothedFreq + alpha * (freq - smoothedFreq);
+
+        // Convert to MIDI & snap to scale
+        const midi = freqToMidi(smoothedFreq, refA);
+        const keyRoot = parseInt(document.getElementById("key").value); // 0..11
+        const scaleName = document.getElementById("scale").value;
+        const transpose = parseInt(document.getElementById("transpose").value);
+        const snappedMidi = snapMidiToScale(
+          midi + transpose,
+          keyRoot,
+          scaleName
+        );
+
+        // Hold: avoid re-triggering too fast
+        const now = millis();
+        let doTrigger = false;
+        if (lastMidi === null) {
+          doTrigger = true;
+        } else if (
+          Math.abs(snappedMidi - lastMidi) >= 1 &&
+          now - lastChangeMs > holdMs
+        ) {
+          doTrigger = true;
+        }
+
+        if (doTrigger) {
+          // Trigger the synth engine
+          triggerNote(snappedMidi);
+          lastMidi = snappedMidi;
+          lastChangeMs = now;
+        }
+
+        // HUD
+        showHUD(snappedMidi, smoothedFreq, energyDb, peakBin, binHz);
+      }
+
+      function triggerNote(midi) {
+        const engine = document.getElementById("engine").value;
+        const f = midiToFreq(midi, refA);
+        const a = attackMs / 1000;
+        const r = releaseMs / 1000;
+        if (engine === "PolySynth") {
+          // short re-trigger to create a continuous lead-like voice
+          polysynth.setADSR(a, 0.05, 0.8, r);
+          polysynth.play(f, 0.9, 0, 0.18);
+        } else if (engine === "Oscillator") {
+          osc.freq(f);
+          env.triggerAttack();
+          setTimeout(() => env.triggerRelease(), 160);
+        } else {
+          // engine off, do nothing
+        }
+      }
+
+      function releaseCurrent() {
+        // Only relevant for Oscillator path; PolySynth notes are short triggers
+        env.triggerRelease();
+      }
+
+      function drawEmpty() {
+        fill(30);
+        rect(0, 0, width, height);
+        noStroke();
+        fill(220);
+        textAlign(CENTER, CENTER);
+        textSize(16);
+        text(
+          'Click "Enable Audio" then "Start" to open the microphone.\nAllow mic permissions when asked.',
+          width / 2,
+          height / 2
+        );
+      }
+
+      function showHUD(midi, freq, energyDb, peakBin, binHz) {
+        // Mark detected peak
+        if (peakBin) {
+          stroke(255);
+          line(
+            peakBin * (width / spectrum.length),
+            0,
+            peakBin * (width / spectrum.length),
+            height
+          );
+          noStroke();
+        }
+        const noteLabel = document.getElementById("noteLabel");
+        const freqLabel = document.getElementById("freqLabel");
+        if (midi == null) {
+          noteLabel.textContent = "--";
+          freqLabel.textContent = "0.00 Hz (" + energyDb.toFixed(1) + " dB)";
+        } else {
+          noteLabel.textContent = midiName(midi);
+          freqLabel.textContent = `${freq.toFixed(2)} Hz (${energyDb.toFixed(
+            1
+          )} dB)`;
+        }
+      }
+
+      function windowResized() {
+        resizeCanvas(Math.min(window.innerWidth, 1100), 260);
+      }
+    </script>
+  </body>
+</html>
