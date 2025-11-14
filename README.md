@@ -264,6 +264,10 @@ Sound-controlled jumping game where you use your voice or sounds to make the cha
 
 Device motion-controlled ball that responds to accelerometer/gyroscope input, bouncing around the canvas with realistic physics. Includes controls to invert axes and permission handling for iOS devices.
 
+### 🐍 [ball-attack](sketches/ball-attack/)
+
+Fast-to-slow color shooting snake. A continuous stream of colored balls (a "serpent") flows downward with a smooth speed gradient: fast near the top, easing to slow near the bottom. Shoot the front ball by pressing 1–3 (ROJO / VERDE / AZUL) or using the buttons; correct hits keep the length constant, misses lightly penalize score. Lose when the head reaches the bottom edge. Demonstrates dynamic pacing, recycling entities for an endless feel, and simple input-driven gameplay.
+
 ## How to Run
 
 1. Clone this repository
