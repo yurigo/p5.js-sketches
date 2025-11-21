@@ -22,6 +22,9 @@ function setup() {
   createCanvas(s, s);
   noStroke();
 
+  // Initialize fullscreen controls
+  initFullscreenControls();
+
   // Prepare mic and amplitude analyzer; we start mic on user gesture.
   try {
     mic = new p5.AudioIn();
@@ -34,9 +37,7 @@ function setup() {
 }
 
 function windowResized() {
-  const s = min(windowWidth, windowHeight) * 0.9;
-  resizeCanvas(s, s);
-  redraw();
+  handleFullscreenWindowResize();
 }
 
 function startMic() {
