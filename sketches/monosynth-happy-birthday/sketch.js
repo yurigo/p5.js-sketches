@@ -1,5 +1,6 @@
 let monoSynth;
 let isPlaying = false;
+let cnv;
 
 // Happy Birthday melody
 // Format: [note, duration in seconds]
@@ -43,7 +44,9 @@ let particles = [];
 
 function setup() {
   const s = min(windowWidth, windowHeight) * 0.9;
-  createCanvas(s, s);
+  cnv = createCanvas(s, s);
+  cnv.mousePressed(handleCanvasClick);
+  cnv.touchStarted(handleCanvasClick);
 
   // Create MonoSynth with custom envelope
   monoSynth = new p5.MonoSynth();
@@ -117,13 +120,14 @@ function draw() {
   }
 }
 
-function mousePressed() {
+function handleCanvasClick() {
   if (!isPlaying) {
     userStartAudio();
     startSong();
   } else {
     stopSong();
   }
+  return false; // prevent default behavior
 }
 
 function startSong() {

@@ -1,11 +1,14 @@
 let mic;
+let cnv;
 let fft;
 let spectrum = [];
 let waveform = [];
 
 function setup() {
   const s = min(windowWidth, windowHeight) * 0.9;
-  createCanvas(s, s);
+  cnv = createCanvas(s, s);
+  cnv.mousePressed(handleCanvasClick);
+  cnv.touchStarted(handleCanvasClick);
   
   // Create audio input
   mic = new p5.AudioIn();
@@ -161,10 +164,11 @@ function drawLabels() {
   colorMode(RGB, 255);
 }
 
-function mousePressed() {
+function handleCanvasClick() {
   userStartAudio();
   
   if (!mic.enabled) {
     mic.start();
   }
+  return false; // prevent default behavior
 }
