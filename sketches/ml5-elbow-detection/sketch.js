@@ -31,6 +31,12 @@ function modelReady() {
 
 function startSketch() {
   if (!audioStarted) {
+    // Ensure oscillators are initialized
+    if (!leftElbowOsc || !rightElbowOsc) {
+      console.warn("Oscillators not ready yet");
+      return;
+    }
+    
     userStartAudio();
     leftElbowOsc.start();
     rightElbowOsc.start();

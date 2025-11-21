@@ -35,7 +35,13 @@ function modelReady() {
 }
 
 function startSketch() {
-  if (!audioStarted && thereminOsc) {
+  if (!audioStarted) {
+    // Ensure oscillators are initialized
+    if (!thereminOsc) {
+      console.warn("Oscillator not ready yet");
+      return;
+    }
+    
     userStartAudio();
     thereminOsc.start();
     audioStarted = true;
