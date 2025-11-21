@@ -30,6 +30,17 @@
         />
       </svg>
     </a>
+    
+    <!-- Start overlay for sound activation -->
+    <div id="start-overlay">
+      <div class="loading-text" id="loading-status">Loading ML5 model...</div>
+      <button id="start-button" style="display: none;">Start Sound</button>
+      <div class="instruction-text" id="instructions" style="display: none;">
+        Show your elbows to make sound!<br>
+        Left elbow = Red sound • Right elbow = Blue sound
+      </div>
+    </div>
+    
     <script src="sketch.js"></script>
   </body>
 </html>

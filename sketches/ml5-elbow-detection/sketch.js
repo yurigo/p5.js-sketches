@@ -6,9 +6,40 @@ let poses = [];
 let leftElbowOsc;
 let rightElbowOsc;
 let audioStarted = false;
+let modelLoaded = false;
 
 function preload() {
-  bodyPose = ml5.bodyPose("MoveNet");
+  bodyPose = ml5.bodyPose("MoveNet", modelReady);
+}
+
+function modelReady() {
+  modelLoaded = true;
+  console.log("Model loaded!");
+  
+  // Update UI to show start button
+  const loadingStatus = document.getElementById('loading-status');
+  const startButton = document.getElementById('start-button');
+  const instructions = document.getElementById('instructions');
+  
+  if (loadingStatus) loadingStatus.style.display = 'none';
+  if (startButton) {
+    startButton.style.display = 'block';
+    startButton.onclick = startSketch;
+  }
+  if (instructions) instructions.style.display = 'block';
+}
+
+function startSketch() {
+  if (!audioStarted) {
+    userStartAudio();
+    leftElbowOsc.start();
+    rightElbowOsc.start();
+    audioStarted = true;
+    
+    // Hide the overlay
+    const overlay = document.getElementById('start-overlay');
+    if (overlay) overlay.classList.add('hidden');
+  }
 }
 
 function gotPoses(results) {
@@ -45,14 +76,8 @@ function setup() {
 function draw() {
   image(video, 0, 0, width, height);
 
-  // Show instruction to click if audio hasn't started
+  // Don't process if audio hasn't started
   if (!audioStarted) {
-    push();
-    fill(255, 200, 0);
-    textAlign(CENTER, CENTER);
-    textSize(24);
-    text("Click to activate sound", width / 2, height / 2);
-    pop();
     return;
   }
 
@@ -121,12 +146,4 @@ function drawElbowBall(keypoint, ballColor) {
   pop();
 }
 
-// Mouse click to start audio (required by browser)
-function mousePressed() {
-  if (!audioStarted) {
-    userStartAudio();
-    leftElbowOsc.start();
-    rightElbowOsc.start();
-    audioStarted = true;
-  }
-}
+// Mouse click handling removed - using dedicated start button instead

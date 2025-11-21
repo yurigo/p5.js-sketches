@@ -30,6 +30,17 @@
         />
       </svg>
     </a>
+    
+    <!-- Start overlay for sound activation -->
+    <div id="start-overlay">
+      <div class="loading-text" id="loading-status">Loading ML5 model...</div>
+      <button id="start-button" style="display: none;">Start Theremin</button>
+      <div class="instruction-text" id="instructions" style="display: none;">
+        Left hand controls pitch • Right hand controls volume<br>
+        Press 1-4 to change waveform
+      </div>
+    </div>
+    
     <script src="sketch.js"></script>
   </body>
 </html>
