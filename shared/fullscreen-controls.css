@@ -68,3 +68,37 @@ body.fullscreen-mode canvas {
   border: none;
   border-radius: 0;
 }
+
+/* Mobile-specific fixes for full window mode */
+body.full-window,
+body.fullscreen-mode {
+  overflow: hidden;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  /* Use CSS custom property for actual viewport height on mobile */
+  height: calc(var(--vh, 1vh) * 100);
+  top: 0;
+  left: 0;
+}
+
+/* Ensure canvas positioning in fullscreen modes */
+body.full-window canvas,
+body.fullscreen-mode canvas {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  margin: 0 !important;
+}
+
+/* Additional touch handling for mobile */
+@media (hover: none) and (pointer: coarse) {
+  /* Mobile/touch devices */
+  .screen-btn:hover {
+    transform: none;
+  }
+
+  .screen-btn:active {
+    background: rgba(255, 215, 0, 0.3);
+  }
+}

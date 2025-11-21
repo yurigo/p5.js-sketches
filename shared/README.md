@@ -7,10 +7,33 @@ A reusable module that adds 3-state viewing controls to any p5.js sketch.
 - **Normal Mode**: Canvas at 90% of viewport (default square sizing)
 - **Full Window Mode**: Canvas fills the entire browser window
 - **Fullscreen Mode**: True fullscreen using the Fullscreen API (like videos)
+- **Mobile Optimized**: Properly handles mobile browser UI (address bars, toolbars)
 - Cross-browser compatible (Chrome, Firefox, Safari, Edge)
 - Handles ESC key to exit fullscreen
 - Customizable canvas sizing logic
 - Clean, modern UI with hover effects
+
+## Mobile Support
+
+The module includes special handling for mobile devices:
+
+- **Viewport Height Fix**: Accounts for mobile browser UI that changes viewport height
+- **Touch Optimization**: Improved button interaction for touch devices
+- **Fullscreen Fallback**: On mobile, "fullscreen" mode uses full window (true fullscreen API is often restricted on mobile browsers)
+- **Fixed Positioning**: Prevents scrolling and ensures canvas fills the entire visible area
+
+### Mobile-Specific Viewport Meta Tag
+
+For best results on mobile, update your `<head>` meta tag:
+
+```html
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+/>
+```
+
+This prevents unwanted zooming and ensures the canvas fills the safe area on notched devices.
 
 ## Quick Start
 

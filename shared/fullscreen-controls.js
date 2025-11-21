@@ -18,6 +18,10 @@
 const FullscreenControls = {
   viewMode: "normal",
   customResizeCallback: null,
+  isMobile:
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    ),
 
   /**
    * Initialize fullscreen controls
@@ -27,6 +31,17 @@ const FullscreenControls = {
   init: function (customResizeCallback = null) {
     this.customResizeCallback = customResizeCallback;
     this.setupEventListeners();
+
+    // Set up CSS variable for actual viewport height (fixes mobile browser UI)
+    this.updateViewportHeight();
+    window.addEventListener("resize", () => this.updateViewportHeight());
+  },
+
+  updateViewportHeight: function () {
+    // Set CSS custom property for actual viewport height
+    // This accounts for mobile browser UI (address bar, etc.)
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
   },
 
   setupEventListeners: function () {
@@ -84,7 +99,14 @@ const FullscreenControls = {
       this.resizeCanvas();
     } else if (mode === "fullscreen") {
       document.body.classList.add("fullscreen-mode");
-      this.enterFullscreen();
+      // On mobile, fullscreen API often doesn't work or is restricted
+      // So we treat it the same as full-window mode
+      if (!this.isMobile) {
+        this.enterFullscreen();
+      } else {
+        // On mobile, just use full window mode for "fullscreen"
+        this.resizeCanvas();
+      }
       document.getElementById("fullscreenBtn").classList.add("active");
     }
   },
@@ -162,14 +184,11 @@ const FullscreenControls = {
         const s = min(windowWidth, windowHeight) * 0.9;
         w = s;
         h = s;
-      } else if (this.viewMode === "window") {
-        // Full window: use full width and height
-        w = windowWidth;
-        h = windowHeight;
-      } else if (this.viewMode === "fullscreen") {
-        // Fullscreen: use full screen width and height
-        w = windowWidth;
-        h = windowHeight;
+      } else if (this.viewMode === "window" || this.viewMode === "fullscreen") {
+        // Full window/fullscreen: use actual viewport dimensions
+        // Use window.innerWidth/Height for better mobile support
+        w = window.innerWidth;
+        h = window.innerHeight;
       }
     }
 
