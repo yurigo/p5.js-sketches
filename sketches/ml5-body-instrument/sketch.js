@@ -5,6 +5,7 @@ let poses = [];
 // Theremin sound variables
 let thereminOsc;
 let audioStarted = false;
+let modelLoaded = false;
 
 // Theremin parameters
 let minFreq = 200; // Lowest pitch (Hz)
@@ -13,7 +14,42 @@ let currentFreq = 440;
 let currentAmp = 0;
 
 function preload() {
-  bodyPose = ml5.bodyPose("MoveNet");
+  bodyPose = ml5.bodyPose("MoveNet", modelReady);
+}
+
+function modelReady() {
+  modelLoaded = true;
+  console.log("Model loaded!");
+  
+  // Update UI to show start button
+  const loadingStatus = document.getElementById('loading-status');
+  const startButton = document.getElementById('start-button');
+  const instructions = document.getElementById('instructions');
+  
+  if (loadingStatus) loadingStatus.style.display = 'none';
+  if (startButton) {
+    startButton.style.display = 'block';
+    startButton.onclick = startSketch;
+  }
+  if (instructions) instructions.style.display = 'block';
+}
+
+function startSketch() {
+  if (!audioStarted) {
+    // Ensure oscillators are initialized
+    if (!thereminOsc) {
+      console.warn("Oscillator not ready yet");
+      return;
+    }
+    
+    userStartAudio();
+    thereminOsc.start();
+    audioStarted = true;
+    
+    // Hide the overlay
+    const overlay = document.getElementById('start-overlay');
+    if (overlay) overlay.classList.add('hidden');
+  }
 }
 
 function gotPoses(results) {
@@ -46,16 +82,8 @@ function setup() {
 function draw() {
   image(video, 0, 0, width, height);
 
-  // Show instruction to click if audio hasn't started
+  // Don't process if audio hasn't started
   if (!audioStarted) {
-    push();
-    fill(255, 200, 0);
-    textAlign(CENTER, CENTER);
-    textSize(24);
-    text("Click to activate theremin", width / 2, height / 2);
-    textSize(16);
-    text("Left hand = Pitch | Right hand = Volume", width / 2, height / 2 + 40);
-    pop();
     return;
   }
 
@@ -161,14 +189,7 @@ function displayThereminInfo() {
   pop();
 }
 
-// Mouse click to start audio (required by browser)
-function mousePressed() {
-  if (!audioStarted && thereminOsc) {
-    userStartAudio();
-    thereminOsc.start();
-    audioStarted = true;
-  }
-}
+// Mouse click handling removed - using dedicated start button instead
 
 // Keyboard controls for waveform selection
 function keyPressed() {
