@@ -1,14 +1,14 @@
 function setup() {
   const s = min(windowWidth, windowHeight) * 0.9;
   createCanvas(s, s);
-  //background(45, 52, 54);
   noStroke();
+
+  // Initialize fullscreen controls
+  initFullscreenControls();
 }
 
 function windowResized() {
-  const s = min(windowWidth, windowHeight) * 0.9;
-  resizeCanvas(s, s);
-  redraw();
+  handleFullscreenWindowResize();
 }
 
 function draw() {
