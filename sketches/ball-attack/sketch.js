@@ -7,6 +7,7 @@ function setup() {
   canvas.position(x, y);
   textFont("monospace");
   createColorButtons();
+  createRestartButton();
   // Iniciar juego directamente
   startGame();
 }
@@ -33,8 +34,9 @@ function startGame() {
   // Colocar el frente tras unas pocas bolas para que varias sean visibles
   pathProgress = ballSpacing * 6; // muestra ~6 bolas al inicio
 
-  // Mostrar botones
+  // Mostrar botones de juego y ocultar botón de reinicio
   showButtons();
+  restartButton.hide();
 }
 
 function windowResized() {
@@ -48,6 +50,7 @@ function windowResized() {
 
   // Reposicionar los botones
   repositionButtons();
+  repositionRestartButton();
 
   redraw();
 }
@@ -74,6 +77,7 @@ let buttonHeight = 40;
 let buttonMargin = 10;
 
 let buttons = [];
+let restartButton; // Botón de reinicio para pantalla de game over
 let canvas; // Referencia al canvas para reposicionarlo
 
 // Estados del juego
@@ -203,6 +207,7 @@ function createColorButtons() {
     btn.style("background", cfg.fill);
     btn.style("color", "white");
     btn.style("font-size", "16px");
+    btn.style("touch-action", "manipulation");
 
     // IMPORTANTE: aquí conectamos el botón con la lógica del juego
     btn.mousePressed(() => {
@@ -230,6 +235,53 @@ function repositionButtons() {
     buttons[i].position(x, y);
     buttons[i].size(buttonWidth, buttonHeight);
   }
+}
+
+/**
+ * Crea el botón de reinicio para la pantalla de game over
+ */
+function createRestartButton() {
+  const buttonWidth = 200;
+  const buttonHeight = 50;
+  const canvasX = (windowWidth - width) / 2;
+  const canvasY = (windowHeight - height) / 2;
+  const x = canvasX + width / 2 - buttonWidth / 2;
+  const y = canvasY + height / 2 + 100;
+
+  restartButton = createButton("REINICIAR");
+  restartButton.position(x, y);
+  restartButton.size(buttonWidth, buttonHeight);
+  restartButton.style("font-family", "monospace");
+  restartButton.style("font-weight", "bold");
+  restartButton.style("border", "none");
+  restartButton.style("cursor", "pointer");
+  restartButton.style("background", "#4caf50");
+  restartButton.style("color", "white");
+  restartButton.style("font-size", "20px");
+  restartButton.style("border-radius", "8px");
+  restartButton.style("touch-action", "manipulation");
+
+  restartButton.mousePressed(() => {
+    showButtons();
+    startGame();
+  });
+
+  restartButton.hide();
+}
+
+/**
+ * Reposiciona el botón de reinicio cuando cambia el tamaño de la ventana
+ */
+function repositionRestartButton() {
+  const buttonWidth = 200;
+  const buttonHeight = 50;
+  const canvasX = (windowWidth - width) / 2;
+  const canvasY = (windowHeight - height) / 2;
+  const x = canvasX + width / 2 - buttonWidth / 2;
+  const y = canvasY + height / 2 + 100;
+
+  restartButton.position(x, y);
+  restartButton.size(buttonWidth, buttonHeight);
 }
 
 /**
@@ -313,10 +365,8 @@ function drawGameOver() {
   fill(255);
   text(`Puntuación final: ${score}`, width / 2, height / 2);
 
-  // Botón de reinicio
-  textSize(18);
-  fill(200);
-  text("Pulsa R para reiniciar", width / 2, height / 2 + 70);
+  // Mostrar el botón de reinicio
+  restartButton.show();
 }
 
 /**

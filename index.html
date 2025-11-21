@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>p5.js Sketches Collection</title>
     <style>
       html,
@@ -13,6 +13,7 @@
         background: #0f0f23;
         color: #cccccc;
         line-height: 1.6;
+        overflow-x: hidden;
       }
 
       .container {
@@ -38,7 +39,7 @@
 
       .sketches-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
         gap: 1.5rem;
         margin-bottom: 3rem;
       }
@@ -137,6 +138,7 @@
         transition: all 0.3s ease;
         font-size: 0.9rem;
         user-select: none;
+        touch-action: manipulation;
       }
 
       .category-pill:hover {
@@ -167,6 +169,7 @@
         transition: all 0.3s ease;
         font-size: 0.8rem;
         user-select: none;
+        touch-action: manipulation;
       }
 
       .tag-filter:hover {

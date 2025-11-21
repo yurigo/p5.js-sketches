@@ -24,6 +24,7 @@ body {
   place-content: center center;
   height: 100vh;
   background: #0f0f23;
+  overflow: hidden;
 }
 
 canvas {
@@ -97,3 +98,6 @@ canvas {
   line-height: 1.6;
 }
 
+#start-button {
+  touch-action: manipulation;
+}
