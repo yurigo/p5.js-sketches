@@ -76,6 +76,10 @@ let score = 0;
 let buttonHeight = 40;
 let buttonMargin = 10;
 
+// Restart button sizing constants
+const RESTART_BUTTON_WIDTH = 200;
+const RESTART_BUTTON_HEIGHT = 50;
+
 let buttons = [];
 let restartButton; // Botón de reinicio para pantalla de game over
 let canvas; // Referencia al canvas para reposicionarlo
@@ -241,16 +245,14 @@ function repositionButtons() {
  * Crea el botón de reinicio para la pantalla de game over
  */
 function createRestartButton() {
-  const buttonWidth = 200;
-  const buttonHeight = 50;
   const canvasX = (windowWidth - width) / 2;
   const canvasY = (windowHeight - height) / 2;
-  const x = canvasX + width / 2 - buttonWidth / 2;
+  const x = canvasX + width / 2 - RESTART_BUTTON_WIDTH / 2;
   const y = canvasY + height / 2 + 100;
 
   restartButton = createButton("REINICIAR");
   restartButton.position(x, y);
-  restartButton.size(buttonWidth, buttonHeight);
+  restartButton.size(RESTART_BUTTON_WIDTH, RESTART_BUTTON_HEIGHT);
   restartButton.style("font-family", "monospace");
   restartButton.style("font-weight", "bold");
   restartButton.style("border", "none");
@@ -273,15 +275,13 @@ function createRestartButton() {
  * Reposiciona el botón de reinicio cuando cambia el tamaño de la ventana
  */
 function repositionRestartButton() {
-  const buttonWidth = 200;
-  const buttonHeight = 50;
   const canvasX = (windowWidth - width) / 2;
   const canvasY = (windowHeight - height) / 2;
-  const x = canvasX + width / 2 - buttonWidth / 2;
+  const x = canvasX + width / 2 - RESTART_BUTTON_WIDTH / 2;
   const y = canvasY + height / 2 + 100;
 
   restartButton.position(x, y);
-  restartButton.size(buttonWidth, buttonHeight);
+  restartButton.size(RESTART_BUTTON_WIDTH, RESTART_BUTTON_HEIGHT);
 }
 
 /**

@@ -19,6 +19,11 @@ let freq = MIN_FREQ;
 // Velocidad de subida en Hz por segundo
 const RISE_RATE = 1000; // sube ~120 Hz por segundo
 
+// Button sizing constants
+const BUTTON_WIDTH = 120;
+const BUTTON_HEIGHT = 50;
+const BUTTON_GAP = 10;
+
 function setup() {
   const s = min(windowWidth, windowHeight) * 0.9;
   cnv = createCanvas(s, s);
@@ -38,19 +43,16 @@ function setup() {
 }
 
 function createControlButtons() {
-  const buttonWidth = 120;
-  const buttonHeight = 50;
-  const gap = 10;
-  const totalWidth = buttonWidth * 2 + gap;
+  const totalWidth = BUTTON_WIDTH * 2 + BUTTON_GAP;
   const canvasX = (windowWidth - width) / 2;
   const canvasY = (windowHeight - height) / 2;
   const startX = canvasX + width / 2 - totalWidth / 2;
-  const y = canvasY + height - buttonHeight - 10;
+  const y = canvasY + height - BUTTON_HEIGHT - 10;
 
   // Botón de pausa/reanudar
   pauseButton = createButton("PAUSAR");
   pauseButton.position(startX, y);
-  pauseButton.size(buttonWidth, buttonHeight);
+  pauseButton.size(BUTTON_WIDTH, BUTTON_HEIGHT);
   pauseButton.style("font-family", "monospace");
   pauseButton.style("font-weight", "bold");
   pauseButton.style("border", "none");
@@ -68,8 +70,8 @@ function createControlButtons() {
 
   // Botón de reinicio
   restartButton = createButton("REINICIAR");
-  restartButton.position(startX + buttonWidth + gap, y);
-  restartButton.size(buttonWidth, buttonHeight);
+  restartButton.position(startX + BUTTON_WIDTH + BUTTON_GAP, y);
+  restartButton.size(BUTTON_WIDTH, BUTTON_HEIGHT);
   restartButton.style("font-family", "monospace");
   restartButton.style("font-weight", "bold");
   restartButton.style("border", "none");
@@ -89,19 +91,16 @@ function createControlButtons() {
 }
 
 function repositionControlButtons() {
-  const buttonWidth = 120;
-  const buttonHeight = 50;
-  const gap = 10;
-  const totalWidth = buttonWidth * 2 + gap;
+  const totalWidth = BUTTON_WIDTH * 2 + BUTTON_GAP;
   const canvasX = (windowWidth - width) / 2;
   const canvasY = (windowHeight - height) / 2;
   const startX = canvasX + width / 2 - totalWidth / 2;
-  const y = canvasY + height - buttonHeight - 10;
+  const y = canvasY + height - BUTTON_HEIGHT - 10;
 
   pauseButton.position(startX, y);
-  pauseButton.size(buttonWidth, buttonHeight);
-  restartButton.position(startX + buttonWidth + gap, y);
-  restartButton.size(buttonWidth, buttonHeight);
+  pauseButton.size(BUTTON_WIDTH, BUTTON_HEIGHT);
+  restartButton.position(startX + BUTTON_WIDTH + BUTTON_GAP, y);
+  restartButton.size(BUTTON_WIDTH, BUTTON_HEIGHT);
 }
 
 function windowResized() {

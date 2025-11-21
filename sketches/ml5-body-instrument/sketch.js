@@ -22,6 +22,11 @@ const waveforms = [
   { name: "Sawtooth", type: "sawtooth" }
 ];
 
+// Button sizing constants
+const WAVEFORM_BUTTON_WIDTH = 80;
+const WAVEFORM_BUTTON_HEIGHT = 40;
+const WAVEFORM_BUTTON_GAP = 8;
+
 function preload() {
   bodyPose = ml5.bodyPose("MoveNet", modelReady);
 }
@@ -85,21 +90,18 @@ function setup() {
 }
 
 function createWaveformButtons() {
-  const buttonWidth = 80;
-  const buttonHeight = 40;
-  const gap = 8;
-  const totalWidth = buttonWidth * waveforms.length + gap * (waveforms.length - 1);
+  const totalWidth = WAVEFORM_BUTTON_WIDTH * waveforms.length + WAVEFORM_BUTTON_GAP * (waveforms.length - 1);
   const canvasX = (windowWidth - width) / 2;
   const canvasY = (windowHeight - height) / 2;
   const startX = canvasX + width / 2 - totalWidth / 2;
-  const y = canvasY + height - buttonHeight - 10;
+  const y = canvasY + height - WAVEFORM_BUTTON_HEIGHT - 10;
 
   waveforms.forEach((wf, i) => {
     const btn = createButton(wf.name);
-    const x = startX + i * (buttonWidth + gap);
+    const x = startX + i * (WAVEFORM_BUTTON_WIDTH + WAVEFORM_BUTTON_GAP);
     
     btn.position(x, y);
-    btn.size(buttonWidth, buttonHeight);
+    btn.size(WAVEFORM_BUTTON_WIDTH, WAVEFORM_BUTTON_HEIGHT);
     btn.style("font-family", "monospace");
     btn.style("font-weight", "bold");
     btn.style("border", "2px solid #333");
@@ -131,27 +133,24 @@ function createWaveformButtons() {
 }
 
 function repositionWaveformButtons() {
-  const buttonWidth = 80;
-  const buttonHeight = 40;
-  const gap = 8;
-  const totalWidth = buttonWidth * waveforms.length + gap * (waveforms.length - 1);
+  const totalWidth = WAVEFORM_BUTTON_WIDTH * waveforms.length + WAVEFORM_BUTTON_GAP * (waveforms.length - 1);
   const canvasX = (windowWidth - width) / 2;
   const canvasY = (windowHeight - height) / 2;
   const startX = canvasX + width / 2 - totalWidth / 2;
-  const y = canvasY + height - buttonHeight - 10;
+  const y = canvasY + height - WAVEFORM_BUTTON_HEIGHT - 10;
 
   waveformButtons.forEach((btn, i) => {
-    const x = startX + i * (buttonWidth + gap);
+    const x = startX + i * (WAVEFORM_BUTTON_WIDTH + WAVEFORM_BUTTON_GAP);
     btn.position(x, y);
-    btn.size(buttonWidth, buttonHeight);
+    btn.size(WAVEFORM_BUTTON_WIDTH, WAVEFORM_BUTTON_HEIGHT);
   });
 }
 
-// function windowResized() {
-//   const s = min(windowWidth, windowHeight) * 0.9;
-//   resizeCanvas(s, s);
-//   redraw();
-// }
+function windowResized() {
+  const s = min(windowWidth, windowHeight) * 0.9;
+  resizeCanvas(s, s);
+  repositionWaveformButtons();
+}
 
 function draw() {
   image(video, 0, 0, width, height);
