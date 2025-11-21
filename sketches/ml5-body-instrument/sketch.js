@@ -13,6 +13,20 @@ let maxFreq = 1000; // Highest pitch (Hz)
 let currentFreq = 440;
 let currentAmp = 0;
 
+// UI controls
+let waveformButtons = [];
+const waveforms = [
+  { name: "Sine", type: "sine" },
+  { name: "Triangle", type: "triangle" },
+  { name: "Square", type: "square" },
+  { name: "Sawtooth", type: "sawtooth" }
+];
+
+// Button sizing constants
+const WAVEFORM_BUTTON_WIDTH = 80;
+const WAVEFORM_BUTTON_HEIGHT = 40;
+const WAVEFORM_BUTTON_GAP = 8;
+
 function preload() {
   bodyPose = ml5.bodyPose("MoveNet", modelReady);
 }
@@ -71,13 +85,72 @@ function setup() {
   thereminOsc = new p5.Oscillator("sine");
   thereminOsc.freq(currentFreq);
   thereminOsc.amp(0);
+
+  createWaveformButtons();
 }
 
-// function windowResized() {
-//   const s = min(windowWidth, windowHeight) * 0.9;
-//   resizeCanvas(s, s);
-//   redraw();
-// }
+function createWaveformButtons() {
+  const totalWidth = WAVEFORM_BUTTON_WIDTH * waveforms.length + WAVEFORM_BUTTON_GAP * (waveforms.length - 1);
+  const canvasX = (windowWidth - width) / 2;
+  const canvasY = (windowHeight - height) / 2;
+  const startX = canvasX + width / 2 - totalWidth / 2;
+  const y = canvasY + height - WAVEFORM_BUTTON_HEIGHT - 10;
+
+  waveforms.forEach((wf, i) => {
+    const btn = createButton(wf.name);
+    const x = startX + i * (WAVEFORM_BUTTON_WIDTH + WAVEFORM_BUTTON_GAP);
+    
+    btn.position(x, y);
+    btn.size(WAVEFORM_BUTTON_WIDTH, WAVEFORM_BUTTON_HEIGHT);
+    btn.style("font-family", "monospace");
+    btn.style("font-weight", "bold");
+    btn.style("border", "2px solid #333");
+    btn.style("cursor", "pointer");
+    btn.style("background", i === 0 ? "#ffd700" : "#1a1a2e");
+    btn.style("color", i === 0 ? "#000" : "#fff");
+    btn.style("font-size", "12px");
+    btn.style("border-radius", "6px");
+    btn.style("touch-action", "manipulation");
+    
+    btn.mousePressed(() => {
+      if (!audioStarted || !thereminOsc) return;
+      thereminOsc.setType(wf.type);
+      
+      // Update button styles
+      waveformButtons.forEach((b, j) => {
+        if (j === i) {
+          b.style("background", "#ffd700");
+          b.style("color", "#000");
+        } else {
+          b.style("background", "#1a1a2e");
+          b.style("color", "#fff");
+        }
+      });
+    });
+    
+    waveformButtons.push(btn);
+  });
+}
+
+function repositionWaveformButtons() {
+  const totalWidth = WAVEFORM_BUTTON_WIDTH * waveforms.length + WAVEFORM_BUTTON_GAP * (waveforms.length - 1);
+  const canvasX = (windowWidth - width) / 2;
+  const canvasY = (windowHeight - height) / 2;
+  const startX = canvasX + width / 2 - totalWidth / 2;
+  const y = canvasY + height - WAVEFORM_BUTTON_HEIGHT - 10;
+
+  waveformButtons.forEach((btn, i) => {
+    const x = startX + i * (WAVEFORM_BUTTON_WIDTH + WAVEFORM_BUTTON_GAP);
+    btn.position(x, y);
+    btn.size(WAVEFORM_BUTTON_WIDTH, WAVEFORM_BUTTON_HEIGHT);
+  });
+}
+
+function windowResized() {
+  const s = min(windowWidth, windowHeight) * 0.9;
+  resizeCanvas(s, s);
+  repositionWaveformButtons();
+}
 
 function draw() {
   image(video, 0, 0, width, height);
