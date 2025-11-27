@@ -264,9 +264,41 @@ Sound-controlled jumping game where you use your voice or sounds to make the cha
 
 Microphone-reactive fractal tree that transforms in real-time based on sound. Bass controls branch angles, amplitude affects length, frequencies determine color, and energy controls recursion depth.
 
+### 👂 [test-audicion](sketches/test-audicion/)
+
+Continuous tone that increases frequency; displays current Hz and lets you pause/resume with any key. Background color maps to frequency for visual feedback.
+
 ### 📱 [waaac-woooc](sketches/waaac-woooc/)
 
 Device motion-controlled ball that responds to accelerometer/gyroscope input, bouncing around the canvas with realistic physics. Includes controls to invert axes and permission handling for iOS devices.
+
+### 🎵 [groan-tube-synth](sketches/groan-tube-synth/)
+
+Mobile groan tube simulator using device accelerometer and p5.sound synthesis. Move or shake your device to create dynamic "waaac-woooc" sounds! Features real-time motion-to-sound mapping, adjustable pitch range, sensitivity controls, and visual feedback with glowing effects.
+
+### 🐍 [ball-attack](sketches/ball-attack/)
+
+Fast-to-slow color shooting snake. A continuous stream of colored balls (a "serpent") flows downward with a smooth speed gradient: fast near the top, easing to slow near the bottom. Shoot the front ball by pressing 1–3 (ROJO / VERDE / AZUL) or using the buttons; correct hits keep the length constant, misses lightly penalize score. Lose when the head reaches the bottom edge. Demonstrates dynamic pacing, recycling entities for an endless feel, and simple input-driven gameplay.
+
+### 🤖 [ml5-elbow-detection](sketches/ml5-elbow-detection/)
+
+Machine learning pose detection using ml5.js and MoveNet to track body poses from webcam video with real-time visualization.
+
+### 🎹 [ml5-body-instrument](sketches/ml5-body-instrument/)
+
+AI-powered theremin using ml5.js body tracking - control pitch with left hand height and volume with right hand height. Includes multiple waveforms for creative sound exploration.
+
+### ✨ [amy-goodchild-try](sketches/amy-goodchild-try/)
+
+Network visualization with connected points forming constellation-like patterns using perlin noise and nearest neighbor algorithms, creating geometric art inspired by Amy Goodchild's style.
+
+### 🎨 [zach-lieberman-balls](sketches/zach-lieberman-balls/)
+
+Animated colorful balls flowing in a sine wave pattern, creating mesmerizing visual waves inspired by Zach Lieberman's creative coding style.
+
+### 🎤 [zach-lieberman-balls-interaction](sketches/zach-lieberman-balls-interaction/)
+
+Microphone-reactive version of colorful wave pattern where volume controls speed and ball size, combining audio input with visual art inspired by Zach Lieberman.
 
 ## How to Run
 

@@ -1,0 +1,96 @@
+:root {
+  --text-color: #ffd700;
+}
+
+body {
+  font-family: monospace;
+}
+
+input,
+button {
+  font-family: monospace;
+}
+
+/* Minimal back button in top-left corner */
+.back-btn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  text-decoration: none;
+}
+.back-btn svg {
+  display: block;
+  fill: none;
+  stroke: #ffd700;
+  transition: stroke 0.2s;
+}
+.back-btn:hover svg {
+  stroke: #ffa500;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  place-content: center center;
+  height: 100vh;
+  background: #0f0f23;
+}
+
+canvas {
+  display: block;
+  border: 3px solid #333;
+  border-radius: 1em;
+}
+
+form {
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  gap: 0.75em;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+.control-group label {
+  font-size: 0.9em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--text-color);
+}
+
+input[type="checkbox"] {
+  accent-color: var(--text-color);
+  width: 20px;
+  height: 20px;
+}
+
+button {
+  padding: 0.75em 1em;
+  background: var(--text-color);
+  color: #0f0f23;
+  border: none;
+  border-radius: 0.5em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 0.5em;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #ffa500;
+}

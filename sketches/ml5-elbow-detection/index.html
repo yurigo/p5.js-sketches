@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Abstract Face Sketch</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+    <script src="https://unpkg.com/ml5@1/dist/ml5.min.js"></script>
+  </head>
+
+  <body>
+    <a href="/index.html" class="back-btn" aria-label="Back to main page">
+      <svg
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M20 8L12 16L20 24"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+    
+    <!-- Start overlay for sound activation -->
+    <div id="start-overlay">
+      <div class="loading-text" id="loading-status">Loading ML5 model...</div>
+      <button id="start-button" style="display: none;">Start Sound</button>
+      <div class="instruction-text" id="instructions" style="display: none;">
+        Show your elbows to make sound!<br>
+        Left elbow = Red sound • Right elbow = Blue sound
+      </div>
+    </div>
+    
+    <script src="sketch.js"></script>
+  </body>
+</html>

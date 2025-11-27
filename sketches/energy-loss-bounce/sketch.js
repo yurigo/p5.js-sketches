@@ -10,10 +10,13 @@ let ball = {
 // Physics constants
 let gravity = 0.5;
 let energyLoss = 0.75; // Loses 25% of energy on each bounce
+let cnv;
 
 function setup() {
   const s = min(windowWidth, windowHeight) * 0.9;
-  createCanvas(s, s);
+  cnv = createCanvas(s, s);
+  cnv.mousePressed(handleCanvasClick);
+  cnv.touchStarted(handleCanvasClick);
   
   // Initialize ball
   resetBall();
@@ -113,10 +116,11 @@ function resetBall() {
   ball.vy = random(-2, 2);
 }
 
-function mousePressed() {
+function handleCanvasClick() {
   // Launch a new ball from mouse position
   ball.x = mouseX;
   ball.y = mouseY;
   ball.vx = random(-8, 8);
   ball.vy = random(-8, 8);
+  return false; // prevent default behavior
 }

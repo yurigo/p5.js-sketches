@@ -1,0 +1,68 @@
+<!-- 
+  Fullscreen Controls HTML Snippet
+  Copy this into your sketch's <body> tag (typically before the sketch.js script)
+-->
+
+<!-- Fullscreen controls in bottom-right corner -->
+<div class="screen-controls">
+  <button
+    id="normalBtn"
+    class="screen-btn active"
+    aria-label="Normal size"
+    title="Normal size"
+  >
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="4"
+        y="4"
+        width="16"
+        height="16"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+    </svg>
+  </button>
+  <button
+    id="windowBtn"
+    class="screen-btn"
+    aria-label="Full window"
+    title="Full window"
+  >
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M3 3h18v18H3z" stroke-width="2" />
+      <path d="M9 3v18M15 3v18M3 9h18M3 15h18" stroke-width="1" opacity="0.5" />
+    </svg>
+  </button>
+  <button
+    id="fullscreenBtn"
+    class="screen-btn"
+    aria-label="Fullscreen"
+    title="Fullscreen"
+  >
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+    </svg>
+  </button>
+</div>
