@@ -114,6 +114,7 @@
         display: flex;
         justify-content: center;
         gap: 0.5rem;
+        margin-top: 1.5rem;
         margin-bottom: 1.5rem;
         flex-wrap: wrap;
         align-items: center;
@@ -1126,11 +1127,38 @@
 
       const allTags = [...new Set(sketches.flatMap((s) => s.tags))].sort();
 
-      // State variables
-      let selectedCategory = "all";
-      let selectedTags = new Set();
-      let searchQuery = "";
-      let selectedSort = "category";
+      // State variables with localStorage persistence
+      function loadState() {
+        try {
+          const saved = localStorage.getItem("p5js-sketches-state");
+          if (saved) {
+            return JSON.parse(saved);
+          }
+        } catch (e) {
+          console.warn("Failed to load state from localStorage:", e);
+        }
+        return null;
+      }
+
+      function saveState() {
+        try {
+          const state = {
+            selectedCategory,
+            selectedTags: [...selectedTags],
+            searchQuery,
+            selectedSort,
+          };
+          localStorage.setItem("p5js-sketches-state", JSON.stringify(state));
+        } catch (e) {
+          console.warn("Failed to save state to localStorage:", e);
+        }
+      }
+
+      const savedState = loadState();
+      let selectedCategory = savedState?.selectedCategory || "all";
+      let selectedTags = new Set(savedState?.selectedTags || []);
+      let searchQuery = savedState?.searchQuery || "";
+      let selectedSort = savedState?.selectedSort || "category";
 
       // Render functions
       function renderCategoryFilters() {
@@ -1329,6 +1357,7 @@
         .addEventListener("click", (e) => {
           if (e.target.classList.contains("category-pill")) {
             selectedCategory = e.target.dataset.category;
+            saveState();
             renderCategoryFilters();
             renderSketches();
           }
@@ -1342,6 +1371,7 @@
           } else {
             selectedTags.add(tag);
           }
+          saveState();
           renderTagFilters();
           renderSketches();
         }
@@ -1349,6 +1379,7 @@
 
       document.getElementById("searchBox").addEventListener("input", (e) => {
         searchQuery = e.target.value.trim();
+        saveState();
         renderSketches();
       });
 
@@ -1357,12 +1388,16 @@
         .addEventListener("click", (e) => {
           if (e.target.classList.contains("sort-btn")) {
             selectedSort = e.target.dataset.sort;
+            saveState();
             renderSortControls();
             renderSketches();
           }
         });
 
-      // Initial render
+      // Initial render - restore search box value from saved state
+      if (searchQuery) {
+        document.getElementById("searchBox").value = searchQuery;
+      }
       renderCategoryFilters();
       renderTagFilters();
       renderSortControls();
