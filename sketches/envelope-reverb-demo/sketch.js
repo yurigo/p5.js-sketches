@@ -6,10 +6,13 @@ let isReverbEnabled = false;
 let isFilterEnabled = false;
 let filterFreq = 1000;
 let reverbTime = 3;
+let cnv;
 
 function setup() {
   const s = min(windowWidth, windowHeight) * 0.9;
-  createCanvas(s, s);
+  cnv = createCanvas(s, s);
+  cnv.mousePressed(handleCanvasClick);
+  cnv.touchStarted(handleCanvasClick);
   
   // Create oscillator
   osc = new p5.Oscillator('sawtooth');
@@ -136,7 +139,7 @@ function drawEnvelope() {
   textAlign(CENTER, CENTER);
 }
 
-function mousePressed() {
+function handleCanvasClick() {
   userStartAudio();
   
   // Calculate frequency based on mouse X position
@@ -162,6 +165,7 @@ function mousePressed() {
   
   // Trigger the envelope
   env.play();
+  return false; // prevent default behavior
 }
 
 function keyPressed() {

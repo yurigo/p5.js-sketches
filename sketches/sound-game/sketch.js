@@ -5,10 +5,13 @@ let obstacles = [];
 let score = 0;
 let gameOver = false;
 let gameStarted = false;
+let cnv;
 
 function setup() {
   const s = min(windowWidth, windowHeight) * 0.9;
-  createCanvas(s, s);
+  cnv = createCanvas(s, s);
+  cnv.mousePressed(handleCanvasClick);
+  cnv.touchStarted(handleCanvasClick);
   
   // Create audio input
   mic = new p5.AudioIn();
@@ -134,12 +137,13 @@ function drawVolumeMeter(level) {
   text('Volume', width - 20, 50);
 }
 
-function mousePressed() {
+function handleCanvasClick() {
   userStartAudio();
   
   if (!mic.enabled) {
     mic.start();
   }
+  return false; // prevent default behavior
 }
 
 function keyPressed() {

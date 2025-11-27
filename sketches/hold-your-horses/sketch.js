@@ -1,5 +1,6 @@
 let s;
 let c;
+let cnv;
 
 function preload() {
   soundFormats('mp3', 'ogg');
@@ -7,8 +8,10 @@ function preload() {
 }
 
 function setup() {
-  const s = min(windowWidth, windowHeight) * 0.9;
-  createCanvas(s, s);
+  const size = min(windowWidth, windowHeight) * 0.9;
+  cnv = createCanvas(size, size);
+  cnv.mousePressed(handleCanvasClick);
+  cnv.touchStarted(handleCanvasClick);
   background(45, 52, 54);
   c = color(random(255), random(255), random(255));
 }
@@ -23,7 +26,8 @@ function draw() {
   background(c)
 }
 
-function mousePressed(){
+function handleCanvasClick() {
   c = color(random(255), random(255), random(255));
   s.play();
+  return false; // prevent default behavior
 }
