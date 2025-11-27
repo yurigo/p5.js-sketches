@@ -988,6 +988,12 @@
         if (b === "all") return 1;
         return a.localeCompare(b);
       });
+
+      const allTags = [...new Set(sketches.flatMap((s) => s.tags))].sort();
+      let selectedCategory = "all";
+      let selectedTags = new Set();
+      let searchQuery = "";
+
       // Render functions
       function renderCategoryFilters() {
         const container = document.getElementById("categoryFilters");
