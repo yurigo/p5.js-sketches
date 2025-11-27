@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>p5.js Sketches Collection</title>
     <style>
       html,
@@ -423,7 +426,13 @@
           description:
             "Microphone-reactive version of colorful wave pattern where volume controls speed and ball size, inspired by Zach Lieberman.",
           category: "Sound",
-          tags: ["sound", "interactive", "audio-input", "animation", "microphone"],
+          tags: [
+            "sound",
+            "interactive",
+            "audio-input",
+            "animation",
+            "microphone",
+          ],
         },
         {
           url: "sketches/mouse-interaction/",
@@ -937,7 +946,21 @@
             "Continuous tone that increases frequency; displays current Hz and lets you pause/resume with any key. Background color maps to frequency.",
           category: "Sound",
           tags: ["sound", "interactive", "oscillator"],
-        }
+        },
+        {
+          url: "sketches/game-of-life/",
+          emoji: "🔬",
+          title: "Game of Life",
+          description:
+            "Conway's Game of Life cellular automaton with creative color-aging system. Watch patterns emerge from simple rules with interactive drawing, multiple color palettes, and adjustable simulation speed.",
+          category: "Simulation",
+          tags: [
+            "cellular-automata",
+            "simulation",
+            "interactive",
+            "generative",
+          ],
+        },
       ];
 
       // Extract all unique categories and tags
@@ -949,14 +972,6 @@
         if (b === "all") return 1;
         return a.localeCompare(b);
       });
-
-      const allTags = [...new Set(sketches.flatMap((s) => s.tags))].sort();
-
-      // State
-      let selectedCategory = "all";
-      let selectedTags = new Set();
-      let searchQuery = "";
-
       // Render functions
       function renderCategoryFilters() {
         const container = document.getElementById("categoryFilters");

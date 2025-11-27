@@ -96,6 +96,10 @@ Ball that loses energy with each bounce, gradually coming to rest - realistic ph
 
 Classic DVD logo screensaver that bounces around changing colors, counting the elusive corner hits.
 
+### 🔬 [game-of-life](sketches/game-of-life/)
+
+Conway's Game of Life cellular automaton with creative color-aging system. Watch patterns emerge from simple rules with interactive drawing, multiple color palettes, and adjustable simulation speed.
+
 ### 🌈 [fractal-line](sketches/fractal-line/)
 
 Recursive fractal visualization creating colorful line segments that subdivide into smaller patterns, demonstrating the power of recursion.
