@@ -1254,6 +1254,7 @@
       }
 
       function renderSketchCard(sketch) {
+        const dateDisplay = formatDate(sketch.dateAdded);
         return `
           <a href="${sketch.url}" class="sketch-card">
             <div class="sketch-title">
@@ -1265,14 +1266,15 @@
                 .map((tag) => `<span class="tag">${tag}</span>`)
                 .join("")}
             </div>
-            <div class="sketch-date">📅 ${formatDate(sketch.dateAdded)}</div>
+            ${dateDisplay ? `<div class="sketch-date">📅 ${dateDisplay}</div>` : ""}
           </a>
         `;
       }
 
       function formatDate(dateStr) {
-        if (!dateStr) return "Unknown";
+        if (!dateStr) return "";
         const date = new Date(dateStr);
+        if (isNaN(date.getTime())) return "";
         return date.toLocaleDateString("en-US", {
           year: "numeric",
           month: "short",
@@ -1280,16 +1282,22 @@
         });
       }
 
+      function getDateValue(dateStr) {
+        if (!dateStr) return 0;
+        const date = new Date(dateStr);
+        return isNaN(date.getTime()) ? 0 : date.getTime();
+      }
+
       function sortSketches(sketchesToSort) {
         const sorted = [...sketchesToSort];
         switch (selectedSort) {
           case "date-desc":
             return sorted.sort(
-              (a, b) => new Date(b.dateAdded) - new Date(a.dateAdded)
+              (a, b) => getDateValue(b.dateAdded) - getDateValue(a.dateAdded)
             );
           case "date-asc":
             return sorted.sort(
-              (a, b) => new Date(a.dateAdded) - new Date(b.dateAdded)
+              (a, b) => getDateValue(a.dateAdded) - getDateValue(b.dateAdded)
             );
           case "title":
             return sorted.sort((a, b) => a.title.localeCompare(b.title));
