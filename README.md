@@ -264,6 +264,10 @@ FFT-based frequency spectrum analyzer showing bass, mid, and treble ranges with 
 
 Sound-controlled jumping game where you use your voice or sounds to make the character jump over obstacles.
 
+### 🎤🌳 [micnfrac](sketches/micnfrac/)
+
+Microphone-reactive fractal tree that transforms in real-time based on sound. Bass controls branch angles, amplitude affects length, frequencies determine color, and energy controls recursion depth.
+
 ### 👂 [test-audicion](sketches/test-audicion/)
 
 Continuous tone that increases frequency; displays current Hz and lets you pause/resume with any key. Background color maps to frequency for visual feedback.
