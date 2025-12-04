@@ -4,6 +4,7 @@ precision mediump float;
 
 uniform float u_time;
 varying vec2 vTexCoord;
+varying vec3 vNormal;
 
 // Simple noise function
 float noise(vec2 st) {
@@ -65,6 +66,23 @@ void main() {
   
   // Add clouds on top
   vec3 finalColor = mix(baseColor, cloudColor, smoothstep(0.6, 0.8, clouds));
+  
+  // === LIGHTING ===
+  // Directional light coming from the sun (from upper right)
+  vec3 lightDirection = normalize(vec3(1.0, 0.5, 1.0));
+  vec3 normal = normalize(vNormal);
+  
+  // Diffuse lighting (how much surface faces the light)
+  float diffuse = max(dot(normal, lightDirection), 0.6);
+  
+  // Ambient light (base illumination even in shadow) - increased for brightness
+  float ambient = 0.0;
+  
+  // Combine ambient and diffuse
+  float lighting = ambient + (1.0 - ambient) * diffuse;
+  
+  // Apply lighting to the final color
+  finalColor *= lighting;
   
   // Add some atmospheric glow
   vec2 center = st - 0.5;

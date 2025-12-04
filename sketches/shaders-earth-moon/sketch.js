@@ -21,6 +21,9 @@ function windowResized() {
 function draw() {
   orbitControl();
 
+  // Add a soft ambient light.
+  ambientLight(50);
+
   background(0, 0, 20); // Deep space background
   noStroke();
 

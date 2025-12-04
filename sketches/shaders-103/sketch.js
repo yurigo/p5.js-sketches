@@ -17,11 +17,6 @@ function windowResized() {
   redraw();
 }
 
-function setup() {
-  createCanvas(600, 600, WEBGL);
-  noStroke();
-}
-
 function draw() {
   background(0);
 
