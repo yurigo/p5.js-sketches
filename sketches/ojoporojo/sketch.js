@@ -54,7 +54,7 @@ function windowResized() {
 }
 
 function draw() {
-  background(bgColor);
+  background(bgColor[0], bgColor[1], bgColor[2]);
 
   // actualizar y dibujar todos los ojos
   for (let e of eyes) {
@@ -196,7 +196,7 @@ class Eye {
     // dibujar párpados como elipses suaves que cubren el interior del ojo según this.closed
     if (this.closed > 0) {
       let cover = this.closed * this.size; // altura aproximada a cubrir
-      fill(bgColor); // usar el mismo color que el background
+      fill(bgColor[0], bgColor[1], bgColor[2]); // usar el mismo color que el background
       noStroke();
       // parte superior: una elipse situada hacia arriba que cubre suavemente
       ellipse(0, -this.eyeRadius + cover / 2, this.size * 1.02, cover * 1.3);
