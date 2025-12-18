@@ -5,7 +5,7 @@ let eyes = [];
 const PADDING = 10; // espacio adicional entre ojos (0 = ojos pegados)
 // tamaño (diámetro) del ojo
 const EYE_SIZE = 80; // diámetro del ojo (ajusta este valor sin tocar PADDING si quieres)
-let bgColor = 220; // color de fondo usado para los párpados
+let bgColor = [15, 15, 35]; // color de fondo usado para los párpados (matches #0f0f23)
 
 // --- Configurables para el brillo (ajústalas aquí sin tocar la lógica) ---
 // Proporción del tamaño del brillo respecto a la pupila
@@ -18,8 +18,8 @@ const SHINE_BASE = 0.35;
 const SHINE_ROTATION_DEG = -150;
 
 function setup() {
-  // usar todo el viewport
-  createCanvas(windowWidth, windowHeight);
+  const s = min(windowWidth, windowHeight) * 0.9;
+  createCanvas(s, s);
   ellipseMode(CENTER);
   noStroke();
   // crear la malla para el tamaño actual
@@ -48,8 +48,8 @@ function rebuildEyes() {
 }
 
 function windowResized() {
-  // ajustar canvas y regenerar la grilla para llenar el viewport
-  resizeCanvas(windowWidth, windowHeight);
+  const s = min(windowWidth, windowHeight) * 0.9;
+  resizeCanvas(s, s);
   rebuildEyes();
 }
 
