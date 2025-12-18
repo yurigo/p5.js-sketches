@@ -48,6 +48,10 @@ Interactive sketch responding to mouse movement with trails, ripples, and attrac
 
 Colorful planets orbiting around the mouse cursor with different speeds and sizes, creating dynamic celestial trails.
 
+### 👁️ [ojoporojo](sketches/ojoporojo/)
+
+Grid of animated eyes that follow your mouse cursor with blinking animations, colorful irises, and squashing effects.
+
 ### ⚡ [physics](sketches/physics/)
 
 Physics simulation featuring bouncing balls with collision detection and realistic motion.
