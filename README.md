@@ -2,6 +2,10 @@
 
 A collection of creative coding sketches built with p5.js, exploring various programming concepts and visual effects.
 
+## Sessions
+
+- [Session 01: Introduction to p5.js](sessions/session-01/)
+
 ## Available Sketches
 
 ### 🦄 [helloworld](sketches/helloworld/)

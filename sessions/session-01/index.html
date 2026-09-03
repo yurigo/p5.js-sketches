@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sesión 01 · Introducción a p5.js</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: system-ui, sans-serif;
+        line-height: 1.6;
+      }
+
+      body {
+        margin: 0;
+        color: #202124;
+        background: #f5f5f5;
+      }
+
+      main {
+        width: min(900px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 3rem 0;
+      }
+
+      header,
+      section {
+        padding: 1.5rem 2rem;
+        margin-bottom: 1rem;
+        background: #fff;
+        border-radius: 0.5rem;
+      }
+
+      h1,
+      h2 {
+        line-height: 1.2;
+      }
+
+      a {
+        color: #145dbf;
+      }
+
+      .sketch-link {
+        display: inline-block;
+        padding: 0.6rem 1rem;
+        color: #fff;
+        background: #145dbf;
+        border-radius: 0.35rem;
+        text-decoration: none;
+      }
+
+      code {
+        padding: 0.1rem 0.25rem;
+        background: #eef0f2;
+        border-radius: 0.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p>Material docente · p5.js</p>
+        <h1>Sesión 01: Introducción a p5.js</h1>
+        <p>
+          Tutorial guiado sobre estructura de un sketch, geometría, color,
+          coordenadas, animación y colisiones.
+        </p>
+        <a class="sketch-link" href="sketches/hellop5js/index.html">
+          Abrir el sketch asociado
+        </a>
+      </header>
+
+      <section>
+        <h2>Objetivos</h2>
+        <ul>
+          <li>Distinguir las funciones <code>setup()</code> y <code>draw()</code>.</li>
+          <li>Crear figuras geométricas y aplicarles color.</li>
+          <li>Usar <code>width</code> y <code>height</code> para definir posiciones.</li>
+          <li>Animar una figura y controlar sus colisiones con el lienzo.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recorrido</h2>
+        <ol>
+          <li>
+            Genera un proyecto desde Visual Studio Code con la extensión
+            <strong>p5.js 2.x Project Generator</strong>.
+          </li>
+          <li>
+            En <code>setup()</code>, crea el lienzo y establece un fondo.
+            Después, dibuja un círculo, un cuadrado y un triángulo.
+          </li>
+          <li>
+            Aplica <code>fill()</code> y sustituye coordenadas fijas por
+            expresiones relativas a <code>width</code> y <code>height</code>.
+          </li>
+          <li>
+            En <code>draw()</code>, actualiza la posición vertical de un
+            círculo y observa el bucle de renderizado.
+          </li>
+          <li>
+            Invierte la velocidad al alcanzar los límites. Ajusta la condición
+            para que la colisión considere el radio de la figura.
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Ejercicio final</h2>
+        <p>
+          Añade movimiento y colisiones a los otros dos círculos. Explica qué
+          variables representan la posición y la velocidad, y justifica por
+          qué el radio debe formar parte de la condición de colisión.
+        </p>
+        <p>
+          La explicación ampliada y las referencias se encuentran en el
+          <a href="README.md">README de la sesión</a>.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
