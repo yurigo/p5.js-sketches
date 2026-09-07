@@ -40,6 +40,13 @@ every session.
 8. Run `./validate-sketch.sh` for each sketch that follows the repository
    structure and manually verify all tutorial links.
 
+## Shared visual language
+
+Use `shared/site.css` and `shared/navigation.js` for every new hub, session,
+and sketch page. They provide the dark p5.js palette, responsive hamburger
+navigation, focus-friendly controls, and screen-reader labels. Add only
+page-specific layout rules locally; do not create a second navigation style.
+
 ## Content guidelines
 
 Prefer semantic HTML, accessible link text, and short explanations of the

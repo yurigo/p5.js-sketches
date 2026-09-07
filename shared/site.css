@@ -1,0 +1,122 @@
+:root {
+  --site-background: #0f0f23;
+  --site-surface: #1a1a2e;
+  --site-border: #333;
+  --site-text: #cccccc;
+  --site-muted: #999999;
+  --site-accent: #ffd700;
+  --site-link: #8ab4f8;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.site-nav {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  padding: 0 2rem;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+}
+
+.site-nav-toggle {
+  display: none;
+  padding: 0.6rem;
+  color: var(--site-accent);
+  background: var(--site-surface);
+  border: 1px solid var(--site-border);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.site-nav-icon,
+.site-nav-icon::before,
+.site-nav-icon::after {
+  display: block;
+  width: 1.4rem;
+  height: 2px;
+  background: currentColor;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.site-nav-icon {
+  position: relative;
+}
+
+.site-nav-icon::before,
+.site-nav-icon::after {
+  position: absolute;
+  content: "";
+}
+
+.site-nav-icon::before {
+  transform: translateY(-0.45rem);
+}
+
+.site-nav-icon::after {
+  transform: translateY(0.45rem);
+}
+
+.site-nav-links {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.site-nav a {
+  padding: 0.5rem 0.9rem;
+  color: var(--site-accent);
+  border: 1px solid var(--site-border);
+  border-radius: 0.5rem;
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  border-color: var(--site-accent);
+  background: var(--site-surface);
+}
+
+@media (max-width: 600px) {
+  .site-nav {
+    justify-content: flex-end;
+    padding: 0 1rem;
+  }
+
+  .site-nav-toggle {
+    display: inline-flex;
+  }
+
+  .site-nav-links {
+    position: absolute;
+    top: 100%;
+    right: 1rem;
+    display: none;
+    min-width: 12rem;
+    padding: 0.5rem;
+    background: var(--site-surface);
+    border: 1px solid var(--site-border);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.35);
+  }
+
+  .site-nav[data-open="true"] .site-nav-links {
+    display: grid;
+  }
+
+  .site-nav a {
+    display: block;
+  }
+}

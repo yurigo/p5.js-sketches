@@ -15,21 +15,7 @@ body {
 .site-nav {
     position: fixed;
     top: 1rem;
-    left: 1rem;
-    z-index: 10;
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-}
-
-.site-nav a {
-    padding: 0.4rem 0.7rem;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.65);
-    border-radius: 0.25rem;
-    text-decoration: none;
-}
-
-.site-nav a:hover {
-    background: #145dbf;
+    right: 0;
+    left: 0;
+    margin-bottom: 0;
 }
