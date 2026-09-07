@@ -1,5 +1,9 @@
 # hellop5js
 
+Este es el sketch asociado al tutorial de la
+[sesión 01](../../index.html). En él se implementa la composición de tres
+círculos, el movimiento vertical y la colisión con los bordes del lienzo.
+
 ## Getting Started
 
 Open `index.html` in your web browser and start editing `sketch.js`.

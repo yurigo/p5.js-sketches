@@ -11,3 +11,11 @@ body {
     min-height: 100vh;
     background: #333;
 }
+
+.site-nav {
+    position: fixed;
+    top: 1rem;
+    right: 0;
+    left: 0;
+    margin-bottom: 0;
+}
