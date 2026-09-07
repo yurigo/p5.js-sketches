@@ -40,6 +40,26 @@
         color: #999999;
       }
 
+      .site-nav {
+        display: flex;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .site-nav a {
+        padding: 0.5rem 0.9rem;
+        color: #ffd700;
+        border: 1px solid #444;
+        border-radius: 0.5rem;
+        text-decoration: none;
+      }
+
+      .site-nav a:hover {
+        border-color: #ffd700;
+      }
+
       .sketches-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
@@ -294,6 +314,10 @@
         A collection of creative coding sketches exploring programming concepts
         and visual effects
       </p>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html">Sketches</a>
+        <a href="sessions/">Academic sessions 2627</a>
+      </nav>
 
       <div class="filters-section">
         <input

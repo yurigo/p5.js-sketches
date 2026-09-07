@@ -40,6 +40,13 @@
         color: #145dbf;
       }
 
+      .site-nav {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+      }
+
       .sketch-link {
         display: inline-block;
         padding: 0.6rem 1rem;
@@ -58,6 +65,11 @@
   </head>
   <body>
     <main>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="../../index.html">Sketches</a>
+        <a href="../index.html">Sessions 2627</a>
+        <a href="index.html" aria-current="page">Session 01</a>
+      </nav>
       <header>
         <p>Material docente · p5.js</p>
         <h1>Sesión 01: Introducción a p5.js</h1>

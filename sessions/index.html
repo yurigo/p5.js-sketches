@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Academic Sessions 2627 · p5.js Sketches</title>
+    <style>
+      :root {
+        font-family: system-ui, sans-serif;
+        line-height: 1.6;
+        color: #202124;
+        background: #f5f5f5;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      main {
+        width: min(900px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 3rem 0;
+      }
+
+      header,
+      section {
+        padding: 1.5rem 2rem;
+        margin-bottom: 1rem;
+        background: #fff;
+        border-radius: 0.5rem;
+      }
+
+      .site-nav {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+      }
+
+      .site-nav a {
+        color: #145dbf;
+      }
+
+      .session-card {
+        display: block;
+        padding: 1rem;
+        color: inherit;
+        border: 1px solid #d6d9dd;
+        border-radius: 0.35rem;
+        text-decoration: none;
+      }
+
+      .session-card:hover {
+        border-color: #145dbf;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="../index.html">Sketches</a>
+        <a href="index.html" aria-current="page">Academic sessions 2627</a>
+      </nav>
+
+      <header>
+        <p>p5.js · Academic year 2627</p>
+        <h1>Sessions hub</h1>
+        <p>
+          A chronological entry point for the tutorials, activities, and
+          sketches developed during the academic year.
+        </p>
+      </header>
+
+      <section aria-labelledby="sessions-title">
+        <h2 id="sessions-title">Available sessions</h2>
+        <a class="session-card" href="session-01/index.html">
+          <strong>Session 01 · Introduction to p5.js</strong>
+          <br />
+          Structure, geometry, color, animation, and collisions.
+        </a>
+      </section>
+    </main>
+  </body>
+</html>

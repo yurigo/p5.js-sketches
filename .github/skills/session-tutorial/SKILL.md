@@ -7,6 +7,9 @@ description: Create and maintain a documented p5.js class session with a tutoria
 
 Use this skill when adding or improving a folder under `sessions/`.
 
+The canonical entry point for the academic year is
+`sessions/index.html`. Treat it as the sessions hub and keep it current.
+
 ## Required structure
 
 Each session must contain:
@@ -17,6 +20,9 @@ Each session must contain:
   links to every associated sketch;
 - `sketches/<name>/`: the p5.js projects produced during the session.
 
+At repository level, `sessions/index.html` is the academic-year hub linking to
+every session.
+
 ## Procedure
 
 1. Read every sketch README and `sketch.js` in the session.
@@ -26,8 +32,12 @@ Each session must contain:
 4. Add a reciprocal link from each sketch README to the session tutorial.
 5. Keep the tutorial usable offline: use relative links and avoid adding
    dependencies.
-6. Add the session to the `Sessions` section of the repository `README.md`.
-7. Run `./validate-sketch.sh` for each sketch that follows the repository
+6. Add the session to `sessions/index.html` and the `Sessions` section of the
+   repository `README.md`.
+7. Add navigation links to the repository index, sessions hub, session page,
+   and every associated sketch page. Use relative links so the pages work
+   offline.
+8. Run `./validate-sketch.sh` for each sketch that follows the repository
    structure and manually verify all tutorial links.
 
 ## Content guidelines

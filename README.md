@@ -4,6 +4,7 @@ A collection of creative coding sketches built with p5.js, exploring various pro
 
 ## Sessions
 
+- [Academic sessions 2627 hub](sessions/)
 - [Session 01: Introduction to p5.js](sessions/session-01/)
 
 ## Available Sketches
