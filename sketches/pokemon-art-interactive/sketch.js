@@ -6,7 +6,7 @@ let seedValue = 55;
 // Load the image and create a p5.Image object.
 function preload() {
   sounds = [
-    "du-bist-gut-genug.mp3",
+    //"du-bist-gut-genug.mp3",
     "faaah.mp3",
     "hee-hee.mp3",
     "mac-quack.mp3",
@@ -53,7 +53,12 @@ function draw() {
       const imgY = random(height + 20) - 40;
 
       if (i === 53) {
-        psyduckSpots.push({ x: imgX, y: imgY, w: img[i].width, h: img[i].height });
+        psyduckSpots.push({
+          x: imgX,
+          y: imgY,
+          w: img[i].width,
+          h: img[i].height,
+        });
       }
 
       image(img[i], imgX, imgY);
@@ -62,13 +67,32 @@ function draw() {
 }
 
 function mousePressed() {
-  const hitPsyduck = psyduckSpots.some(
-    ({ x, y, w, h }) => mouseX >= x && mouseX <= x + w && mouseY >= y && mouseY <= y + h,
+  const hitPsyduck = psyduckSpots.find(
+    ({ x, y, w, h }) =>
+      mouseX >= x && mouseX <= x + w && mouseY >= y && mouseY <= y + h,
   );
 
   if (hitPsyduck) {
     userStartAudio();
     random(sounds).play();
+
+    push();
+    noFill();
+    stroke(255, 221, 51);
+    strokeWeight(5);
+    circle(
+      hitPsyduck.x + hitPsyduck.w / 2,
+      hitPsyduck.y + hitPsyduck.h / 2,
+      hitPsyduck.w * 1.5,
+    );
+    pop();
+
+    setTimeout(() => {
+      seedValue = floor(random(1_000_000_000));
+      randomSeed(seedValue);
+      background(45, 52, 54);
+      redraw();
+    }, 250);
   }
 }
 
