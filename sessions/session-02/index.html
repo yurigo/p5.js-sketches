@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sesión 02 · Formas, escenas y clase Persona</title>
+    <link rel="stylesheet" href="../../shared/site.css" />
+    <style>
+      :root {
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        line-height: 1.6;
+        color: var(--site-text);
+        background: var(--site-background);
+      }
+
+      body {
+        margin: 0;
+        color: var(--site-text);
+        background: var(--site-background);
+      }
+
+      main {
+        width: min(900px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 3rem 0;
+      }
+
+      header,
+      section {
+        padding: 1.5rem 2rem;
+        margin-bottom: 1rem;
+        background: var(--site-surface);
+        border-radius: 0.5rem;
+      }
+
+      h1,
+      h2 {
+        line-height: 1.2;
+      }
+
+      .sketch-grid {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .sketch-link {
+        display: inline-block;
+        padding: 0.6rem 1rem;
+        color: var(--site-background);
+        background: var(--site-accent);
+        border-radius: 0.35rem;
+        text-decoration: none;
+      }
+
+      code {
+        padding: 0.1rem 0.25rem;
+        background: #2a2a3e;
+        border-radius: 0.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="site-nav" aria-label="Main navigation">
+        <button class="site-nav-toggle" type="button" aria-expanded="false" aria-controls="session-menu">
+          <span class="site-nav-icon"></span>
+          <span class="sr-only">Open navigation</span>
+        </button>
+        <div class="site-nav-links" id="session-menu">
+          <a href="../../index.html">Sketches</a>
+          <a href="../index.html">Sessions 2627</a>
+          <a href="index.html" aria-current="page">Session 02</a>
+        </div>
+      </nav>
+
+      <header>
+        <p>Material docente · p5.js</p>
+        <h1>Sesión 02: Formas, escenas y programación orientada a objetos</h1>
+        <p>
+          Recorrido guiado para consolidar figuras básicas, componer una escena
+          completa, diseñar pixel art y encapsular dibujos en una clase.
+        </p>
+      </header>
+
+      <section>
+        <h2>Objetivos</h2>
+        <ul>
+          <li>Combinar figuras de p5.js para construir composiciones completas.</li>
+          <li>Organizar una ilustración por capas usando orden de dibujo.</li>
+          <li>Representar imágenes con una matriz de píxeles en texto.</li>
+          <li>Crear una clase <code>Persona</code> para reutilizar un dibujo.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recorrido</h2>
+        <ol>
+          <li>
+            Revisa <code>collision-ball</code> para practicar movimiento,
+            velocidad en ejes X/Y y rebote en los límites del lienzo.
+          </li>
+          <li>
+            Analiza <code>landscape</code> para entender cómo superponer cielo,
+            montañas, lago, casa y detalles con figuras primitivas.
+          </li>
+          <li>
+            Explora <code>pixel-art</code> para transformar una matriz de
+            caracteres en cuadrados de color con bucles anidados.
+          </li>
+          <li>
+            Cierra con <code>poo-persona</code>, donde una clase modela una
+            figura humana y permite dibujar muchas instancias.
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Sketches de la sesión</h2>
+        <div class="sketch-grid">
+          <a class="sketch-link" href="sketches/collision-ball/index.html">Abrir collision-ball</a>
+          <a class="sketch-link" href="sketches/landscape/index.html">Abrir landscape</a>
+          <a class="sketch-link" href="sketches/pixel-art/index.html">Abrir pixel-art</a>
+          <a class="sketch-link" href="sketches/poo-persona/index.html">Abrir poo-persona</a>
+        </div>
+      </section>
+    </main>
+    <script src="../../shared/navigation.js"></script>
+  </body>
+</html>
