@@ -41,6 +41,9 @@
       .sketch-grid {
         display: grid;
         gap: 0.75rem;
+        padding: 0;
+        margin: 0;
+        list-style: none;
       }
 
       .sketch-link {
@@ -116,12 +119,12 @@
 
       <section>
         <h2>Sketches de la sesión</h2>
-        <div class="sketch-grid">
-          <a class="sketch-link" href="sketches/collision-ball/index.html">Abrir sketch de pelota con colisiones (collision-ball)</a>
-          <a class="sketch-link" href="sketches/landscape/index.html">Abrir sketch de paisaje por capas (landscape)</a>
-          <a class="sketch-link" href="sketches/pixel-art/index.html">Abrir sketch de pixel art con matriz (pixel-art)</a>
-          <a class="sketch-link" href="sketches/poo-persona/index.html">Abrir sketch de clase Persona (poo-persona)</a>
-        </div>
+        <ul class="sketch-grid">
+          <li><a class="sketch-link" href="sketches/collision-ball/index.html">Abrir sketch de pelota con colisiones (collision-ball)</a></li>
+          <li><a class="sketch-link" href="sketches/landscape/index.html">Abrir sketch de paisaje por capas (landscape)</a></li>
+          <li><a class="sketch-link" href="sketches/pixel-art/index.html">Abrir sketch de pixel art con matriz (pixel-art)</a></li>
+          <li><a class="sketch-link" href="sketches/poo-persona/index.html">Abrir sketch de clase Persona (poo-persona)</a></li>
+        </ul>
       </section>
     </main>
     <script src="../../shared/navigation.js"></script>
