@@ -1,5 +1,8 @@
 # pixel-art
 
+Este sketch forma parte de la [Sesión 02](../../index.html) y convierte una
+matriz de símbolos en un dibujo de pixel art.
+
 ## Getting Started
 
 Open `index.html` in your web browser and start editing `sketch.js`.
