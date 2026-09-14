@@ -1,4 +1,4 @@
-# segunda-sesion
+# collision-ball
 
 Este sketch forma parte de la [Sesión 02](../../index.html) sobre formas,
 escenas y programación orientada a objetos.

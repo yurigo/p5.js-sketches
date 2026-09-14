@@ -1,4 +1,4 @@
-# segunda-sesion-2
+# landscape
 
 Este sketch forma parte de la [Sesión 02](../../index.html) y muestra cómo
 organizar una escena completa por capas.
