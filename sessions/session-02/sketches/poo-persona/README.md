@@ -1,5 +1,8 @@
 # poo-persona
 
+Este sketch forma parte de la [Sesión 02](../../index.html) y presenta una
+clase `Persona` para reutilizar el mismo dibujo muchas veces.
+
 ## Getting Started
 
 Open `index.html` in your web browser and start editing `sketch.js`.
