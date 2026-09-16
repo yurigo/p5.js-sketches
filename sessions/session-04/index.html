@@ -38,6 +38,23 @@
         line-height: 1.2;
       }
 
+      .sketch-grid {
+        display: grid;
+        gap: 0.75rem;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      .sketch-link {
+        display: inline-block;
+        padding: 0.6rem 1rem;
+        color: var(--site-background);
+        background: var(--site-accent);
+        border-radius: 0.35rem;
+        text-decoration: none;
+      }
+
       code {
         padding: 0.1rem 0.25rem;
         background: #2a2a3e;
@@ -56,6 +73,9 @@
           <a href="../../index.html">Sketches</a>
           <a href="../index.html">Sesiones · 2627</a>
           <a href="index.html" aria-current="page">Sesión 04</a>
+          <a href="sketches/clicked-constellations/index.html">Clicked constellations</a>
+          <a href="sketches/wheel-trails/index.html">Wheel trails</a>
+          <a href="sketches/key-playground/index.html">Key playground</a>
         </div>
       </nav>
 
@@ -91,22 +111,36 @@
       </section>
 
       <section>
-        <h2>Variables globales exploradas</h2>
-        <ul>
-          <li><code>mouseX</code> y <code>mouseY</code>: posición actual del ratón dentro del canvas.</li>
-          <li><code>pmouseX</code> y <code>pmouseY</code>: posición del ratón en el frame anterior.</li>
-          <li><code>key</code>: valor de la última tecla utilizada.</li>
-          <li><code>keyIsPressed</code>: indica si alguna tecla se mantiene pulsada.</li>
-        </ul>
+        <h2>Recorrido</h2>
+        <ol>
+          <li>
+            Comienza con <code>clicked-constellations</code> para ver cómo un
+            clic añade una nueva marca exactamente en <code>mouseX</code> y
+            <code>mouseY</code>.
+          </li>
+          <li>
+            Continúa con <code>wheel-trails</code> para comparar la posición
+            anterior del ratón con la actual mediante <code>pmouseX</code> y
+            <code>pmouseY</code>.
+          </li>
+          <li>
+            En ese mismo sketch, usa la rueda para variar el grosor del trazo y
+            observar cómo <code>mouseWheel()</code> modifica el estado.
+          </li>
+          <li>
+            Cierra con <code>key-playground</code>, donde <code>keyPressed()</code>
+            cambia el símbolo dibujado y <code>keyIsPressed</code> activa un modo
+            continuo mientras la tecla siga pulsada.
+          </li>
+        </ol>
       </section>
 
       <section>
-        <h2>Ideas clave</h2>
-        <ul>
-          <li>La interacción convierte la entrada del usuario en un parámetro del sistema visual.</li>
-          <li>La posición del ratón puede controlar tamaño, color, posición, velocidad o cualquier otra propiedad.</li>
-          <li>Comparar <code>mouseX</code>/<code>mouseY</code> con <code>pmouseX</code>/<code>pmouseY</code> permite trabajar con el gesto y el desplazamiento.</li>
-          <li>Los eventos permiten introducir cambios puntuales, mientras que variables como <code>keyIsPressed</code> permiten respuestas continuas.</li>
+        <h2>Sketches de la sesión</h2>
+        <ul class="sketch-grid">
+          <li><a class="sketch-link" href="sketches/clicked-constellations/index.html">Abrir sketch de constelaciones por clic (mouseClicked)</a></li>
+          <li><a class="sketch-link" href="sketches/wheel-trails/index.html">Abrir sketch de trazos con rueda y movimiento (mouseWheel, mouseX, pmouseX)</a></li>
+          <li><a class="sketch-link" href="sketches/key-playground/index.html">Abrir sketch de teclado interactivo (keyPressed, key, keyIsPressed)</a></li>
         </ul>
       </section>
 
