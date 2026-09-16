@@ -83,19 +83,30 @@
         <p>Material docente · p5.js</p>
         <h1>Sesión 04: Interacción con el usuario</h1>
         <p>
-          Recorrido guiado para transformar ratón y teclado en entrada visual.
-          La sesión trabaja eventos discretos, variables globales del puntero y
-          controles continuos sobre el estado del sketch.
+          Sesión centrada en convertir el sketch en un sistema reactivo mediante
+          el ratón, la rueda y el teclado. Se trabajaron eventos de interacción
+          y variables globales de p5.js para construir varios sketches que
+          responden directamente a las acciones del usuario.
         </p>
       </header>
 
       <section>
         <h2>Objetivos</h2>
         <ul>
-          <li>Usar <code>mouseClicked()</code> para registrar acciones puntuales.</li>
-          <li>Leer <code>mouseX</code>, <code>mouseY</code>, <code>pmouseX</code> y <code>pmouseY</code> para dibujar movimiento.</li>
-          <li>Modificar parámetros visuales con <code>mouseWheel()</code>.</li>
-          <li>Responder a <code>keyPressed()</code> y consultar <code>key</code> y <code>keyIsPressed</code>.</li>
+          <li>Entender la diferencia entre un sketch autónomo y uno interactivo.</li>
+          <li>Responder a acciones del usuario mediante funciones de evento.</li>
+          <li>Usar la posición y el movimiento del ratón como parámetros visuales.</li>
+          <li>Utilizar el teclado para modificar el comportamiento del sketch.</li>
+          <li>Combinar distintas entradas para crear experiencias visuales reactivas.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Funciones de interacción</h2>
+        <ul>
+          <li><code>mouseClicked()</code>: ejecuta código cuando el usuario hace clic.</li>
+          <li><code>mouseWheel()</code>: permite responder al desplazamiento de la rueda o trackpad.</li>
+          <li><code>keyPressed()</code>: ejecuta código cuando se pulsa una tecla.</li>
         </ul>
       </section>
 
@@ -134,16 +145,21 @@
       </section>
 
       <section>
-        <h2>Ejercicio final</h2>
+        <h2>Práctica</h2>
         <p>
-          Diseña un mini-instrumento visual donde el ratón sitúe o deforme
-          formas y el teclado cambie el comportamiento general del dibujo.
-          Justifica qué variables observas en cada fotograma y qué eventos
-          actualizan el estado del programa.
+          Durante la sesión se crearon varios sketches cortos para experimentar
+          con diferentes formas de interacción: dibujar siguiendo el ratón,
+          modificar parámetros mediante clic y rueda, y cambiar estados o
+          comportamientos utilizando el teclado.
         </p>
+      </section>
+
+      <section>
+        <h2>Siguiente paso</h2>
         <p>
-          La secuencia completa, la práctica guiada y las referencias se
-          encuentran en el <a href="README.md">README de la sesión</a>.
+          A partir de estas entradas podemos avanzar hacia sistemas con movimiento
+          propio, velocidad, aceleración y comportamientos más complejos, que más
+          adelante servirán de base para partículas y sistemas generativos dinámicos.
         </p>
       </section>
     </main>
