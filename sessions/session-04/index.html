@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sesión 04 · Interacción con el usuario</title>
+    <link rel="stylesheet" href="../../shared/site.css" />
+    <style>
+      :root {
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        line-height: 1.6;
+        color: var(--site-text);
+        background: var(--site-background);
+      }
+
+      body {
+        margin: 0;
+        color: var(--site-text);
+        background: var(--site-background);
+      }
+
+      main {
+        width: min(900px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 3rem 0;
+      }
+
+      header,
+      section {
+        padding: 1.5rem 2rem;
+        margin-bottom: 1rem;
+        background: var(--site-surface);
+        border-radius: 0.5rem;
+      }
+
+      h1,
+      h2 {
+        line-height: 1.2;
+      }
+
+      code {
+        padding: 0.1rem 0.25rem;
+        background: #2a2a3e;
+        border-radius: 0.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <button class="site-nav-toggle" type="button" aria-expanded="false" aria-controls="session-menu">
+          <span class="site-nav-icon"></span>
+          <span class="sr-only">Abrir navegación</span>
+        </button>
+        <div class="site-nav-links" id="session-menu">
+          <a href="../../index.html">Sketches</a>
+          <a href="../index.html">Sesiones · 2627</a>
+          <a href="index.html" aria-current="page">Sesión 04</a>
+        </div>
+      </nav>
+
+      <header>
+        <p>Material docente · p5.js</p>
+        <h1>Sesión 04: Interacción con el usuario</h1>
+        <p>
+          Sesión centrada en convertir el sketch en un sistema reactivo mediante
+          el ratón, la rueda y el teclado. Se trabajaron eventos de interacción
+          y variables globales de p5.js para construir varios sketches que
+          responden directamente a las acciones del usuario.
+        </p>
+      </header>
+
+      <section>
+        <h2>Objetivos</h2>
+        <ul>
+          <li>Entender la diferencia entre un sketch autónomo y uno interactivo.</li>
+          <li>Responder a acciones del usuario mediante funciones de evento.</li>
+          <li>Usar la posición y el movimiento del ratón como parámetros visuales.</li>
+          <li>Utilizar el teclado para modificar el comportamiento del sketch.</li>
+          <li>Combinar distintas entradas para crear experiencias visuales reactivas.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Funciones de interacción</h2>
+        <ul>
+          <li><code>mouseClicked()</code>: ejecuta código cuando el usuario hace clic.</li>
+          <li><code>mouseWheel()</code>: permite responder al desplazamiento de la rueda o trackpad.</li>
+          <li><code>keyPressed()</code>: ejecuta código cuando se pulsa una tecla.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Variables globales exploradas</h2>
+        <ul>
+          <li><code>mouseX</code> y <code>mouseY</code>: posición actual del ratón dentro del canvas.</li>
+          <li><code>pmouseX</code> y <code>pmouseY</code>: posición del ratón en el frame anterior.</li>
+          <li><code>key</code>: valor de la última tecla utilizada.</li>
+          <li><code>keyIsPressed</code>: indica si alguna tecla se mantiene pulsada.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Ideas clave</h2>
+        <ul>
+          <li>La interacción convierte la entrada del usuario en un parámetro del sistema visual.</li>
+          <li>La posición del ratón puede controlar tamaño, color, posición, velocidad o cualquier otra propiedad.</li>
+          <li>Comparar <code>mouseX</code>/<code>mouseY</code> con <code>pmouseX</code>/<code>pmouseY</code> permite trabajar con el gesto y el desplazamiento.</li>
+          <li>Los eventos permiten introducir cambios puntuales, mientras que variables como <code>keyIsPressed</code> permiten respuestas continuas.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Práctica</h2>
+        <p>
+          Durante la sesión se crearon varios sketches cortos para experimentar
+          con diferentes formas de interacción: dibujar siguiendo el ratón,
+          modificar parámetros mediante clic y rueda, y cambiar estados o
+          comportamientos utilizando el teclado.
+        </p>
+      </section>
+
+      <section>
+        <h2>Siguiente paso</h2>
+        <p>
+          A partir de estas entradas podemos avanzar hacia sistemas con movimiento
+          propio, velocidad, aceleración y comportamientos más complejos, que más
+          adelante servirán de base para partículas y sistemas generativos dinámicos.
+        </p>
+      </section>
+    </main>
+    <script src="../../shared/navigation.js"></script>
+  </body>
+</html>
