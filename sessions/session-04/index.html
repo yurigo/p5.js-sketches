@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sesión 04 · Interacción con el usuario</title>
+    <link rel="stylesheet" href="../../shared/site.css" />
+    <style>
+      :root {
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        line-height: 1.6;
+        color: var(--site-text);
+        background: var(--site-background);
+      }
+
+      body {
+        margin: 0;
+        color: var(--site-text);
+        background: var(--site-background);
+      }
+
+      main {
+        width: min(900px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 3rem 0;
+      }
+
+      header,
+      section {
+        padding: 1.5rem 2rem;
+        margin-bottom: 1rem;
+        background: var(--site-surface);
+        border-radius: 0.5rem;
+      }
+
+      h1,
+      h2 {
+        line-height: 1.2;
+      }
+
+      .sketch-grid {
+        display: grid;
+        gap: 0.75rem;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      .sketch-link {
+        display: inline-block;
+        padding: 0.6rem 1rem;
+        color: var(--site-background);
+        background: var(--site-accent);
+        border-radius: 0.35rem;
+        text-decoration: none;
+      }
+
+      code {
+        padding: 0.1rem 0.25rem;
+        background: #2a2a3e;
+        border-radius: 0.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <button class="site-nav-toggle" type="button" aria-expanded="false" aria-controls="session-menu">
+          <span class="site-nav-icon"></span>
+          <span class="sr-only">Abrir navegación</span>
+        </button>
+        <div class="site-nav-links" id="session-menu">
+          <a href="../../index.html">Sketches</a>
+          <a href="../index.html">Sesiones · 2627</a>
+          <a href="index.html" aria-current="page">Sesión 04</a>
+          <a href="sketches/clicked-constellations/index.html">Clicked constellations</a>
+          <a href="sketches/wheel-trails/index.html">Wheel trails</a>
+          <a href="sketches/key-playground/index.html">Key playground</a>
+        </div>
+      </nav>
+
+      <header>
+        <p>Material docente · p5.js</p>
+        <h1>Sesión 04: Interacción con el usuario</h1>
+        <p>
+          Recorrido guiado para transformar ratón y teclado en entrada visual.
+          La sesión trabaja eventos discretos, variables globales del puntero y
+          controles continuos sobre el estado del sketch.
+        </p>
+      </header>
+
+      <section>
+        <h2>Objetivos</h2>
+        <ul>
+          <li>Usar <code>mouseClicked()</code> para registrar acciones puntuales.</li>
+          <li>Leer <code>mouseX</code>, <code>mouseY</code>, <code>pmouseX</code> y <code>pmouseY</code> para dibujar movimiento.</li>
+          <li>Modificar parámetros visuales con <code>mouseWheel()</code>.</li>
+          <li>Responder a <code>keyPressed()</code> y consultar <code>key</code> y <code>keyIsPressed</code>.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recorrido</h2>
+        <ol>
+          <li>
+            Comienza con <code>clicked-constellations</code> para ver cómo un
+            clic añade una nueva marca exactamente en <code>mouseX</code> y
+            <code>mouseY</code>.
+          </li>
+          <li>
+            Continúa con <code>wheel-trails</code> para comparar la posición
+            anterior del ratón con la actual mediante <code>pmouseX</code> y
+            <code>pmouseY</code>.
+          </li>
+          <li>
+            En ese mismo sketch, usa la rueda para variar el grosor del trazo y
+            observar cómo <code>mouseWheel()</code> modifica el estado.
+          </li>
+          <li>
+            Cierra con <code>key-playground</code>, donde <code>keyPressed()</code>
+            cambia el símbolo dibujado y <code>keyIsPressed</code> activa un modo
+            continuo mientras la tecla siga pulsada.
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Sketches de la sesión</h2>
+        <ul class="sketch-grid">
+          <li><a class="sketch-link" href="sketches/clicked-constellations/index.html">Abrir sketch de constelaciones por clic (mouseClicked)</a></li>
+          <li><a class="sketch-link" href="sketches/wheel-trails/index.html">Abrir sketch de trazos con rueda y movimiento (mouseWheel, mouseX, pmouseX)</a></li>
+          <li><a class="sketch-link" href="sketches/key-playground/index.html">Abrir sketch de teclado interactivo (keyPressed, key, keyIsPressed)</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Ejercicio final</h2>
+        <p>
+          Diseña un mini-instrumento visual donde el ratón sitúe o deforme
+          formas y el teclado cambie el comportamiento general del dibujo.
+          Justifica qué variables observas en cada fotograma y qué eventos
+          actualizan el estado del programa.
+        </p>
+        <p>
+          La secuencia completa, la práctica guiada y las referencias se
+          encuentran en el <a href="README.md">README de la sesión</a>.
+        </p>
+      </section>
+    </main>
+    <script src="../../shared/navigation.js"></script>
+  </body>
+</html>
