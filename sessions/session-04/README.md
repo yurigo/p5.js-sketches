@@ -14,6 +14,8 @@ sketches asociados están en:
 - [`sketches/clicked-constellations`](sketches/clicked-constellations/)
 - [`sketches/wheel-trails`](sketches/wheel-trails/)
 - [`sketches/key-playground`](sketches/key-playground/)
+- [`sketches/interactive-art`](sketches/interactive-art/)
+- [`sketches/draw-io`](sketches/draw-io/)
 
 ## Objetivos de aprendizaje
 
@@ -43,6 +45,11 @@ bucles sencillos.
 4. **Teclado como control.** En `key-playground`, `keyPressed()` actualiza el
    modo de trabajo, mientras `key` y `keyIsPressed` muestran qué tecla está
    activa y si hay una pulsación sostenida.
+5. **Combinación de entradas.** En `interactive-art`, el clic cambia el color,
+   la rueda modifica el tamaño y el teclado alterna la figura para practicar la
+   coordinación de varios eventos.
+6. **Dibujo libre reactivo.** En `draw-io`, el ratón deja un rastro continuo y
+   una pulsación de teclado desencadena un cambio puntual sobre la composición.
 
 ## Práctica guiada
 
@@ -55,14 +62,20 @@ Abre los sketches de la sesión y realiza estas acciones en orden:
 3. usa la rueda del ratón en `wheel-trails` para aumentar y reducir el grosor
    del pincel;
 4. en `key-playground`, pulsa letras distintas para cambiar el símbolo dibujado
-   y mantén una tecla pulsada para activar el modo continuo.
+   y mantén una tecla pulsada para activar el modo continuo;
+5. en `interactive-art`, pulsa el ratón, gira la rueda y usa la tecla `E` para
+   observar cómo cada entrada altera un atributo distinto de la composición;
+6. en `draw-io`, traza líneas con el puntero y prueba la tecla `R` para observar
+   cómo una pulsación puede introducir un cambio puntual en pantalla.
 
 ## Actividad de consolidación
 
 Diseña un sketch interactivo que combine al menos dos entradas de usuario: una
 acción puntual (`mouseClicked()` o `keyPressed()`) y una variable continua
 (`mouseX`, `mouseY` o `keyIsPressed`). Explica qué estado guarda el programa y
-cómo se transforma ese estado en una respuesta visual.
+cómo se transforma ese estado en una respuesta visual. Como referencia, puedes
+tomar `interactive-art`, donde varias entradas modifican distintos aspectos del
+mismo dibujo.
 
 ## Referencias
 
