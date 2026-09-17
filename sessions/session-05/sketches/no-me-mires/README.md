@@ -1,25 +1,21 @@
-# raton-colorao
+# No me mires
 
-## Getting Started
+[Volver al tutorial de la sesión 05](../../index.html)
 
-Open `index.html` in your web browser and start editing `sketch.js`.
+## Descripción
 
-## Running Locally
+Sketch interactivo con varias bolas fijas en pantalla. Cada una calcula su
+`dist()` respecto al ratón y usa `map()` para transformar esa cercanía en un
+cambio de luminosidad dentro del modo de color HSL.
 
-For projects with media files, use a local server:
+## Qué practicar
 
-```bash
-# Using Python
-python -m http.server 8000
+- medir la distancia entre dos puntos con `dist()`;
+- convertir esa distancia en brillo con `map()`;
+- comparar la reacción simultánea de varios objetos frente al mismo puntero.
 
-# Using Node.js
-npx http-server
+## Cómo abrirlo
 
-# Using VS Code Live Server extension
-# Right-click index.html -> "Open with Live Server"
-```
-
-## Resources
-
-- [p5.js 2.0](https://beta.p5js.org/)
-- [p5.js Reference](https://p5js.org/reference/)
+Abre [index.html](index.html) en el navegador y vuelve al
+[tutorial interactivo de la sesión 05](../../index.html) para seguir la
+secuencia de actividades.
