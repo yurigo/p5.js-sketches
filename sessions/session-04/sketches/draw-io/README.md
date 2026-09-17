@@ -1,25 +1,20 @@
-# draw-io
+# Draw io
 
-## Getting Started
+[Volver al tutorial de la sesión 04](../../index.html)
 
-Open `index.html` in your web browser and start editing `sketch.js`.
+## Descripción
 
-## Running Locally
+Sketch de dibujo libre que convierte el movimiento del ratón en un trazo
+continuo entre `pmouseX`, `pmouseY` y la posición actual. También incluye una
+pulsación de teclado para introducir un cambio puntual sobre la imagen.
 
-For projects with media files, use a local server:
+## Qué practicar
 
-```bash
-# Using Python
-python -m http.server 8000
+- observar la diferencia entre `mouseX` y `pmouseX` al dibujar;
+- usar `keyPressed()` para disparar un cambio instantáneo dentro del dibujo.
 
-# Using Node.js
-npx http-server
+## Cómo abrirlo
 
-# Using VS Code Live Server extension
-# Right-click index.html -> "Open with Live Server"
-```
-
-## Resources
-
-- [p5.js 2.0](https://beta.p5js.org/)
-- [p5.js Reference](https://p5js.org/reference/)
+Abre [index.html](index.html) en el navegador y vuelve después al
+[tutorial interactivo de la sesión 04](../../index.html) para continuar con el
+recorrido completo.
