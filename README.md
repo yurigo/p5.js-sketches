@@ -10,6 +10,7 @@ A collection of creative coding sketches built with p5.js, exploring various pro
 - [Session 03: Generative art with random, noise, and seeds](sessions/session-03/)
 - [Session 04: User interaction with mouse and keyboard](sessions/session-04/)
 - [Session 05: dist() and map()](sessions/session-05/)
+- [Session 06: Agents and particles](sessions/session-06/)
 
 ## Available Sketches
 
