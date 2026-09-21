@@ -56,9 +56,10 @@ class Ball{
         this.c = vergonzosidad;
     }
 
-    updateLineasConstelacion(neighbours){
-        for (let n of neighbours){
-            let distancia = dist(this.px, this.py, n.px, n.py);
+    updateLineasConstelacion(neighbours, currentIndex){
+        for (let i = currentIndex + 1; i < neighbours.length; i++){
+            const n = neighbours[i];
+            const distancia = dist(this.px, this.py, n.px, n.py);
             if (distancia < 300){
                 line(this.px, this.py, n.px, n.py);
             }
