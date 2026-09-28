@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sesión 06 · Agentes y partículas</title>
+    <link rel="stylesheet" href="../../shared/site.css" />
+    <style>
+      :root {
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        line-height: 1.6;
+        color: var(--site-text);
+        background: var(--site-background);
+      }
+
+      body {
+        margin: 0;
+        color: var(--site-text);
+        background: var(--site-background);
+      }
+
+      main {
+        width: min(900px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 3rem 0;
+      }
+
+      header,
+      section {
+        padding: 1.5rem 2rem;
+        margin-bottom: 1rem;
+        background: var(--site-surface);
+        border-radius: 0.5rem;
+      }
+
+      h1,
+      h2 {
+        line-height: 1.2;
+      }
+
+      .sketch-grid {
+        display: grid;
+        gap: 0.75rem;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      .sketch-link {
+        display: inline-block;
+        padding: 0.6rem 1rem;
+        color: var(--site-background);
+        background: var(--site-accent);
+        border-radius: 0.35rem;
+        text-decoration: none;
+      }
+
+      code {
+        padding: 0.1rem 0.25rem;
+        background: #2a2a3e;
+        border-radius: 0.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <button class="site-nav-toggle" type="button" aria-expanded="false" aria-controls="session-menu">
+          <span class="site-nav-icon"></span>
+          <span class="sr-only">Abrir navegación</span>
+        </button>
+        <div class="site-nav-links" id="session-menu">
+          <a href="../../index.html">Sketches</a>
+          <a href="../index.html">Sesiones · 2627</a>
+          <a href="index.html" aria-current="page">Sesión 06</a>
+          <a href="sketches/sistema-de-agentes/index.html">Sistema de agentes</a>
+          <a href="sketches/sistema-particulas/index.html">Sistema de partículas</a>
+        </div>
+      </nav>
+
+      <header>
+        <p>Material docente · p5.js</p>
+        <h1>Sesión 06: agentes y partículas</h1>
+        <p>
+          En esta sesión se trabaja con agentes autónomos que reaccionan al
+          ratón y con un emisor de partículas que reutiliza la clase
+          <code>Ball</code> para crear, actualizar y destruir elementos con
+          tiempo de vida limitado.
+        </p>
+      </header>
+
+      <section>
+        <h2>Objetivos</h2>
+        <ul>
+          <li>Entender cómo encapsular comportamiento en una clase reutilizable.</li>
+          <li>Programar agentes con movimiento autónomo y respuesta al puntero.</li>
+          <li>Relacionar distancia, brillo y conexiones entre vecinos cercanos.</li>
+          <li>Transformar una clase base en una partícula con propiedad <code>ttl</code>.</li>
+          <li>Usar <code>draw()</code> como emisor que crea y depura partículas.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recorrido</h2>
+        <ol>
+          <li>
+            Empieza con <code>sistema-de-agentes</code> para observar un conjunto
+            de bolas que se mueven solas, se conectan entre sí y cambian de
+            brillo según la posición del ratón.
+          </li>
+          <li>
+            Identifica en la clase <code>Ball</code> qué métodos se encargan del
+            color, del movimiento y de las líneas de constelación.
+          </li>
+          <li>
+            Continúa con <code>sistema-particulas</code> para ver cómo se
+            reutiliza la idea de una bola y se le añade <code>ttl</code> para
+            convertirla en una partícula efímera.
+          </li>
+          <li>
+            Observa que <code>draw()</code> hace también de emisor: crea nuevas
+            partículas, actualiza las existentes y elimina las que ya no están
+            vivas.
+          </li>
+          <li>
+            Compara ambos sketches para decidir qué partes de una clase conviene
+            mantener y cuáles cambiar cuando aparece un nuevo comportamiento.
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Sketches de la sesión</h2>
+        <ul class="sketch-grid">
+          <li><a class="sketch-link" href="sketches/sistema-de-agentes/index.html">Abrir sketch Sistema de agentes: movimiento autónomo, proximidad y constelaciones</a></li>
+          <li><a class="sketch-link" href="sketches/sistema-particulas/index.html">Abrir sketch Sistema de partículas: emisor, <code>ttl</code> y reciclaje de la clase <code>Ball</code></a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Referencias</h2>
+        <ul>
+          <li><a href="https://www.youtube.com/@TheCodingTrain">Daniel Shiffman · The Coding Train</a></li>
+          <li><a href="https://natureofcode.com/particles/">Daniel Shiffman · The Nature of Code: Particles</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Siguiente paso</h2>
+        <p>
+          El guion ampliado, la práctica guiada y las referencias están en el
+          <a href="README.md">README de la sesión</a>.
+        </p>
+      </section>
+    </main>
+    <script src="../../shared/navigation.js"></script>
+  </body>
+</html>
