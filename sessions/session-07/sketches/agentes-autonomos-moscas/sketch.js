@@ -23,8 +23,8 @@ const MAX_VEHICLES = 5_000;
 
 function setup() {
     
-    const viewportHeight = window.windowHeight;
-    const viewportWidth = window.windowWidth;
+    const viewportHeight = windowHeight;
+    const viewportWidth = windowWidth;
     
     RED = color(255,0,0);
     ORANGE = color(255,127,0);
@@ -90,6 +90,8 @@ function keyPressed() {
         case '7': c = VIOLET; break;
     }
 
+    if (vehicles.length >= MAX_VEHICLES) vehicles.shift();
+
     vehicles.push(new Vehicle(random(0,width), random(0,height), c));
 }
 
@@ -99,7 +101,7 @@ function keyPressed() {
 
 function createANewVehicleAt(x,y){
     let c = color(170);
-    let rand = random(1,7);
+    let rand = random(1,8);
 
     switch(Math.floor(rand)){
         case 1: c = RED; break;
@@ -111,7 +113,7 @@ function createANewVehicleAt(x,y){
         case 7: c = VIOLET; break;
     }
 
-    if (vehicles.length > MAX_VEHICLES) vehicles.shift();
+    if (vehicles.length >= MAX_VEHICLES) vehicles.shift();
 
     vehicles.push(new Vehicle(x, y, c));
 }
