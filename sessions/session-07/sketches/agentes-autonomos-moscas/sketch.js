@@ -99,7 +99,7 @@ function keyPressed() {
 
 function createANewVehicleAt(x,y){
     let c = color(170);
-    let rand = random(1,7);
+    let rand = random(1,8);
 
     switch(Math.floor(rand)){
         case 1: c = RED; break;
@@ -111,7 +111,7 @@ function createANewVehicleAt(x,y){
         case 7: c = VIOLET; break;
     }
 
-    if (vehicles.length > MAX_VEHICLES) vehicles.shift();
+    if (vehicles.length >= MAX_VEHICLES) vehicles.shift();
 
     vehicles.push(new Vehicle(x, y, c));
 }
