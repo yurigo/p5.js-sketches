@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sesión 07 · AC-02 Sistema Vivo</title>
+    <link rel="stylesheet" href="../../shared/site.css" />
+    <style>
+      :root {
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        line-height: 1.6;
+        color: var(--site-text);
+        background: var(--site-background);
+      }
+
+      body {
+        margin: 0;
+        color: var(--site-text);
+        background: var(--site-background);
+      }
+
+      main {
+        width: min(900px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 3rem 0;
+      }
+
+      header,
+      section {
+        padding: 1.5rem 2rem;
+        margin-bottom: 1rem;
+        background: var(--site-surface);
+        border-radius: 0.5rem;
+      }
+
+      h1,
+      h2 {
+        line-height: 1.2;
+      }
+
+      .sketch-grid {
+        display: grid;
+        gap: 0.75rem;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      .sketch-link {
+        display: inline-block;
+        padding: 0.6rem 1rem;
+        color: var(--site-background);
+        background: var(--site-accent);
+        border-radius: 0.35rem;
+        text-decoration: none;
+      }
+
+      code {
+        padding: 0.1rem 0.25rem;
+        background: #2a2a3e;
+        border-radius: 0.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <button class="site-nav-toggle" type="button" aria-expanded="false" aria-controls="session-menu">
+          <span class="site-nav-icon"></span>
+          <span class="sr-only">Abrir navegación</span>
+        </button>
+        <div class="site-nav-links" id="session-menu">
+          <a href="../../index.html">Sketches</a>
+          <a href="../index.html">Sesiones · 2627</a>
+          <a href="index.html" aria-current="page">Sesión 07</a>
+          <a href="sketches/agentes-autonomos-moscas/index.html">Agentes autónomos</a>
+        </div>
+      </nav>
+
+      <header>
+        <p>Material docente · p5.js</p>
+        <h1>Sesión 07: AC-02 · Sistema Vivo</h1>
+        <p>
+          La sesión presenta el enunciado de AC-02 y utiliza un sketch hecho en
+          clase para explorar agentes autónomos, familias cromáticas e
+          interacción básica como punto de partida del proyecto.
+        </p>
+      </header>
+
+      <section>
+        <h2>Objetivos</h2>
+        <ul>
+          <li>Desglosar los requisitos de la actividad AC-02.</li>
+          <li>Entender cómo una clase <code>Vehicle</code> modela movimiento autónomo.</li>
+          <li>Observar el comportamiento de <code>seek()</code> con un objetivo móvil.</li>
+          <li>Usar ratón y teclado para alterar la población y el color del sistema.</li>
+          <li>Detectar qué falta para convertir el boceto en una pieza final completa.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recorrido</h2>
+        <ol>
+          <li>
+            Lee el enunciado de AC-02 pensando en sus bloques principales:
+            familias, relaciones, eventos visuales, sonido, interacción y
+            evolución temporal.
+          </li>
+          <li>
+            Abre el sketch <code>agentes-autonomos-moscas</code> para observar una
+            versión reducida centrada en el movimiento de agentes hacia un
+            objetivo compartido.
+          </li>
+          <li>
+            Comprueba cómo el ratón define la posición del objetivo y cómo
+            <code>mouseIsPressed</code> y <code>keyPressed()</code> amplían el sistema.
+          </li>
+          <li>
+            Revisa la clase <code>Vehicle</code> para localizar posición,
+            aceleración, velocidad máxima y fuerza máxima.
+          </li>
+          <li>
+            Decide qué nuevas reglas necesitarías añadir para responder por
+            completo al enunciado de la actividad.
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Mapa rápido de AC-02</h2>
+        <ul>
+          <li>Construir un sistema con 90 a 150 agentes y al menos tres familias.</li>
+          <li>Diseñar relaciones propias entre familias y varios comportamientos.</li>
+          <li>Generar eventos visuales con partículas o trazas de vida limitada.</li>
+          <li>Conectar el sonido de <code>p5.sound</code> al comportamiento del sistema.</li>
+          <li>Permitir interacción, evolución temporal y una tecla de reinicio.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Sketch de la sesión</h2>
+        <ul class="sketch-grid">
+          <li>
+            <a class="sketch-link" href="sketches/agentes-autonomos-moscas/index.html">
+              Abrir sketch Agentes autónomos: seek, familias de color y creación incremental
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Qué ejemplifica este boceto</h2>
+        <p>
+          El ejemplo de clase cubre el arranque del proyecto: agentes que se
+          mueven solos, un objetivo común visible y una forma de perturbar la
+          población. Todavía no incluye partículas, sonido ni una tecla de
+          reinicio, así que debe entenderse como un prototipo para AC-02 y no
+          como la solución final.
+        </p>
+      </section>
+
+      <section>
+        <h2>Referencias</h2>
+        <ul>
+          <li><a href="https://p5js.org/reference/">Referencia de p5.js</a></li>
+          <li><a href="https://p5js.org/reference/p5/createVector/">Referencia de <code>createVector()</code></a></li>
+          <li><a href="https://p5js.org/reference/p5.Vector/">Referencia de <code>p5.Vector</code></a></li>
+          <li><a href="https://natureofcode.com/autonomous-agents/#vehicles-and-steering">The Nature of Code · Autonomous Agents</a></li>
+          <li><a href="https://editor.p5js.org/natureofcode/sketches/Y74O77yxy">Ejemplo 5.1 · Seeking a target</a></li>
+          <li><a href="https://editor.p5js.org/natureofcode/sketches/v-yJm8WUx">Ejemplo 5.2 · Arriving at a target</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Siguiente paso</h2>
+        <p>
+          El guion ampliado, la práctica guiada y la relación completa con AC-02
+          están en el <a href="README.md">README de la sesión</a>.
+        </p>
+      </section>
+    </main>
+    <script src="../../shared/navigation.js"></script>
+  </body>
+</html>

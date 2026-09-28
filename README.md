@@ -11,6 +11,7 @@ A collection of creative coding sketches built with p5.js, exploring various pro
 - [Session 04: User interaction with mouse and keyboard](sessions/session-04/)
 - [Session 05: dist() and map()](sessions/session-05/)
 - [Session 06: Agents and particles](sessions/session-06/)
+- [Session 07: AC-02 Sistema Vivo](sessions/session-07/)
 
 ## Available Sketches
 
