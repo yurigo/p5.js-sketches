@@ -124,8 +124,8 @@ prototipar el resto de requisitos.
 ## Referencias
 
 - [Referencia de p5.js](https://p5js.org/reference/)
-- [Referencia de `createVector()`](https://p5js.org/reference/p5/createVector/)
-- [Referencia de `p5.Vector`](https://p5js.org/reference/p5.Vector/)
+- [Referencia de `createVector()`](https://p5js.org/reference/#/p5/createVector)
+- [Referencia de `p5.Vector`](https://p5js.org/reference/#/p5.Vector)
 - [The Nature of Code · Autonomous Agents](https://natureofcode.com/autonomous-agents/#vehicles-and-steering)
 - [Ejemplo 5.1 · Seeking a target](https://editor.p5js.org/natureofcode/sketches/Y74O77yxy)
 - [Ejemplo 5.2 · Arriving at a target](https://editor.p5js.org/natureofcode/sketches/v-yJm8WUx)

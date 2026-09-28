@@ -2,7 +2,7 @@ html,
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--site-background);
+  background: var(--site-background, #0f0f23);
 }
 
 body {
@@ -12,6 +12,6 @@ body {
 
 canvas {
   display: block;
-  border: 2px solid var(--site-border);
+  border: 2px solid var(--site-border, #333);
   border-radius: 0.75rem;
 }
