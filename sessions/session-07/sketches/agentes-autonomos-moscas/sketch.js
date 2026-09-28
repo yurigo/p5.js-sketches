@@ -23,8 +23,8 @@ const MAX_VEHICLES = 5_000;
 
 function setup() {
     
-    const viewportHeight = window.windowHeight;
-    const viewportWidth = window.windowWidth;
+    const viewportHeight = windowHeight;
+    const viewportWidth = windowWidth;
     
     RED = color(255,0,0);
     ORANGE = color(255,127,0);
