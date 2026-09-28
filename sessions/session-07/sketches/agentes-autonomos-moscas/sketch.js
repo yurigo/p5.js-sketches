@@ -90,6 +90,8 @@ function keyPressed() {
         case '7': c = VIOLET; break;
     }
 
+    if (vehicles.length >= MAX_VEHICLES) vehicles.shift();
+
     vehicles.push(new Vehicle(random(0,width), random(0,height), c));
 }
 
