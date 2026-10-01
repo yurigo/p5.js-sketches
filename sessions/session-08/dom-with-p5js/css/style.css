@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    position: fixed;
+    top:0;
+    width: 100%;
+    padding: 1em;
+}
+
+body {
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f0f0f0;
+    overflow: hidden;
+}
+
+.bola{
+    width: 100px;
+    height: 100px;
+    background-color: salmon;
+    border-radius: 50%;
+}
+
+div.fruta{
+    font-size: 25px;
+}
