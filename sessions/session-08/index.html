@@ -73,6 +73,7 @@
           <a href="index.html" aria-current="page">Sesión 08</a>
           <a href="dom/index.html">DOM nativo</a>
           <a href="dom-with-p5js/index.html">DOM con p5.js</a>
+          <a href="sketches/oscillator-interactivo/index.html">Oscilador interactivo</a>
         </div>
       </nav>
 
@@ -87,13 +88,15 @@
         <ul class="sketch-grid">
           <li><a class="sketch-link" href="dom/index.html">Abrir ejemplo: DOM nativo</a></li>
           <li><a class="sketch-link" href="dom-with-p5js/index.html">Abrir ejemplo: DOM con p5.js</a></li>
+          <li><a class="sketch-link" href="sketches/oscillator-interactivo/index.html">Abrir ejemplo: p5.Oscillator interactivo</a></li>
         </ul>
       </header>
 
       <section>
         <h2>Objetivos</h2>
         <ul>
-          <li>Describir las posibilidades de <code>p5.sound</code> y consultar <code>p5.Oscillator</code>.</li>
+          <li>Explicar cómo un oscilador genera un tono y cómo frecuencia y amplitud afectan al sonido.</li>
+          <li>Iniciar <code>p5.Oscillator</code> tras una interacción y controlar sus parámetros con el ratón.</li>
           <li>Distinguir la manipulación nativa del DOM de las funciones DOM de p5.js.</li>
           <li>Responder a eventos del ratón modificando estilos y posiciones de HTML.</li>
           <li>Crear, actualizar y eliminar elementos HTML desde un sketch sin canvas.</li>
@@ -105,8 +108,9 @@
         <h2>Recorrido</h2>
         <ol>
           <li>
-            Consulta la referencia de <code>p5.Oscillator</code> y piensa qué
-            entrada podría controlar el sonido de una pieza generativa.
+            Abre <a href="sketches/oscillator-interactivo/index.html">el ejemplo de <code>p5.Oscillator</code></a>,
+            activa el tono y observa cómo las coordenadas del ratón controlan
+            frecuencia y amplitud.
           </li>
           <li>
             Abre <code>dom/</code> y sigue cómo <code>querySelector()</code>
@@ -135,17 +139,21 @@
         <ul class="sketch-grid">
           <li><a class="sketch-link" href="dom/index.html">DOM nativo: mover un elemento con el ratón usando eventos y CSS</a></li>
           <li><a class="sketch-link" href="dom-with-p5js/index.html">DOM con p5.js: recoger frutas con un sketch sin canvas</a></li>
+          <li><a class="sketch-link" href="sketches/oscillator-interactivo/index.html">p5.sound: controlar frecuencia y amplitud de un oscilador con el ratón</a></li>
         </ul>
       </section>
 
       <section>
         <h2>Exploración sonora</h2>
         <p>
-          La sesión también presenta <code>p5.sound</code> y el oscilador como
-          punto de partida para crear sonido o responder a entradas. Los dos
-          ejemplos enlazados aquí se centran en el DOM y no implementan sonido;
-          usa la referencia de <a href="https://p5js.org/reference/p5.sound/p5.Oscillator/">p5.Oscillator</a>
-          para investigar una posible extensión sonora.
+          <code>p5.Oscillator</code> genera un tono periódico; su frecuencia,
+          medida en hercios, influye en la altura tonal, y su amplitud se
+          relaciona con el nivel percibido. En el
+          <a href="sketches/oscillator-interactivo/index.html">ejemplo sonoro</a>,
+          <code>mouseX</code> mapea la frecuencia entre 110 y 880 Hz y
+          <code>mouseY</code> ajusta la amplitud. El audio se activa mediante un
+          botón porque el navegador requiere un gesto explícito antes de
+          reproducirlo.
         </p>
       </section>
 
