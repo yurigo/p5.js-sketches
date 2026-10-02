@@ -1,5 +1,16 @@
 
 
+.site-nav {
+    position: fixed;
+    top: 1rem;
+    left: 0;
+    right: 0;
+}
+
+body {
+    background: var(--site-background);
+}
+
 .bola{
     background-color: red;
     height: 50px;

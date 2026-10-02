@@ -1,25 +1,21 @@
-# dom-with-p5js
+# DOM con p5.js
 
-## Getting Started
+[Volver al tutorial de la sesión 08](../index.html)
 
-Open `index.html` in your web browser and start editing `sketch.js`.
+## Descripción
 
-## Running Locally
+Este ejemplo utiliza las funciones DOM de p5.js sin crear un canvas. Una bola
+sigue al ratón y el jugador recoge frutas emoji que aparecen en posiciones
+aleatorias; el marcador cuenta las frutas recogidas.
 
-For projects with media files, use a local server:
+## Qué practicar
 
-```bash
-# Using Python
-python -m http.server 8000
+- evitar la creación de un lienzo con `noCanvas()`;
+- seleccionar elementos HTML con `select()` y crear elementos con `createDiv()`;
+- asignar posiciones y clases CSS a elementos;
+- detectar el contacto, actualizar el marcador y eliminar la fruta recogida.
 
-# Using Node.js
-npx http-server
+## Cómo abrirlo
 
-# Using VS Code Live Server extension
-# Right-click index.html -> "Open with Live Server"
-```
-
-## Resources
-
-- [p5.js 2.0](https://beta.p5js.org/)
-- [p5.js Reference](https://p5js.org/reference/)
+Abre [index.html](index.html) en el navegador. Para revisar los conceptos en
+orden, vuelve al [tutorial interactivo de la sesión 08](../index.html).

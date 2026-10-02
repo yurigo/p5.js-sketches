@@ -6,7 +6,7 @@
 
 header{
     position: fixed;
-    top:0;
+    top:4rem;
     width: 100%;
     padding: 1em;
 }
@@ -17,7 +17,8 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #f0f0f0;
+    background: var(--site-background);
+    color: var(--site-text);
     overflow: hidden;
 }
 
@@ -30,4 +31,11 @@ body {
 
 div.fruta{
     font-size: 25px;
+}
+
+.site-nav {
+    position: fixed;
+    top: 1rem;
+    left: 0;
+    right: 0;
 }
