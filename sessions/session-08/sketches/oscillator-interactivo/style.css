@@ -1,0 +1,43 @@
+html,
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--site-text, #cccccc);
+  background: var(--site-background, #0f0f23);
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+}
+
+body {
+  padding: 1rem;
+}
+
+main {
+  width: min(720px, 100%);
+  margin: 0 auto;
+}
+
+#controls {
+  margin: 1rem 0;
+}
+
+button {
+  padding: 0.65rem 1rem;
+  color: var(--site-background, #0f0f23);
+  background: var(--site-accent, #ffd700);
+  border: 0;
+  border-radius: 0.35rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible {
+  outline: 3px solid var(--site-link, #8ab4f8);
+  outline-offset: 3px;
+}
+
+canvas {
+  display: block;
+  max-width: 100%;
+  border: 2px solid var(--site-border, #333);
+  border-radius: 0.75rem;
+}
