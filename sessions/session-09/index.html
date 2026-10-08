@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sesión 09 · Programación creativa más allá de p5.js</title>
+    <link rel="stylesheet" href="../../shared/site.css" />
+    <style>
+      :root {
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        line-height: 1.6;
+        color: var(--site-text);
+        background: var(--site-background);
+      }
+
+      body {
+        margin: 0;
+      }
+
+      main {
+        width: min(900px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 3rem 0;
+      }
+
+      header,
+      section {
+        padding: 1.5rem 2rem;
+        margin-bottom: 1rem;
+        background: var(--site-surface);
+        border-radius: 0.5rem;
+      }
+
+      h1,
+      h2 {
+        line-height: 1.2;
+      }
+
+      .example-link {
+        display: inline-block;
+        padding: 0.6rem 1rem;
+        color: var(--site-background);
+        background: var(--site-accent);
+        border-radius: 0.35rem;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <button class="site-nav-toggle" type="button" aria-expanded="false" aria-controls="session-menu">
+          <span class="site-nav-icon"></span>
+          <span class="sr-only">Abrir navegación</span>
+        </button>
+        <div class="site-nav-links" id="session-menu">
+          <a href="../../index.html">Sketches</a>
+          <a href="../index.html">Sesiones · 2627</a>
+          <a href="index.html" aria-current="page">Sesión 09</a>
+          <a href="sketches/strudel-composiciones/index.html">Composiciones con Strudel</a>
+        </div>
+      </nav>
+
+      <header>
+        <p>Material docente · programación creativa</p>
+        <h1>Sesión 09: programación creativa más allá de p5.js</h1>
+        <p>
+          Explora la diversidad de herramientas de programación creativa y crea
+          música mediante patrones de código en Strudel.
+        </p>
+        <a class="example-link" href="sketches/strudel-composiciones/index.html">
+          Abrir el ejemplo: dos composiciones con Strudel
+        </a>
+      </header>
+
+      <section>
+        <h2>Objetivos</h2>
+        <ul>
+          <li>Distinguir el campo de la programación creativa de una herramienta concreta como p5.js.</li>
+          <li>Investigar un referente y separar la información verificada de las hipótesis sobre sus herramientas.</li>
+          <li>Explicar cómo Strudel organiza sonidos en patrones cíclicos.</li>
+          <li>Modificar un patrón y comparar el cambio esperado con el resultado audible.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recorrido</h2>
+        <ol>
+          <li>
+            <strong>Más que una herramienta.</strong> p5.js es un framework para
+            programación creativa; la disciplina también incluye música,
+            instalaciones, visualización y otros medios creados con distintos
+            lenguajes y sistemas.
+          </li>
+          <li>
+            <strong>Investigar prácticas.</strong> Busca un trabajo o referente
+            en una comunidad de programación creativa. Usa una fuente pública,
+            anota lo que observas y no des por confirmada una herramienta que la
+            fuente no identifica.
+          </li>
+          <li>
+            <strong>Probar Strudel.</strong> Abre
+            <a href="sketches/strudel-composiciones/index.html">los dos patrones de ejemplo</a>,
+            copia uno a la vez en el <a href="https://strudel.cc/">editor de Strudel</a>
+            y pulsa reproducir.
+          </li>
+          <li>
+            <strong>Iterar.</strong> Cambia una sola parte del patrón, predice
+            qué escucharás y compara tu predicción con el resultado.
+          </li>
+          <li>
+            <strong>Compartir.</strong> Presenta tu variación y explica qué
+            decisión creativa tomaste y con qué evidencia la evaluaste.
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Exploración de referentes</h2>
+        <p>
+          Los directorios
+          <a href="https://github.com/terkelg/awesome-creative-coding">Awesome Creative Coding</a>
+          y <a href="https://github.com/terryds/awesome-strudel">Awesome Strudel</a>
+          ofrecen puntos de partida para descubrir herramientas, proyectos y
+          recursos. También puedes investigar a artistas como dj_dave: formula
+          preguntas sobre su proceso y apóyate en fuentes publicadas por la
+          propia artista antes de atribuirle una herramienta concreta.
+        </p>
+      </section>
+
+      <section>
+        <h2>Práctica guiada</h2>
+        <ol>
+          <li>Ejecuta el patrón rítmico del ejemplo y localiza las capas de bombo, caja y hi-hat.</li>
+          <li>Modifica un sonido o un silencio y predice cómo afectará al ciclo.</li>
+          <li>Ejecuta el ejemplo con melodía y percusión, y describe qué capas escuchas.</li>
+          <li>Cambia una nota o el timbre; conserva las otras capas para poder comparar.</li>
+          <li>Guarda una variación y escribe una frase sobre el efecto de cada cambio.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Referencias</h2>
+        <ul>
+          <li><a href="https://strudel.cc/">Strudel · entorno de live coding musical</a></li>
+          <li><a href="https://strudel.cc/learn/">Guías de aprendizaje de Strudel</a></li>
+          <li><a href="https://github.com/terkelg/awesome-creative-coding">Awesome Creative Coding</a></li>
+          <li><a href="https://github.com/terryds/awesome-strudel">Awesome Strudel</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Guion ampliado</h2>
+        <p>
+          Consulta los <a href="README.md">objetivos, prerrequisitos y la
+          actividad de consolidación</a> para preparar o ampliar la sesión.
+        </p>
+      </section>
+    </main>
+    <script src="../../shared/navigation.js"></script>
+  </body>
+</html>
