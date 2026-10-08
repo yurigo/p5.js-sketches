@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Composiciones con Strudel · Sesión 09</title>
+    <link rel="stylesheet" href="../../../../shared/site.css" />
+    <style>
+      :root {
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        line-height: 1.6;
+        color: var(--site-text);
+        background: var(--site-background);
+      }
+
+      body {
+        margin: 0;
+      }
+
+      main {
+        width: min(900px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 3rem 0;
+      }
+
+      header,
+      section {
+        padding: 1.5rem 2rem;
+        margin-bottom: 1rem;
+        background: var(--site-surface);
+        border-radius: 0.5rem;
+      }
+
+      h1,
+      h2 {
+        line-height: 1.2;
+      }
+
+      pre {
+        overflow-x: auto;
+        padding: 1rem;
+        color: var(--site-text);
+        background: #0f0f23;
+        border: 1px solid var(--site-border);
+        border-radius: 0.35rem;
+      }
+
+      code {
+        font-family: inherit;
+      }
+
+      .launch-link {
+        display: inline-block;
+        padding: 0.6rem 1rem;
+        color: var(--site-background);
+        background: var(--site-accent);
+        border-radius: 0.35rem;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <button class="site-nav-toggle" type="button" aria-expanded="false" aria-controls="example-menu">
+          <span class="site-nav-icon"></span>
+          <span class="sr-only">Abrir navegación</span>
+        </button>
+        <div class="site-nav-links" id="example-menu">
+          <a href="../../../../index.html">Sketches</a>
+          <a href="../../../index.html">Sesiones · 2627</a>
+          <a href="../../index.html">Sesión 09</a>
+          <a href="index.html" aria-current="page">Composiciones con Strudel</a>
+        </div>
+      </nav>
+
+      <header>
+        <p>Sesión 09 · Ejemplo musical</p>
+        <h1>Componer patrones con Strudel</h1>
+        <p>
+          Ejecuta un ejemplo en Strudel, escucha sus capas y cambia un elemento
+          por vez. El código de esta guía está disponible localmente; la
+          reproducción de audio se realiza en el editor web.
+        </p>
+        <a class="launch-link" href="https://strudel.cc/">Abrir el editor web de Strudel</a>
+      </header>
+
+      <section>
+        <h2>Ejemplo 1: capas rítmicas</h2>
+        <p>
+          Las llamadas a <code>s()</code> seleccionan sonidos. Cada línea añade
+          una capa al ciclo: bombo, caja y hi-hat. El símbolo <code>~</code>
+          representa un silencio.
+        </p>
+        <pre><code>stack(
+  s("bd ~ bd ~"),
+  s("~ sd ~ sd"),
+  s("hh*8")
+)</code></pre>
+        <ol>
+          <li>Copia el patrón en Strudel y pulsa reproducir.</li>
+          <li>Cambia un silencio por un sonido de bombo o caja.</li>
+          <li>Prueba otra repetición para el hi-hat y describe el cambio de densidad.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Ejemplo 2: percusión y melodía</h2>
+        <p>
+          Este patrón conserva las capas rítmicas y añade una secuencia de notas
+          sintetizadas. <code>slow(2)</code> hace que la línea melódica complete
+          su patrón a la mitad de velocidad.
+        </p>
+        <pre><code>stack(
+  s("bd ~ bd ~"),
+  s("~ sd ~ sd"),
+  s("hh*8").gain(0.35),
+  note("c3 eb3 g3 bb3").sound("triangle").slow(2).gain(0.5)
+)</code></pre>
+        <ol>
+          <li>Escucha cómo se combinan las notas con la percusión.</li>
+          <li>Cambia una nota o prueba otro sonido sintetizado.</li>
+          <li>Ajusta <code>slow(2)</code> y compara la velocidad de la melodía.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Para seguir explorando</h2>
+        <p>
+          Cambia una sola expresión cada vez; así podrás relacionar el código
+          con el resultado audible. Consulta las
+          <a href="https://strudel.cc/learn/">guías de Strudel</a> para explorar
+          más patrones y revisa el
+          <a href="https://github.com/terryds/awesome-strudel">directorio Awesome Strudel</a>.
+        </p>
+        <p>
+          Vuelve al <a href="../../index.html">tutorial de la sesión 09</a> para
+          la práctica guiada y la actividad de consolidación.
+        </p>
+      </section>
+    </main>
+    <script src="../../../../shared/navigation.js"></script>
+  </body>
+</html>
