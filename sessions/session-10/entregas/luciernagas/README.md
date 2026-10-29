@@ -184,3 +184,4 @@ p5.js: creación del lienzo, animación, vectores, movimiento y representación 
 p5.sound: generación y control del sonido.
 Canvas API: creación de degradados radiales para los efectos de luz.
 
+Material de la sesión: [Sesión 10 · Entrega y presentación de AC-02](../../README.md).

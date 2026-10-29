@@ -111,3 +111,4 @@ El código se reparte en cuatro archivos JavaScript: `sketch.js` y una clase por
 ## Cómo ejecutar el sonido
 Haz clic una vez sobre el canvas para activar el sonido.
 
+Material de la sesión: [Sesión 10 · Entrega y presentación de AC-02](../../README.md).
