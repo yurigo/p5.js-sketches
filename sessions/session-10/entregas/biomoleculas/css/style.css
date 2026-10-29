@@ -1,0 +1,482 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f0f0f0;
+}
+
+
+/* ========================================
+   PORTADA - SISTEMA VIVO
+   ======================================== */
+
+.portada {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    overflow-y: auto;
+
+    background: #14141e;
+    color: #f0f1f5;
+
+    font-family: system-ui, -apple-system, sans-serif;
+
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
+}
+
+/* Amaguem la portada quan entrem */
+.portada.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.portada__contenido {
+    width: min(1100px, calc(100% - 64px));
+    min-height: 100%;
+    margin: 0 auto;
+    padding: 55px 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Titular */
+
+.portada__hero {
+    margin-bottom: 42px;
+}
+
+.portada__hero h1 {
+    font-size: clamp(58px, 8vw, 104px);
+    line-height: 1;
+    letter-spacing: -0.07em;
+    font-weight: 500;
+}
+
+.portada__hero h1 span {
+    color: #86c9e6;
+}
+
+.portada__hero p {
+    margin-top: 22px;
+    font-size: clamp(15px, 1.6vw, 19px);
+    line-height: 1.5;
+    color: #aab2c1;
+}
+
+/* Targetes */
+
+.bio-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.bio-card {
+    --bio-color: #fff;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 235px;
+    padding: 24px 20px;
+
+    border: 1px solid #343747;
+    border-top: 2px solid var(--bio-color);
+    border-radius: 6px;
+
+    background: #1b1d29;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.bio-card:hover {
+    background: #242838;
+    transform: translateY(-3px);
+}
+
+/* Colors de les families */
+
+.bio-card--carbo {
+    --bio-color: #ff9628;
+}
+
+.bio-card--amino {
+    --bio-color: #50a0ff;
+}
+
+.bio-card--lipido {
+    --bio-color: #ffdc50;
+}
+
+.bio-card--nucleo {
+    --bio-color: #ff5a96;
+}
+
+/* Grafics moleculars */
+
+.bio-card__grafico {
+    width: 100px;
+    height: 60px;
+    margin-bottom: 25px;
+    color: var(--bio-color);
+}
+
+.bio-card__grafico svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Text de les targetes */
+
+.bio-card h2 {
+    margin: 0 0 10px;
+
+    font-size: 21px;
+    line-height: 1.2;
+    font-weight: 500;
+    letter-spacing: -0.035em;
+}
+
+.bio-card p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.65;
+    color: #aeb5c4;
+}
+
+/* Peu de la portada */
+
+.portada__pie {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+
+    margin-top: 38px;
+    padding-top: 27px;
+
+    border-top: 1px solid #353846;
+}
+
+.portada__interaccion {
+    max-width: 540px;
+}
+
+.portada__interaccion h2 {
+    margin-bottom: 10px;
+
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+}
+
+.portada__interaccion p {
+    color: #aeb5c4;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.portada__atajo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-top: 17px;
+
+    color: #8993a6;
+    font-size: 12px;
+}
+
+.portada__atajo kbd {
+    display: grid;
+    place-items: center;
+
+    width: 24px;
+    height: 24px;
+
+    border: 1px solid #485368;
+    border-radius: 5px;
+
+    font: 12px system-ui, sans-serif;
+    color: #dce8f5;
+}
+
+/* Boto per entrar */
+
+.portada__entrada {
+    width: 260px;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.portada__boton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    padding: 19px 22px;
+
+    background: #99d0ee;
+    border: 1px solid #99d0ee;
+    border-radius: 6px;
+
+    color: #121b28;
+    font: 600 14px system-ui, sans-serif;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.portada__boton:hover {
+    background: #b7e4fa;
+    transform: translateY(-2px);
+}
+
+.portada__boton:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 4px;
+}
+
+.portada__boton span:last-child {
+    font-size: 23px;
+    font-weight: 400;
+}
+
+.portada__entrada small {
+    display: block;
+    margin-top: 12px;
+
+    color: #8993a6;
+    font-size: 11px;
+}
+
+/* Tablets */
+
+@media (max-width: 1000px) {
+    .bio-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .bio-card {
+        min-height: 205px;
+    }
+
+    .portada__contenido {
+        padding: 55px 0;
+    }
+}
+
+/* Mobils */
+
+@media (max-width: 650px) {
+    .portada__contenido {
+        width: calc(100% - 36px);
+        padding: 45px 0;
+    }
+
+    .portada__hero {
+        margin-bottom: 32px;
+    }
+
+    .portada__hero h1 {
+        font-size: clamp(50px, 12vw, 72px);
+    }
+
+    .portada__hero p {
+        font-size: 15px;
+        margin-top: 16px;
+    }
+
+    .bio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bio-card {
+        min-height: 0;
+        padding: 20px;
+    }
+
+    .bio-card__grafico {
+        height: 45px;
+        margin-bottom: 18px;
+    }
+
+    .portada__pie {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 28px;
+        margin-top: 30px;
+    }
+
+    .portada__entrada {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .portada,
+    .bio-card,
+    .portada__boton {
+        transition: none;
+    }
+}
+
+/* Boto de reinici de l'ecosistema */
+
+.btn-reiniciar {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 12px;
+
+    border: 1px solid rgba(164, 204, 230, 0.23);
+    border-radius: 12px;
+    background: rgba(23, 31, 45, 0.82);
+    color: rgba(235, 245, 255, 0.88);
+
+    font: 500 12px system-ui, sans-serif;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+
+    backdrop-filter: blur(14px);
+    transition: all 180ms ease;
+}
+
+.btn-reiniciar svg {
+    width: 17px;
+    height: 17px;
+    color: #86c9e6;
+    transition: transform 300ms ease;
+}
+
+.btn-reiniciar kbd {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 22px;
+    height: 22px;
+    margin-left: 3px;
+
+    border: 1px solid rgba(164, 204, 230, 0.18);
+    border-radius: 5px;
+    color: rgba(235, 245, 255, 0.55);
+    font: 500 11px system-ui, sans-serif;
+}
+
+.btn-reiniciar:hover {
+    background: rgba(37, 56, 75, 0.94);
+    border-color: rgba(134, 201, 230, 0.6);
+    transform: translateY(-2px);
+}
+
+.btn-reiniciar:hover svg {
+    transform: rotate(-45deg);
+}
+
+.btn-reiniciar:active {
+    transform: translateY(0);
+}
+
+.btn-reiniciar:focus-visible {
+    outline: 2px solid #86c9e6;
+    outline-offset: 3px;
+}
+
+/* Quién altera a quién */
+
+.relaciones {
+    margin-top: 38px;
+}
+
+.relaciones h2 {
+    margin-bottom: 14px;
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+}
+
+.relaciones__lista {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+/* si el número de filas es impar, la última ocupa todo el ancho */
+.rel:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+}
+
+.rel {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px 16px;
+
+    border: 1px solid #343747;
+    border-radius: 6px;
+    background: #1b1d29;
+}
+
+.rel__par {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.rel__par b {
+    font-weight: 500;
+}
+
+.rel__par i {
+    font-style: normal;
+    color: #8993a6;
+}
+
+.rel__texto {
+    font-size: 12px;
+    color: #aeb5c4;
+}
+
+.rel--carbo  { color: #ff9628; }
+.rel--amino  { color: #50a0ff; }
+.rel--lipido { color: #ffdc50; }
+.rel--nucleo { color: #ff5a96; }
+.rel--tu     { color: #99d0ee; }
+
+@media (max-width: 650px) {
+    .relaciones__lista {
+        grid-template-columns: 1fr;
+    }
+}

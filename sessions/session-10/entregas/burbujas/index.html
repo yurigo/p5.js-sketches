@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AC2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@2.2.3/lib/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5.sound@0.3.0/dist/p5.sound.min.js"></script>
+</head>
+<body>
+    <div id="leyenda">
+      <h2>Controles</h2>
+      <ul>
+        <li><strong>W A S D</strong> — soplar viento en esa dirección</li>
+        <li><strong>Ratón cerca de una burbuja</strong> — la repele</li>
+        <li><strong>Clic sobre una burbuja</strong> — la revienta</li>
+        <li><strong>B</strong> — generar burbujas nuevas</li>
+        <li><strong>R</strong> — reiniciar el sistema</li>
+      </ul>
+    </div>
+    <div id="columnaCanvas">
+      <h1 id="titulo">BUBBLES</h1>
+      <div id="zonaCanvas"></div>
+    </div>
+    <script src="BurbujaPequena.js"></script>
+    <script src="BurbujaMediana.js"></script>
+    <script src="BurbujaGrande.js"></script>
+    <script src="ParticulaBurbuja.js"></script>
+    <script src="sketch.js"></script>
+</body>
+</html>
