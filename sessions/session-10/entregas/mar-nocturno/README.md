@@ -109,3 +109,5 @@ He utilitzat **Claude**:
 - **Idees i concepte:** li vaig demanar una pluja d'idees i vaig triar jo la del plàncton bioluminescent.
 - **Corregir errors i ajustar:** li vaig descriure el que veia (el fil que travessava la pantalla, la mutació massa lenta, l'atracció del ratolí poc visible) i Claude va proposar varies solucions.
 - **Documentació:** l'esborrany d'aquest README.
+
+Material de la sesión: [Sesión 10 · Entrega y presentación de AC-02](../../README.md).

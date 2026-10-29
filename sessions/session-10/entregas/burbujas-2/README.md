@@ -86,3 +86,5 @@ Se ha utilizado Claude (Anthropic) para generar la estructura del código y un b
 - Se le describió la idea: burbujas que nacen cuando el ratón se mueve más de 20 px, de tamaño aleatorio entre 2 y 10 px, color RGB variable con transparencia máxima del 50 %, que se acercan al movimiento del ratón, estallan con el clic y suenan de forma distinta al estallar.
 
 Las tres familias por color, la regla circular de persecución y el sonido con osciladores fueron propuestas de la IA para cumplir los requisitos del enunciado.
+
+Material de la sesión: [Sesión 10 · Entrega y presentación de AC-02](../../README.md).

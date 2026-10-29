@@ -65,3 +65,5 @@ A esto se suma la repulsión del ratón, que empuja cualquier burbuja que se le 
 - Retomar el sonido: un "pop" cuya altura tonal dependa del tamaño de la burbuja (pequeña/mediana/grande), y quizá un sonido ambiental de viento que varíe con la fuerza del WASD.
 - Añadir también partículas en la fusión y el rebote, no solo al hacer clic, para reforzar visualmente los encuentros entre agentes.
 - Valorar si `R` debería regenerar una población inicial en vez de dejar el sistema vacío, si en el futuro se prioriza garantizar el rango de 90-150 agentes desde el arranque.
+
+Material de la sesión: [Sesión 10 · Entrega y presentación de AC-02](../../README.md).

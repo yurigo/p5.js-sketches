@@ -88,3 +88,5 @@ Le pedía lo que quería que pasara en la pieza, le explicaba qué fallaba y le 
 ## Ejecución
 
 Abrir `index.html` con un servidor local (por ejemplo Live Server en VS Code), pulsar **Entrar en la obra**, hacer clic sobre los enlaces para romperlos y pulsar **R** para reiniciar.
+
+Material de la sesión: [Sesión 10 · Entrega y presentación de AC-02](../../README.md).
