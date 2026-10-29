@@ -56,3 +56,5 @@ Como ideas futuras: una familia que reste luz, una población que cambie con el 
 
 ## Uso de IA
 He usado Claude (Anthropic) como guía a lo largo del proyecto. La idea y la dirección de la pieza la marqué yo (luces de colores, sin RGB, qué cambiar). También usé como referencia el repositorio del curso (p5js.yurigo.dev) para saber cómo hacer el sonido, los agentes y las partículas, entre otras cosas.
+
+Material de la sesión: [Sesión 10 · Entrega y presentación de AC-02](../../README.md).
