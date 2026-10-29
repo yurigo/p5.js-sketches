@@ -14,6 +14,7 @@ A collection of creative coding sketches built with p5.js, exploring various pro
 - [Session 07: AC-02 Sistema Vivo](sessions/session-07/)
 - [Session 08: Sonido y DOM con p5.js](sessions/session-08/)
 - [Session 09: Programación creativa más allá de p5.js](sessions/session-09/)
+- [Session 11: Recursividad y fractales](sessions/session-11/)
 
 ## Available Sketches
 

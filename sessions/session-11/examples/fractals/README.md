@@ -1,5 +1,8 @@
 # fractals
 
+Patrón recursivo de tres pétalos; `ramita()` aumenta el segmento y lo gira
+hasta alcanzar el caso base. Consulta el [tutorial de la sesión 11](../../index.html).
+
 ## Getting Started
 
 Open `index.html` in your web browser and start editing `sketch.js`.
