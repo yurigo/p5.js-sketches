@@ -1,5 +1,9 @@
 # sierpinski-triangle
 
+Triángulo de Sierpiński construido con tres llamadas recursivas por nivel. Las
+teclas `1` y `2` cambian la profundidad. Consulta el
+[tutorial de la sesión 11](../../index.html).
+
 ## Getting Started
 
 Open `index.html` in your web browser and start editing `sketch.js`.

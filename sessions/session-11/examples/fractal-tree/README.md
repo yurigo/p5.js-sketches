@@ -1,5 +1,8 @@
 # fractal-tree
 
+Árbol generado al dividir recursivamente tres ramas hasta alcanzar el umbral de
+longitud. Consulta el [tutorial de la sesión 11](../../index.html).
+
 ## Getting Started
 
 Open `index.html` in your web browser and start editing `sketch.js`.

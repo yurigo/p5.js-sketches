@@ -1,5 +1,8 @@
 # koch-snowfake
 
+Curva de Koch animada: cada segmento se divide recursivamente en cuatro tramos.
+Consulta el [tutorial de la sesión 11](../../index.html).
+
 ## Getting Started
 
 Open `index.html` in your web browser and start editing `sketch.js`.
